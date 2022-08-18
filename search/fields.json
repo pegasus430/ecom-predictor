@@ -1,0 +1,4 @@
+{
+    "output_fields":
+    ["origin_model", "origin_brand", "product_name", "product_url", "confidence"]
+}

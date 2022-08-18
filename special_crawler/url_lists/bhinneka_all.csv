@@ -1,0 +1,56 @@
+http://www.bhinneka.com/products/sku01114862/asus_transformer_book_t100ta-dk066h_-_gray.aspx
+http://www.bhinneka.com/products/sku01213445/avantree_keychain_pocket_portable_micro_usb_charging_cable.aspx
+http://www.bhinneka.com/products/sku00914189/gibraltar_deluxe_soft_drink_holder__sc-dsdh_.aspx
+http://www.bhinneka.com/products/sku01614639/kana_cctv__b-15a_.aspx
+http://www.bhinneka.com/products/sku00811060/x-rite_colorchecker_classic.aspx
+http://www.bhinneka.com/products/sku00613303/yamaha_recorder_suling__yrs23_.aspx
+http://www.bhinneka.com/products/sku00813908/cleo_and_doni_clutch_bag_04_-_light_blue.aspx
+http://www.bhinneka.com/products/sku00814918/duux_air_humidifier_mushroom__duah03__-_green.aspx
+http://www.bhinneka.com/products/sku01414930/sony_playstation_4_-_glacier_white.aspx
+http://www.bhinneka.com/products/sku00611510/sharp_microwave_r-230r_s__-_silver.aspx
+http://www.bhinneka.com/products/sku00811753/toshiba_pa3356.aspx
+http://www.bhinneka.com/products/sku00712590/stanley_6-piece_wood_carving_set__16-120-22_.aspx
+http://www.bhinneka.com/products/sku00210902/flora_pp2512uv-k.aspx
+http://www.bhinneka.com/products/sku00812823/bosch_planer__gho_10-82_.aspx
+http://www.bhinneka.com/products/sku01013180/philips_hair_dryer__hp_8102_.aspx
+http://www.bhinneka.com/products/sku00711658/panasonic_kx-ts505mxb_-_black.aspx
+http://www.bhinneka.com/products/sku01714965/kitchenaid_artisan_4_8_l_tilt-head_stand_mixer__5ksm150pseby__-_bosyenberry.aspx
+http://www.bhinneka.com/products/sku00005488/copam_cp-2500.aspx
+http://www.bhinneka.com/products/sku01313336/targus_wireless_presenter__amp17ap_.aspx
+http://www.bhinneka.com/products/sku01012535/ica_sin_1100c.aspx
+http://www.bhinneka.com/products/sku01814305/uda_gembul_rendang_daging_level_0.aspx
+http://www.bhinneka.com/brands/targus.aspx
+http://www.bhinneka.com/aspx/products/notebook-laptop-asus.aspx
+http://www.bhinneka.com/aspx/bhindexpc.aspx
+http://www.bhinneka.com/page/pbr141100008/lenovo_vibe_x2.aspx?ref=fp_top_1
+http://www.bhinneka.com/aspx/products/prt_Free_Shipping.aspx
+http://www.bhinneka.com/search.aspx?Search=lego+star+wars&ref=fp_rgh_1
+http://www.bhinneka.com/aspx/products/bhinneka-fashion-promo.aspx?ref=fp_rgh_2
+http://www.bhinneka.com/products/sku00005785/sihl_3999__j299__-_36.aspx
+http://www.bhinneka.com/products/sku00106057/sihl_3948__j47s__-_44.aspx
+http://www.bhinneka.com/brands/targus.aspx
+http://www.bhinneka.com/aspx/products/notebook-laptop-asus.aspx
+http://www.bhinneka.com/aspx/bhindexpc.aspx
+http://www.bhinneka.com/page/pbr141100008/lenovo_vibe_x2.aspx?ref=fp_top_1
+http://www.bhinneka.com/aspx/products/prt_Free_Shipping.aspx
+http://www.bhinneka.com/search.aspx?Search=lego+star+wars&ref=fp_rgh_1
+http://www.bhinneka.com/aspx/products/bhinneka-fashion-promo.aspx?ref=fp_rgh_2
+http://www.bhinneka.com/products/sku00004087/roland_pg-bk.aspx
+# price looks good in json file,but is truncated in the result table filter 
+http://www.bhinneka.com/products/sku01413624/apc_netshelter_sv_19__closed_42u-1060mm__ar2400fp1__-_black.aspx
+http://www.bhinneka.com/products/sku01813100/sennheiser_headphone_momentum_on_ear_-_black.aspx
+http://www.bhinneka.com/products/sku01914464/greditor_pro_gr100_codeact_video_editing_keyboard_-_black.aspx
+# these redirect to category page; filters to title<5char should be non product 
+http://www.bhinneka.com/products/sku00005978/x-gear_acod-bdc-s-bk.aspx
+http://www.bhinneka.com/products/sku00007841/x-gear_achvd146-016-150.aspx
+http://www.bhinneka.com/products/sku01813026/adidas_performance_brazuca_glider_size_5__f82193__-_white_night_blue_multicolor.aspx
+http://www.bhinneka.com/products/sku01813546/nillkin_case_for_lenovo_p780_-_black.aspx
+http://www.bhinneka.com/products/sku01814313/uni_gembil_keripik_singkong_rendang_level_3.aspx
+http://www.bhinneka.com/products/sku01814312/uni_gembil_keripik_singkong_rendang_level_2.aspx
+# in result table,  siteprodcontent<5, but there's specifications/features, is that okay
+http://www.bhinneka.com/products/sku01914246/ibos_middle_tower_gamemax_100.aspx
+# 3 imgs, but only scrap 1, looks okay when I re-scrap
+http://www.bhinneka.com/products/sku01814127/lg_l_bello__d335__-_white.aspx
+# out of stock
+http://www.bhinneka.com/products/sku01914164/top_model_jewellery_box_big__tm_7872_.aspx
+http://www.bhinneka.com/products/sku01914459/girlie_girlz_flower_rubber_loom_band_clip_and_beads_refill_pack_large__tm_3236_.aspx

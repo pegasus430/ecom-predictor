@@ -1,0 +1,213 @@
+<html>
+<body>
+<form method="post" class="vss-app-form " id="contactUsForm" name="contactUsForm" enctype="multipart/form-data" action="https://amazon.com/st/vendor/members/contactusapp"><input type="hidden" id="sessionId-contactUsForm" name="sessionId" value="154-8498080-2782212">
+    <div id="formSection1">
+        <h2>How can we help you?</h2>
+
+        
+            
+            
+                
+                    <input type="hidden" id="businessGroupIdHide" name="businessGroupId" value="25">
+                
+            
+        
+
+        <div class="vss-form-element "><label for="issueId">Support topic</label><select id="issueId" name="issueId"><option>Select a topic</option><option value="272">Accounting</option><option value="26356">Advance Shipment Notification</option><option value="32350">Amazon Business</option><option value="28469">Amazon Marketing Services</option><option value="37350">Direct Fullfillment</option><option value="41">EDI Integration</option><option value="28202">EDI Live (non WEB-EDI)
+</option><option value="28467">Images and Video</option><option value="32600">Manage My Catalog</option><option value="26352">Product Compliance</option><option value="198">Promotions and Merchandising (CoOp, Vine, SPA, ASAP, Directed Merchandising, etc.)</option><option value="227">Purchase Order Management</option><option value="185">Reports - Amazon Retail Analytics</option><option value="81">Shipments</option><option value="54">Vendor Central Settings and Account Management</option><option value="29451">Vendor Operational Performance (Chargebacks)</option><option value="31867">Vendor Premium Services</option></select><span class="error-text"></span></div>
+
+        <div class="vss-form-element "><label for="subIssueId">Specific issue</label><select id="subIssueId" name="subIssueId" disabled=""><option>Select a specific issue</option><option value="32654">A+ Content</option><option value="32655">ACFF Feeds</option><option value="32656">Amazon Packaging Certification</option><option value="32657">Availability change</option><option value="32750">Cost Decrease</option><option value="33900">Cost correction due to item setup error</option><option value="32652">Customer reviews related queries</option><option value="32700">Detail page removal</option><option value="32651">Duplicates</option><option value="32604">Item Detail Page or Buy Button</option><option value="32751">Item update (title, UPC, model #, etc.)</option><option value="32650">MSDS/Supplemental Hazmat Information</option><option value="32605">New Imprint/publisher/brand</option><option value="32601">New Item Set Up and NIS templates</option><option value="32702">ONIX feeds</option><option value="32658">Variation - Twister</option><option value="32653">Wrong categorization</option></select><span class="error-text"></span></div>
+
+        <div id="faqLinkContainer" class="clear none" style="display: none;">
+            <h2>Do any of these FAQs address your question?</h2>
+            <ul id="faqLinks">
+            </ul>
+        </div>
+
+        <div class="submit-buttons">
+            
+                
+                    <div id="contactUsMethodSelectionContainer" class="none" style="display: none;">
+                        <h2>How do you want to contact us?</h2>
+                        <span id="contactUsPhoneContainer" style="display:inline-block;vertical-align:top;">
+                            <div class="using-vss-box" style="width: 210px; padding: 10px 0px 10px 10px;">
+                                <span class="sprite-button medium-yellow-primary sprite-primary  sprite-button-disabled" id="contactUsPhone">Phone<span class="sprite-button-end"></span><div class="sprite-button-overlay"></div></span>
+                                <div style="font-weight: bold; padding: 10px 10px 10px 10px;text-align: center;">
+                                    Recommended
+                                </div>
+                            </div>
+                        </span>
+                        <span id="contactUsEmailContainer" style="display:inline-block;vertical-align:top;">
+                             <div style="padding: 10px 0px 0px 10px;">
+                                 <span class="sprite-button medium-yellow-primary sprite-primary  sprite-button-disabled" id="contactUsEmail">Email<span class="sprite-button-end"></span><div class="sprite-button-overlay"></div></span>
+                             </div>
+                        </span>
+                    </div>
+                    <span id="contactUsContinueContainer">
+                        <span class="sprite-button medium-yellow-next sprite-next  sprite-button-disabled" id="contactUsContinue">Continue<span class="sprite-button-end"></span><div class="sprite-button-overlay"></div></span>
+                    </span>
+                
+                
+            
+            <div class="none">
+                <div class="popover-error" id="selectTopicError">
+                    Select a business group,<br> support topic, and issue first.
+                </div>
+            </div>
+            <div class="none">
+                <div class="popover-error" id="phoneUnavailableError">
+                    
+                </div>
+            </div>
+            <input type="hidden" id="isPhoneSupportEnabled" name="isPhoneSupportEnabled" value="true">
+            <input type="hidden" id="phoneSupportEnabledBusinessGroupIds" name="phoneSupportEnabledBusinessGroupIds" value="[25]">
+            <input type="hidden" id="contactMethod" name="contactMethod">
+        </div>
+    </div>
+
+    <div id="formSection4" class="none">
+        <h2>How can we help you?</h2>
+
+        <p id="businessGroupSelected" class="none">
+            Business group:
+            <strong></strong>
+        </p>
+        <p class="left" id="supportTopicSelected">
+            Support topic:
+            <strong></strong>
+        </p>
+        <p class="clear left none" id="specificIssueSelected" style="display: none;">
+            Specific issue:
+            <strong></strong>
+        </p>
+        <p class="left space-sides">
+            <span id="changeIssue" class="plaintext-link">(Change support topic or specific issue)</span>
+        </p>
+        <br>
+    </div>
+    <div id="formSection2" class="none">
+
+        <p class="clear" id="contactUsNotificationSpacing"></p>
+        <div id="contactUsNotification" class="a-box a-alert a-alert-info"><div class="a-box-inner a-alert-container"><h4 class="a-alert-heading"> </h4><i class="a-icon a-icon-alert"></i><div class="a-alert-content"></div></div></div>
+
+        <h2 class="clear">Describe your case</h2>
+
+        <div class="vss-form-element long-input"><label for="subject">Case title</label><input type="text" id="subject" name="subject" maxlength="120"><span class="error-text"></span></div>
+
+        <div class="vss-form-element "><label for="message">Please describe the issue</label><textarea id="message" name="message"></textarea><span class="error-text"></span></div>
+
+        <div class="vss-form-element "><label for="upload">(Optional) Attach a file to help us better understand the issue. <span class="plaintext-link" id="whatTypeOfFiles">(What types of files?)</span></label><input class="file-input" type="file" id="upload" name="upload" size="45"><span class="error-text"></span><small>Files have a 4 mb size limit.</small></div>
+        <div id="whatTypeOfFilesContent" class="none popover-content">
+            <p>Please check that your file is one of the following:</p>
+            <ul>
+                <li><strong>Images:</strong> bmp, gif, jpg/jpeg, png, tif/tiff</li>
+                <li><strong>Code:</strong> cer, htm/html, xml, xlsm</li>
+                <li><strong>Compressed files:</strong> zip/zipx</li>
+                <li><strong>Documents:</strong> doc/docx, pdf, rtf, txt</li>
+                <li><strong>Spreadsheets:</strong> csv, xls/xlsx</li>
+            </ul>
+        </div>
+
+        <h2>Who should have access to this case?</h2>
+
+        <p>You will receive a copy of this case at <strong>ned.ward@makewonder.com</strong>.</p>
+        <input id="email" name="email" type="hidden" value="ned.ward@makewonder.com">
+
+        <div class="vss-form-element "><label for="emailCCList">(Optional) Additional email addresses that you would like to include in this case conversation</label><input type="text" id="emailCCList" name="emailCCList" maxlength="1000"><span class="error-text"></span><small>Comma-separated list of email addresses.</small></div>
+
+        <div class="submit-buttons">
+            <input id="saveMessageAction" name="saveMessageAction" type="hidden" value="1">
+            <button type="submit" class="sprite-button-wrap"><span class="sprite-button medium-yellow-primary sprite-primary " id="contactUsSubmit">Submit<span class="sprite-button-end"></span></span></button>
+        </div>
+    </div>
+
+</form>
+
+<div id="phoneWidgetContainer" class="none">
+    <div class="clear" id="phoneWidget">
+
+    </div>
+    <br>
+</div>
+</body>
+
+<script type="text/javascript">
+        var business = document.getElementById("businessGroupId");
+        var issue = document.getElementById("issueId");
+        var subIssue = document.getElementById("subIssueId");
+        var continueButton = document.getElementById("contactUsContinue");
+        business.onchange = function() {
+            issue.innerHTML = '<option>Select a topic</option><option value="272">Accounting</option><option value="26356">Advance Shipment Notification</option><option value="32350">Amazon Business</option><option value="28469">Amazon Marketing Services</option><option value="41">EDI Integration</option><option value="28202">EDI Live (non WEB-EDI)</option><option value="28467">Images and Video</option><option value="32600">Manage My Catalog</option><option value="26352">Product Compliance</option><option value="198">Promotions and Merchandising (CoOp, Vine, SPA, ASAP, Directed Merchandising, etc.)</option><option value="227">Purchase Order Management</option><option value="81">Shipments</option><option value="54">Vendor Central Settings and Account Management</option><option value="29451">Vendor Operational Performance (Chargebacks)</option><option value="31867">Vendor Premium Services</option>';
+            issue.removeAttribute("disabled");
+        };
+        issue.onchange = function() {
+            subIssue.innerHTML = '<option>Select a specific issue</option><option value="32654">A+ Content</option><option value="32655">ACFF Feeds</option><option value="32656">Amazon Packaging Certification</option><option value="32657">Availability change</option><option value="32750">Cost Decrease</option><option value="33900">Cost correction due to item setup error</option><option value="32652">Customer reviews related queries</option><option value="32700">Detail page removal</option><option value="32651">Duplicates</option><option value="32604">Item Detail Page or Buy Button</option><option value="32751">Item update (title, UPC, model #, etc.)</option><option value="32650">MSDS/Supplemental Hazmat Information</option><option value="32605">New Imprint/publisher/brand</option><option value="32601">New Item Set Up and NIS templates</option><option value="32702">ONIX feeds</option><option value="32658">Variation - Twister</option><option value="32653">Wrong categorization</option>';
+            subIssue.removeAttribute("disabled");
+        };
+        subIssue.onchange = function() {
+            continueButton.removeAttribute("disabled");
+        };
+        continueButton.onclick = function() {
+            document.getElementById("formSection1").setAttribute("hidden", "");
+            document.getElementById("formSection2").removeAttribute("hidden");
+        };
+        document.getElementById("contactUsSubmit").onclick = function() {
+            //figure out what this response should be
+        };
+    
+    var validateEmailStrings = {
+        emailIsBlank: "Email cannot be blank",
+        emailContainsSpaces: "Enter email address without spaces",
+        emailInvalidChar: "Email may not contain <i>( ) , ; : &lt; &gt;</i>",
+        emailNeedsAt: "Email address needs a <i>@</i>",
+        emailTooManyAts: "Email address should have only one <i>@</i>",
+        emailNeedsDot: "The email address domain should include at least one '.'",
+        emailGenericError: "Please check the email address formatting"
+    };
+
+    P.register('contactUs', function() {
+        
+        var contactUs = {
+            supportedFileTypes: "Supported file types",
+            selectBusinessGroup: "Select a business group",
+            selectIssue: "Select a topic",
+            pleaseSelectIssue: "Please select a topic first",
+            selectSubIssue: "Select a specific issue",
+            noSubIssues: "No specific issues",
+            loading: "Loading",
+            errorGettingIssues: "Error getting support topics.",
+            errorGettingSubIssues: "Error getting specific issues.",
+            tryAgain: "Try again.",
+            none: "None",
+            
+            spinnerImage: '<img src="https://images-na.ssl-images-amazon.com/images/G/01/advantage/common/icons/loading._CB192205432_.gif"/>'
+        };
+
+        contactUs.orgUnit = "US";
+        contactUs.serverName = "amazon.com";
+        contactUs.caseId = "";
+        contactUs.customerId = "A1RNE9JJES8QHB";
+        contactUs.vendorGroupId = "3357260";
+        contactUs.vendorCodes = "[WONV5, WOQHB]";
+        contactUs.language = "en";
+
+        
+        contactUs.helpMap = {
+        
+           "274" : "For more information, see the <a target='_blank' href='/st/vendor/members/help?topicId=201100350'>About Amazon CoOp</a> Help topic. If you would like to dispute a CoOp invoice, go to <b>Payments</b> > <b>Dispute Management</b>.",
+       "276" : "For more information, see the <a target='_blank' href='/st/vendor/members/help?topicId=201282670'>View return payment details</a> Help topic. If you would like to dispute a return, go to <b>Payments</b> > <b>Dispute Management</b>."
+        
+        };
+ 
+
+        
+        contactUs.selectedIssuePath = {
+            businessGroupId: "",
+            issueId: "",
+            subIssueId: ""
+        };
+        window.contactUs = contactUs; //there may be latent uses of this as a global
+        return contactUs;
+    });
+</script>
+</html>

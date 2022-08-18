@@ -1,0 +1,44 @@
+<form class="navbar-form navbar-left" enctype="multipart/form-data" method="post">
+    <div class="form-group">
+        {%- if request.url_rule.endpoint != 'show_products' %}
+        <select class="form-control" name="retailer">
+            <option value=""{%- if not request.form.retailer %} selected{% endif %} disabled hidden>Retailer</option>
+            {%- for retailer in retailers %}
+            <option value="{{ retailer }}"{%- if request.form.retailer == retailer %} selected{% endif %}>{{ retailer | capitalize }}</option>
+            {%- endfor %}
+        </select>
+        {% endif %}
+        <input type="text" class="form-control" name="product_id" placeholder="Product id"{%- if request.form.product_id %} value="{{ request.form.product_id }}"{% endif %}/>
+        <input type="text" class="form-control" name="group_id" placeholder="Group id"{%- if request.form.group_id %} value="{{ request.form.group_id }}"{% endif %}>
+    </div>
+    <button type="submit" class="btn btn-default" onclick="this.form.action='{% if request.url_rule.endpoint == 'index' %}{{ url_for('index') }}{% endif %}';">Search</button>
+    {%- if request.url_rule.endpoint == 'daily_tasks' and request.form.product_id %}
+        <button type="submit" class="btn btn-default" onclick="if (confirm('Are you sure you want to disable daily crawls for all selected products?')){this.form.action='{{ url_for('disable_daily_task') }}'}else{return false};">Disable all</button>
+    {% endif %}
+    {%- if request.url_rule.endpoint == 'show_products' and request.form.product_id %}
+        <button type="submit" class="btn btn-default" onclick="if (confirm('Are you sure you want to delete reviews for all selected products?')){this.form.action='{{ url_for('delete_reviews', retailer=retailer) }}'}else{return false};">Delete all</button>
+        <div class="btn-group">
+            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Export all<span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><button type="submit" class="btn btn-link" onclick="this.form.action='{{ url_for('export_reviews', retailer=retailer, format='jl') }}';">JSON Linest</button></li>
+                <li><button type="submit" class="btn btn-link" onclick="this.form.action='{{ url_for('export_reviews', retailer=retailer, format='csv') }}';">CSV</button></li>
+            </ul>
+        </div>
+    {% endif %}
+</form>
+{% if request.url_rule.endpoint == 'index' %}
+    <form class="navbar-form navbar-left" enctype="multipart/form-data" method="post" action="{{ url_for('rerun_task') }}">
+        <div class="form-group">
+            <select class="form-control" name="period">
+                <option value="" selected disabled hidden>Period</option>
+                <option value="5">Last 5 minutes</option>
+                <option value="60">Last 60 minutes</option>
+                <option value="240">Last 4 hours</option>
+                <option value="480">Last 8 hours</option>
+                <option value="720">Last 12 hours</option>
+                <option value="1440">Last 24 hours</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-default">Re-run failed tasks</button>
+    </form>
+{% endif %}

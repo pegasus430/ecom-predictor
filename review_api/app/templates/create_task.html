@@ -1,0 +1,126 @@
+{% extends "dashboard.html" %}
+{% block body %}
+<div>
+    <form class="form-horizontal" enctype="multipart/form-data" method="post">
+        <div class="form-group">
+            <label for="selectRetailer" class="col-sm-2 control-label">Select retailer:</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="selectRetailer" name="retailer">
+                    {%- for retailer in retailers %}
+                    <option value="{{ retailer }}">{{ retailer | capitalize }}</option>
+                    {%- endfor %}
+                </select>
+                <span class="help-block"><i>walmart</i> for example</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="productId" class="col-sm-2 control-label">Product id:</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="productId" rows="2" name="product_id"></textarea>
+                <span class="help-block">ASIN for Amazon, Tool ID for Walmart, etc.</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="productUrl" class="col-sm-2 control-label">Product url:</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="productUrl" rows="2" name="product_url"></textarea>
+                <span class="help-block">URL</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                Optional params
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="groupId" class="col-sm-2 control-label">Group id:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="groupId" name="group_id">
+                <span class="help-block">ID for the group of products</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="fromDate" class="col-sm-2 control-label">From date:</label>
+            <div class="col-sm-10">
+                <input type="date" class="form-control" id="fromDate" name="from_date" placeholder="YYYY-MM-DD" />
+                <span class="help-block">Crawl reviews NOT older than date</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="daily_frequency" class="col-sm-2 control-label">Daily frequency:</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="daily_frequency" name="daily_frequency">
+                    <option value="" selected disabled>Select to change frequency</option>
+                    <option value="0">One-time</option>
+                    <option value="24">Daily</option>
+                    <option value="12">Every 12 Hours</option>
+                    <option value="8">Every 8 Hours</option>
+                    <option value="4">Every 4 Hours</option>
+                    <option value="2">Every 2 Hours</option>
+                </select>
+                <span class="help-block">Update reviews every period of time</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="notifyEmail" class="col-sm-2 control-label">Notify emails if new reviews:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="notifyEmail" name="notify_email">
+                <span class="help-block">Comma or space separated</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Create</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <div>
+        <b>Amazon</b>
+    </div>
+    <div>
+        Mandatory params:
+        <ul>
+            <li>
+                product_id - ASIN, it is using to request reviews from Amazon's API. For example: B00IEGN7ES
+            </li>
+        </ul>
+        Optional params:
+        <ul>
+            <li>
+                product_url - for example: https://www.amazon.com/dp/B00IEGN7ES
+            </li>
+        </ul>
+    </div>
+    <div>
+        <b>Walmart</b>
+    </div>
+    <div>
+        Mandatory params:
+        <ul>
+            <li>
+                product_id - Tool ID or any other unique id. For example: 46784935
+            </li>
+            <li>
+                product_url - mandatory if UPC or any other unique value was used for product_id param. For example: https://www.walmart.com/ip/46784935
+            </li>
+        </ul>
+    </div>
+        <div>
+        <b>Toysrus (Babiesrus)</b>
+    </div>
+    <div>
+        Mandatory params:
+        <ul>
+            <li>
+                product_id - product id from url or any other unique id. For example: 120590226
+            </li>
+            <li>
+                product_url - mandatory if product_id is not the same as id in url. For example: https://www.toysrus.com/product?productId=120590226
+            </li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

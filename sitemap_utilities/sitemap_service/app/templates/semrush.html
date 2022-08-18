@@ -1,0 +1,99 @@
+{% extends "dashboard.html" %}
+{% block search %}
+    <form class="navbar-form navbar-left" enctype="multipart/form-data" method="post">
+        <div class="form-group">
+            <input type="text" class="form-control" name="url" placeholder="URL"{%- if request.form.url %} value="{{ request.form.url }}"{% endif %}>
+        </div>
+        <button type="submit" class="btn btn-default" onclick="this.form.action='';">Search</button>
+        {%- if request.form.url %}
+            <button type="submit" class="btn btn-default" onclick="if (confirm('Are you sure you want to delete cache for all shown URLs?')){this.form.action='{{ url_for('delete_semrush') }}'}else{return false};">Delete shown</button>
+        {% endif %}
+    </form>
+    <form class="navbar-form navbar-left" enctype="multipart/form-data" method="post">
+        <button type="submit" class="btn btn-default" onclick="if (confirm('Are you sure you want to delete cache for all URLs?')){this.form.action='{{ url_for('delete_semrush') }}'}else{return false};">Delete all</button>
+    </form>
+{% endblock %}
+{% block body %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>URL</td>
+                <td>SEO URL</td>
+                <td>url_organic date</td>
+                <td>backlinks_overview date</td>
+                <td>Delete</td>
+            </tr>
+         </thead>
+        <tbody>
+            {% for item in semrush.items -%}
+                <tr>
+                    <td>
+                        {{ item.url }}
+                    </td>
+                    <td>
+                        {% if item.seo_url %}
+                            {{ item.seo_url }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if item.url_organic_date %}
+                            {{ item.url_organic_date.strftime('%Y-%m-%d') }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if item.backlinks_overview_date %}
+                            {{ item.backlinks_overview_date.strftime('%Y-%m-%d') }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        <form enctype="multipart/form-data" method="post">
+                            <input type="hidden" name="url" value="{{ item.url }}">
+                            <button type="submit" class="btn btn-xs btn-primary" onclick="if (confirm('Are you sure you want to delete cache for {{ item.url }}?')){this.form.action='{{ url_for('delete_semrush') }}'}else{return false};">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {%- else %}
+                <tr>
+                    <td colspan="5">No cached reports</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="5">
+                    <ul class="pagination">
+                        <li>
+                            {% if semrush.has_prev -%}
+                            <a href="{{ url_for('show_semrush', page=semrush.prev_num) }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                            {%- else -%}
+                            <span aria-hidden="true">&laquo;</span>
+                            {%- endif %}
+                        </li>
+                        {%- for page in semrush.iter_pages() %}
+                        <li {%- if page == semrush.page %} class="active"{% endif %}>
+                            {% if page -%}
+                                {%- if page == semrush.page -%}
+                                <span>{{ page }}</span>
+                                {%- else -%}
+                                <a href="{{ url_for('show_semrush', page=page) }}"><span>{{ page }}</span></a>
+                                {%- endif -%}
+                            {%- else -%}
+                            <span>…</span>
+                            {%- endif %}
+                        </li>
+                        {%- endfor %}
+                        <li>
+                            {% if semrush.has_next -%}
+                            <a href="{{ url_for('show_semrush', page=semrush.next_num) }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                            {%- else -%}
+                            <span aria-hidden="true">&raquo;</span>
+                            {%- endif %}
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

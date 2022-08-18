@@ -1,0 +1,20 @@
+[
+  {
+    "name": "traffic",
+    "email": {
+      "server": "imap.gmail.com",
+      "box": "import_sams@contentanalyticsinc.com",
+      "password": "",
+      "subjects": {
+        "Ad Hoc Analysis - Last Touch Channel_mobile_daily_rightone": "{subject}_{date}{ext}",
+        "Ad Hoc Analysis - Last Touch Channel_Desktop_Daily_Right0ne": "{subject}_{date}{ext}"
+      }
+    },
+    "ftp": {
+      "server": "54.175.228.114",
+      "user": "samsclubemail",
+      "password": "",
+      "dir": "upload"
+    }
+  }
+]

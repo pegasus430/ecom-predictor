@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Name Converter</title>
+    <style>
+        body {
+            padding: 0 10px;
+        }
+        form > div {
+            padding: 6px 0;
+        }
+        label {
+            display: inline-block;
+            width: 200px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <h2>Converter</h2>
+    <form method='POST' enctype="multipart/form-data">
+        <div>
+            <label>Input file to convert uploader : </label>
+            <input type="file" name="input_file">
+        </div>
+        <div>
+            <label></label>
+            <span>Upload a 1 column CSV file with no header, where each row is a value to convert</span>
+        </div>
+        <div>
+            <label for="input_type">Type of import : </label>
+            <select id="input_type" name="input_type">
+                {% if convert_types %}
+                    {% for convert_type in convert_types %}
+                        <option value="{{ convert_type.0 }}" title="{{ convert_type.2 }}">{{ convert_type.1 }}</option>
+                    {% endfor %}
+                {% endif %}
+            </select>
+        </div>
+        <div class="hd_extra_fields">
+            <label for="channel_id">Select Channel: </label>
+            <select id="channel_id" name="channel_id">
+                {% if channels %}
+                    {% for channel in channels %}
+                        <option value="{{ channel.0 }}" >{{ channel.1 }}</option>
+                    {% endfor %}
+                {% endif %}
+            </select>
+        </div>
+        <div class="hd_extra_fields">
+        </div>
+        <div>
+            <label></label>
+            <button type="submit" name="run">Convert</button>
+        </div>
+    </form>
+
+    <h2>API</h2>
+    <p>Method: POST</p>
+    <p>
+        Params:
+        <ul>
+            <li><b>input_file</b> - CSV/XLSX file</li>
+            <li><b>input_type</b> - convertion types:
+                <ul>
+                    <li>walmart_grocery</li>
+                    <li>amazon_channel</li>
+                    <li>amazon_template_to_json</li>
+                </ul>
+            </li>
+        </ul>
+    </p>
+    <script>
+        document.getElementsByName("input_type")[0].addEventListener('change', inputTypeChanged);
+        inputTypeChanged();
+
+        function inputTypeChanged(){
+            var input_type = document.getElementsByName("input_type")[0].value;
+            var hd_elements = document.getElementsByClassName('hd_extra_fields'), i;
+            var btn = document.getElementsByName("run")[0];
+            if (input_type == "{{ hd_convert_type }}"){
+                for (i = 0; i < hd_elements.length; i += 1) {
+                    hd_elements[i].style.display = 'block';
+                }
+                btn.innerHTML = 'Submit';
+            } else{
+                for (i = 0; i < hd_elements.length; i += 1) {
+                    hd_elements[i].style.display = 'none';
+                }
+                btn.innerHTML = 'Convert';
+            }
+        }
+    </script>
+</body>
+</html>

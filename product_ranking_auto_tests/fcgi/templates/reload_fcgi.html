@@ -1,0 +1,20 @@
+{% extends 'admin/base_site.html' %}
+{% block title %}
+    Restart fcgi{{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <form method="post" action="">
+        {% csrf_token %}
+        {% for field in form %}
+            <p>
+            <label>{{ field.label }}</label>
+                {{ field }}
+                {% if field.field.required %}
+                    <span>*</span>
+                {% endif %}
+            </p>
+        {% endfor %}
+        <input type="submit" value="Continue">
+    </form>
+{% endblock %}

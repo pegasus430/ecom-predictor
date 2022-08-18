@@ -1,0 +1,14 @@
+this directory contains each site's regression csv list.
+<site>_all.csv
+
+* please run every list everyday to check site changes/updates.
+* please run site list after every site crawler change for regression
+
+* when new issues are found, please add problem url into the site's list
+
+script used to run the list:
+curlurls.py
+
+usage: python curlurls.py <list_filename> <outdir>
+
+

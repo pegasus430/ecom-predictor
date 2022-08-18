@@ -1,0 +1,128 @@
+{% extends "dashboard.html" %}
+{% block body %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Created at</td>
+                <td>Feed ID</td>
+                <td>Server</td>
+                <td>Request</td>
+                <td>Sandbox</td>
+                <td>State</td>
+                <td>Started at</td>
+                <td>Ended at</td>
+                <td>Message</td>
+                <td>Resources</td>
+            </tr>
+         </thead>
+        <tbody>
+            {% for submission in submissions.items -%}
+                <tr class="{% if submission.state == 'error' -%}
+                               bg-danger
+                           {%- elif submission.state == 'ready' -%}
+                               bg-success
+                           {%- elif submission.state == 'processing' -%}
+                               bg-warning
+                           {%- endif %}">
+                    <td>{{ submission.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    <td>{{ submission.feed_id }}</td>
+                    <td>{{ servers[loop.index0] }}</td>
+                    <td>
+                        <button type="button" class="btn btn-xs btn-primary" onclick="location.href='{{ url_for('submission_request', feed_id=submission.feed_id) }}';">
+                            Check
+                        </button>
+                    </td>
+                    <td>{{ submission.sandbox }}</td>
+                    <td>{{ submission.state }}</td>
+                    <td>
+                        {%- if submission.started_at -%}
+                            {{ submission.started_at.strftime('%Y-%m-%d %H:%M:%S') }}
+                        {%- endif -%}
+                    </td>
+                    <td>
+                        {%- if submission.ended_at -%}
+                            {{ submission.ended_at.strftime('%Y-%m-%d %H:%M:%S') }}
+                        {%- endif -%}
+                    </td>
+                    <td>
+                        {%- if submission.message -%}
+                            {{ submission.message }}
+                        {%- endif -%}
+                    </td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Select
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li class="dropdown-header">Download from S3</li>
+                                {%- if submission.screenshots %}
+                                <li>
+                                    <a href="{{ submission.screenshots.url }}">
+                                        Screenshots
+                                    </a>
+                                </li>
+                                {%- endif -%}
+                                {%- if submission.results %}
+                                <li>
+                                    <a href="{{ submission.results.url }}">
+                                        Files
+                                    </a>
+                                </li>
+                                {%- endif %}
+                                <li class="dropdown-header">Browse on server</li>
+                                <li>
+                                    <a href="{{ url_for('submission_resources', feed_id=submission.feed_id) }}">
+                                        All
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            {%- else %}
+                <tr>
+                    <td colspan="9">No submissions</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="9">
+                    <ul class="pagination">
+                        <li>
+                            {% if submissions.has_prev -%}
+                            <a href="{{ url_for('index', page=submissions.prev_num) }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                            {%- else -%}
+                            <span aria-hidden="true">&laquo;</span>
+                            {%- endif %}
+                        </li>
+                        {%- for page in submissions.iter_pages() %}
+                        <li {%- if page == submissions.page %} class="active"{% endif %}>
+                            {% if page -%}
+                                {%- if page == submissions.page -%}
+                                <span>{{ page }}</span>
+                                {%- else -%}
+                                <a href="{{ url_for('index', page=page) }}"><span>{{ page }}</span></a>
+                                {%- endif -%}
+                            {%- else -%}
+                            <span>…</span>
+                            {%- endif %}
+                        </li>
+                        {%- endfor %}
+                        <li>
+                            {% if submissions.has_next -%}
+                            <a href="{{ url_for('index', page=submissions.next_num) }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                            {%- else -%}
+                            <span aria-hidden="true">&raquo;</span>
+                            {%- endif %}
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

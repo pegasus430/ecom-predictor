@@ -1,0 +1,21 @@
+This is a simple service that provides a queue of URLs and allows to store the results of processing those URLs.
+
+
+To try it I recommend:
+# cd url_service
+# virtualenv --clear .
+# source bin/activate
+# pip install pyramid
+# pip install requests
+# python url_service.py
+
+In another terminal:
+# cd url_service
+# source bin/activate
+# python -m unittest tests_url_service.py
+
+If that works, the environment is OK and the service is working properly.
+
+The drawbacks of the code are:
+- Uses SQLite directly (no abstraction layer like SqlAlchemy).
+- Writes to the location of url_service.py.

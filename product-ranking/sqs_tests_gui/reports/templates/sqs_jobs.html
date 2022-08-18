@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    {% if not is_email_template %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+
+        <script>
+          $(function() {
+            $( ".datepicker" ).datepicker({
+
+              dateFormat: 'yy-mm-dd',
+              changeMonth: true,
+              changeYear: true,
+              //yearRange: "1900:2012",
+              // You can put more options here.
+
+            });
+          });
+        </script>
+    {% endif %}
+
+</head>
+<body>
+
+<h1>SQS Jobs report</h1>
+
+
+{% if not is_email_template %}
+    <p>
+        Select date you want to see the data for.
+    </p>
+    <p>
+        <form method="GET" action=".">
+            <table>
+                {{ form.as_table }}
+                <tr><td></td><td><button type="submit">Submit</button></td></tr>
+            </table>
+        </form>
+    </p>
+
+    {% if request.GET.date %}
+        <script>
+            $('#id_date').val('{{ request.GET.date }}');
+        </script>
+    {% endif %}
+{% endif %}
+
+
+{% if error_msg %}
+    <p><b>{{ error_msg|safe }}</b></p>
+{% endif %}
+
+
+{% if by_server %}
+    <p>
+        <a href="{{ csv_by_server }}">Download "By server" CSV report</a>
+    </p>
+{% endif %}
+
+{% if by_spider %}
+    <p>
+        <a href="{{ csv_by_site }}">Download "By spider" CSV report</a>
+    </p>
+{% endif %}
+
+<table>
+    <tr>
+        <td valign="top" width="50%">
+            {% if by_server %}
+                <h2>By server</h2>
+                {% for server, spider_data in by_server %}
+                    <h3>{{ server }}</h3>
+                    <ul>
+                        {% for spider, jobs in spider_data %}
+                            <li>{{ spider }} - {{ jobs }} jobs</li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            {% endif %}
+        </td>
+        <td valign="top" width="50%">
+            {% if by_spider %}
+                <h2>By spider</h2>
+                {% for spider, server_data in by_spider %}
+                    <h3>{{ spider }}</h3>
+                    <ul>
+                        {% for server, jobs in server_data %}
+                            <li>{{ server }} - {{ jobs }} jobs</li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            {% endif %}
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

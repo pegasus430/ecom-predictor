@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Immediate</title>
+</head>
+<body>
+    <form action="/immediate/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Run" />
+    </form>
+</body>
+</html>

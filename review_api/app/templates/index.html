@@ -1,0 +1,126 @@
+{% extends "dashboard.html" %}
+{% block search %}
+    {% include "search.html" %}
+{% endblock %}
+{% block body %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Created at</td>
+                <td>Server</td>
+                <td>Retailer</td>
+                <td>Product id</td>
+                <td>Product url</td>
+                <td>Group id</td>
+                <td>Daily</td>
+                <td>State</td>
+                <td>Started at</td>
+                <td>Ended at</td>
+                <td>Message</td>
+                <td>Reviews</td>
+                <td>Log</td>
+            </tr>
+         </thead>
+        <tbody>
+            {% for task in tasks.items -%}
+                <tr class="{% if get_state(task) == 'error' -%}
+                               bg-danger
+                           {%- elif get_state(task) == 'ready' -%}
+                               bg-success
+                           {%- elif get_state(task) == 'processing' -%}
+                               bg-warning
+                           {%- endif %}" data-toggle="popover" data-placement="bottom" data-trigger="hover click" title="Source object" data-content="{{ task | dump }}">
+                    <td>
+                        {{ task._id.generation_time.strftime('%Y-%m-%d %H:%M:%S') }}
+                    </td>
+                    <td>{{ task.server }}</td>
+                    <td>{{ task.retailer }}</td>
+                    <td>{{ task.product_id }}</td>
+                    <td>{{ task.product_url }}</td>
+                    <td>{{ task.group_id }}</td>
+                    <td>
+                        {%- if task.daily or task.daily_frequency or task.frequency -%}
+                        <button type="button" class="btn btn-xs btn-primary" onclick="location.href='{{ url_for('daily_tasks', retailer=task.retailer, product_id=task.product_id) }}';">
+                            Daily
+                        </button>
+                        {%- endif -%}
+                    </td>
+                    <td>{{ get_state(task) }}</td>
+                    <td>
+                        {%- if task.started_at -%}
+                            {{ task.started_at.strftime('%Y-%m-%d %H:%M:%S') }}
+                        {%- endif -%}
+                    </td>
+                    <td>
+                        {%- if task.ended_at -%}
+                            {{ task.ended_at.strftime('%Y-%m-%d %H:%M:%S') }}
+                        {%- endif -%}
+                    </td>
+                    <td>
+                        {%- if task.message -%}
+                            {{ task.message }}
+                            <form method="post" action="{{ url_for('rerun_task', task_id=task._id) }}" class="btn-group">
+                                <button type="submit" class="btn btn-xs btn-primary">
+                                    Re-run
+                                </button>
+                            </form>
+                        {%- elif get_state(task) == 'ready' and task.reviews is defined -%}
+                            {{ task.reviews }} new review{{ task.reviews|pluralize }}
+                        {%- endif -%}
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-xs btn-primary" onclick="location.href='{{ url_for('show_reviews', retailer=task.retailer, product_id=task.product_id) }}';">
+                            Reviews
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-xs btn-primary" onclick="location.href='{{ url_for('download_log', task_id=task._id) }}';">
+                            Download
+                        </button>
+                    </td>
+                </tr>
+            {%- else %}
+                <tr>
+                    <td colspan="13">No tasks</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="13">
+                    <ul class="pagination">
+                        <li>
+                            {% if tasks.has_prev -%}
+                            <a href="{{ url_for('index', page=tasks.prev_num) }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                            {%- else -%}
+                            <span aria-hidden="true">&laquo;</span>
+                            {%- endif %}
+                        </li>
+                        {%- for page in tasks.iter_pages() %}
+                        <li {%- if page == tasks.page %} class="active"{% endif %}>
+                            {% if page -%}
+                                {%- if page == tasks.page -%}
+                                <span>{{ page }}</span>
+                                {%- else -%}
+                                <a href="{{ url_for('index', page=page) }}"><span>{{ page }}</span></a>
+                                {%- endif -%}
+                            {%- else -%}
+                            <span>…</span>
+                            {%- endif %}
+                        </li>
+                        {%- endfor %}
+                        <li>
+                            {% if tasks.has_next -%}
+                            <a href="{{ url_for('index', page=tasks.next_num) }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                            {%- else -%}
+                            <span aria-hidden="true">&raquo;</span>
+                            {%- endif %}
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

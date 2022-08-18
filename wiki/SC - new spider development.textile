@@ -1,0 +1,21 @@
+h2. Here is the list of must-have fields for new SC spiders:
+
+* title
+* url (this is usually filled with base class)
+* brand (if there are no brand field on page, use "guess_brand_from_first_words" method from "product_ranking.guess_brand")
+* price (if there are several values, scraper should scrape lowest)
+* is_out_of_stock
+* no_longer_available
+* description (Description with html tags)
+* image_url
+* total_matches
+* department (bottom-level one, basically last element of categories list)
+* ranking (usually filled with base class)
+* reseller_id (generally extracted from product url)
+
+New scrapers should be able to handle both searchterms and single-product urls.
+
+If you see that variant/reviews/questions&answers fields can be implemented fast, do it. Otherwise they can be implemented later if needed. Don't forget to write message in ticket it those fields were implemented. 
+
+Regarding reviews field: if website use bazaarvoice API, we have script to parse JSON response at:
+tmtext/product-ranking/product_ranking/br_bazaarvoice_api_script.py

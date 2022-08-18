@@ -1,0 +1,21 @@
+# missing pdf urls; wrong price; good: webcollage; wc_emc, wc_360 ...
+http://www.newegg.com/Product/Product.aspx?Item=N82E16889262383
+# good: pdf; webcollage; emc
+http://www.newegg.com/Product/Product.aspx?Item=N82E16889354766
+# good: webcollage; emc
+http://www.newegg.com/Product/Product.aspx?Item=N82E16886995032
+# missing video url; good: webcollage; wc_video; 360view
+http://www.newegg.com/Product/Product.aspx?Item=N82E16896652242
+# good: short & long desc; no reviews
+# review_count=null; should set it to 0
+http://www.newegg.com/Product/Product.aspx?Item=9SIA4J71F00499
+# short desc & long descr repeated
+http://www.newegg.com/Product/Product.aspx?Item=9SIA2JK1C59507
+# price should be "See price in cart"; scraper returning "MAP"
+http://www.newegg.com/Product/Product.aspx?Item=9SIA0ZX1W06093
+# marketplace & site_online both
+http://www.newegg.com/Product/Product.aspx?Item=1K5-000D-00003
+# good: collage not webcollage; 360view; video
+http://www.newegg.com/Product/Product.aspx?Item=N82E16896268065
+# missed sellpoint collage & video; should be site_online  & marketplace - since sold by newegg also
+http://www.newegg.com/Product/Product.aspx?Item=N82E16830113676

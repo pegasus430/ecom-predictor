@@ -1,0 +1,42 @@
+{% load dictionary_extras %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}stdstyle.css" />
+</head>
+
+
+
+<body>
+<h1>Request History</h1>
+
+<h4> status: {{ status }} </h4>
+<p align="right" class="reference" style="width:60%">
+    <iframe src="http://free.timeanddate.com/clock/i4956od3/fs12/tct/pct/ahr/tt0/th1/ta1" frameborder="0" width="276" height="16" allowTransparency="true"></iframe>
+</p>
+
+<table class="reference" style="width:60%">
+  <tr>
+    <th> Date </th>
+    <th> Elapsed time </th>
+    <th> Description </th>
+  </tr>
+
+  {% for row in history %}
+  <tr>
+    <td> {{ row.0 }} </td>
+    <td> {{ row.1 }} </td>
+    <td> {{ row.2|linebreaksbr }} </td>
+  </tr>
+  {% endfor %}
+</table>
+
+<script>
+    document.write('<a href="' + document.referrer + '">Go Back</a>');
+</script>
+
+</body>
+</html>
+

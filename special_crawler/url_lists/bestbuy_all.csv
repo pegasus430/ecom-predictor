@@ -1,0 +1,29 @@
+# sellpoint video
+http://www.bestbuy.com/site/fujifilm-x-m1-mirrorless-camera-with-16-50mm-lens-black/1257542.p?id=1219047434768
+# sellpoint no video
+http://www.bestbuy.com/site/canon-powershot-elph-340-16-0-megapixel-digital-camera-black/3492002.p?id=1219091713883
+# webcollage, video under product tour
+http://www.bestbuy.com/site/sandisk-4gb-sdhc-class-4-memory-card-blue/7956599.p?id=1153336298633
+# webcollage, video, pdf
+http://www.bestbuy.com/site/epson-powerlite-home-cinema-2030-2d-3d-1080p-3lcd-projector-white/1014134.p?id=1219045510784
+# flixcar.com video
+http://www.bestbuy.com/site/lg-tone-ultra-bluetooth-headset-black/4456004.p?id=1219098334934
+# video only
+http://www.bestbuy.com/site/fitbit-flex-wireless-activity-and-sleep-tracker-wristband-black/8390054.p?id=1218874428772
+# normal
+http://www.bestbuy.com/site/lounge-co-gaming-chair-green-blue-black-triangular-camo/9134223.p?id=1219470783342
+# marketplace item
+http://www.bestbuy.com/site/rachael-ray-8-quart-oval-stock-pot-green/1309349845.p?id=mp1309349845
+# item sold out/not available
+http://www.bestbuy.com/site/brinno-digital-camcorder-1-4-lcd-hd-green/1311145978.p?id=mp1311145978&skuId=1311145978
+http://www.bestbuy.com/site/pny-optima-120gb-internal-serial-ata-iii-solid-state-drive-for-laptops-multi/8191179.p?id=1219315690159
+# spec/features
+http://www.bestbuy.com/site/sony-65-class-64-1-2-diag--led-2160p-smart-3d-4k-ultra-hd-tv-black/5005015.p
+# unavail prod pages - should fail
+http://www.bestbuy.com/site/seismic-audio-2-100-foot-speakon-pa-dj-speaker-cable-black-black/1305637649.p
+# 4/30 missed video; expect in_stores=1, site_online=0
+http://www.bestbuy.com/site/dell-xps-12-5-touch-screen-laptop-intel-core-i7-8gb-memory-256gb-solid-state-drive-carbon-fiber/6685362.p
+# 4/30 missed wc_360
+http://www.bestbuy.com/site/dell-inspiron-17-3-laptop-intel-core-i7-8gb-memory-1tb-hard-drive-longitude-silver/3510945.p
+# 4/20 marketplace item
+http://www.bestbuy.com/site/acer-13-3-led-comfyview-chromebook-nvidia-tegra-k1-cd570m-a1-2-10-ghz-white/1312185362.p?id=mp1312185362&skuId=1312185362

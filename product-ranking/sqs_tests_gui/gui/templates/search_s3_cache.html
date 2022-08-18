@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    {% load b32encode split %}
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {background: white;}
+        .file_part {color:blue;}
+        .date {color:green;}
+        .line {margin-top: 4px;}
+    </style>
+    {% load extract_date_from_s3_file %}
+</head>
+<body>
+    <h1>Search S3 cache files</h1>
+    <p>
+        <form method="GET" action=".">
+            <input name="searchterm" type="text" placeholder="Enter a part of filename, like Job ID or server name" {% if searchterm %}value="{{ searchterm }}"{% endif %} style="width:400px"/>
+            <button type="submit">Search</button>
+        </form>
+    </p>
+    {% if error %}<p style="color:red">{{ error }}</p>{% endif %}
+    {% if warning %}<p style="font-weight: bold">{{ warning }}</p>{% endif %}
+
+    {% if searchterm %}<h4>Found files</h4>{% endif %}
+    {% for result in results %}
+        <div class="line">
+            <a href="{% url 'render-s3-cache' %}?file={{ result|b32encode }}">
+                {% with result|split:"__MARKER_URL__" as split_fname %}
+                    <span class="file_part">{{ split_fname.1 }}</span>
+                {% endwith %}
+            </a>
+            &nbsp; → &nbsp;
+            parsed: <span class="date">{% extract_date_from_s3_file result %}</span>
+        </div>
+    {% endfor %}
+    {% if not results %}
+        <h3>Available S3 raw pages cache</h3>
+        <ul>
+            {% for spider_name, cache_data in cache_list.items %}
+                <li>
+                    <div>
+                        <h4>{{ spider_name }}</h4>
+                        <div>
+                            {% for date, urls in cache_data.items %}
+                                <h4>{{ date }}</h4>
+                                {% for url in urls %}
+                                    <div style="margin-left: 30px">{{ url }}</div>
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

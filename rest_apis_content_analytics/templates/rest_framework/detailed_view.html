@@ -1,0 +1,66 @@
+{% extends 'rest_framework/base.html' %}
+
+{% load rest_framework %}
+
+{% block get_form %}
+    {% if response.status_code == 200 and request.method == 'POST' %}
+        <form class="button-form" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="as_excel" value=true />
+            <input type="hidden" name="request_url" value="{{ request.POST.request_url }}" />
+            <input type="hidden" name="feed_id" value="{{ request.POST.feed_id }}" />
+            <button class="btn btn-primary js-tooltip" title="Get results as XLSX file" type="submit">
+                Export
+            </button>
+        </form>
+    {% endif %}
+{% endblock %}
+
+{% block response_data %}
+    {% if response.status_code == 200 and request.method == 'POST' %}
+        {%  if response.data %}
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Results for feed <strong>{{ response.data.feed_id }}</strong></div>
+                <div class="panel-body">
+                  <p></p>
+                </div>
+
+                <!-- Table -->
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <th class="sortable">SKU</th>
+                        <th class="sortable">IngestionStatus</th>
+                        <th class="sortable">Ingestion Error Description</th>
+                    </tr>
+                    {% for row in response.data.items %}
+                        <tr>
+                            <td>{{ row.sku }}</td>
+                            <td>{{ row.ingestionStatus }}</td>
+                            <td>
+                                <ul>
+                                    {% for error in row.ingestionErrors.ingestionError %}
+                                        <li>
+                                            {{ error.description }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+        {% endif %}
+    {% elif request.method == 'POST' %}
+        <div class="alert alert-danger">
+            {{ response.status_text }}
+            {% if response.data and response.data.errors %}
+                <ul>
+                    {% for error in response.data.errors %}
+                        <li> {{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

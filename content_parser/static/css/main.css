@@ -1,0 +1,9 @@
+.content .pagination {
+    display: flex;
+    margin: auto;
+}
+
+.content .pagination ul{
+    display: flex;
+    margin: auto;
+}

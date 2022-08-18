@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style>
+        .header {
+            text-align:center;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .sticky {
+            position:sticky;
+            top: 0px;
+        }
+
+        pre {
+            white-space: pre-wrap;       /* Since CSS 2.1 */
+            white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+        }
+
+        .source {
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+</head>
+<body>
+{% if message %}
+    {{ message }}
+{% else %}
+    <div class="row">
+        <div class="column">
+            <div class="header sticky">
+                {% if prev_item %}
+                    <a href="{{ prev_item }}">< Prev</a>
+                {% else %}
+                    < Prev
+                {% endif %}
+                {{ index }} / {{ total }}
+                {% if next_item %}
+                    <a href="{{ next_item }}">Next ></a>
+                {% else %}
+                    Next >
+                {% endif %}
+            </div>
+            <div>
+                <pre>{{ data }}</pre>
+            </div>
+        </div>
+        <div class="column sticky">
+            <div>
+                Product url: <a href="{{ url }}" target="_blank">{{ url }}</a>
+            </div>
+            <div>
+                Click at the link above if web page isn't visible.
+                For walmart.com set your local store to 5260 before testing
+            </div>
+            <div>
+                <iframe class="source" src="{{ url }}" name="{{ title }}"></iframe>
+            </div>
+        </div>
+    </div>
+{% endif %}
+</body>
+</html>

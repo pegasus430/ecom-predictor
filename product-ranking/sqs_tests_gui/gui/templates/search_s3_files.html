@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>Search S3 bucket files</h1>
+    <p>
+        <form method="GET" action=".">
+            <input name="searchterm" type="text" placeholder="Enter a part of filename, like Job ID or server name" {% if searchterm %}value="{{ searchterm }}"{% endif %} style="width:400px"/>
+            <button type="submit">Search</button>
+        </form>
+    </p>
+    {% if error %}<p style="color:red">{{ error }}</p>{% endif %}
+    {% if warning %}<p style="font-weight: bold">{{ warning }}</p>{% endif %}
+
+    {% if searchterm %}<h4>Found files</h4>{% endif %}
+    {% for result in results %}
+        <a href="{% url 'get-file' %}?file={{ result }}">{{ result }}</a> <br/>
+    {% endfor %}
+</body>
+</html>

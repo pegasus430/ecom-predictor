@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Import{% endblock %}
+{% block body %}
+    <div class="content">
+        <div id="tasks_table">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td>Created at</td>
+                        <td>Task ID</td>
+                        <td>Config</td>
+                        <td>Task state</td>
+                        <td>Progress state</td>
+                        <td>Ended at</td>
+                        <td>Log</td>
+                        <td>Message</td>
+                    </tr>
+                 </thead>
+                <tbody>
+                    {% for task in tasks -%}
+                        <tr class="{% if task.state == 'error' -%}
+                                       bg-danger
+                                   {%- elif task.state == 'ready' -%}
+                                       bg-success
+                                   {%- elif task.state == 'processing' -%}
+                                       bg-warning
+                                   {%- endif %}">
+                            <td>{{ task.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                            <td>{{ task.task_id }}</td>
+                            <td>
+                                <button type="button" class="btn btn-xs btn-primary" onclick="location.href='{{ url_for('import_task_config', task_id=task.task_id) }}';">
+                                    Import config
+                                </button>
+                            </td>
+                            <td>{{ task.task_state }}</td>
+                            <td>{{ task.progress_state }}</td>
+                            <td>
+                                {%- if task.ended_at -%}
+                                    {{ task.ended_at.strftime('%Y-%m-%d %H:%M:%S') }}
+                                {%- endif -%}
+                            </td>
+                            <td>
+                                {%- if task.log_path -%}
+                                    <a href="{{ url_for('task_log', task_id=task.task_id) }}">Execution log</a>
+                                {%- endif -%}
+                            </td>
+                            <td>
+                                {%- if task.error -%}
+                                    {{ task.error }}
+                                {%- endif -%}
+                            </td>
+                        </tr>
+                        <div id="tasks_pagination"></div>
+                    {%- else %}
+                        <tr>
+                            <td colspan="9">No tasks</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div id="tasks_paginator" class="pagination"></div>
+    </div>
+{% endblock %}
+{% block extrajs %}
+    <script>
+        $(document).ready(function() {
+            {% if tasks_total > page_size %}
+                $('#tasks_paginator').pagination({
+                    items: {{ tasks_total }},
+                    itemsOnPage: {{ page_size }},
+                    currentPage: {{ current_page }},
+                    hrefTextPrefix: '?page=',
+                    cssStyle: 'compact-theme',
+                    onPageClick: function (pageNumber) {
+                        $.get('"{{ request.get_full_path }}"', { page: pageNumber }, function(data) { });
+                    }
+                });
+            {% endif %}
+        });
+    </script>
+
+{% endblock %}

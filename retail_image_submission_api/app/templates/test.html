@@ -1,0 +1,56 @@
+{% extends "dashboard.html" %}
+{% block body %}
+<form class="form-horizontal" enctype="multipart/form-data" method="post">
+    <div class="form-group {%- if caids_error %} has-error{% endif %}">
+        <label for="uploadCAIDs" class="col-sm-2 control-label">Upload list of CAIDs:</label>
+        <div class="col-sm-10">
+            <input type="file" id="uploadCAIDs" name="caids">
+            <span class="help-block">Must be CSV file with CAID column</span>
+        </div>
+    </div>
+    <div class="form-group {%- if server_error %} has-error{% endif %}">
+        <label for="inputServer" class="col-sm-2 control-label">Input Server Name:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputServer" name="server" placeholder="server">
+            <span class="help-block">elsa4 for example</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="selectRetailer" class="col-sm-2 control-label">Select retailer:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="selectRetailer" name="retailer">
+                <option value="target.com" selected>Target</option>
+                <option value="instacart.com">Instacart</option>
+                <option value="master data">Master Data</option>
+            </select>
+            <span class="help-block">Target for example</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Options:</label>
+        <div class="col-sm-10">
+            <select class="form-control" name="differences_only">
+                <option value="">All images</option>
+                <option value="1">New images</option>
+            </select>
+            <span class="help-block">Export all images or only new ones</span>
+            <select class="form-control" name="image_type">
+                <option value="jpg">JPG</option>
+                <option value="png">PNG</option>
+                <option value="gif">GIF</option>
+                <option value="tif">TIF</option>
+            </select>
+            <span class="help-block">Image export type</span>
+            <input type="checkbox" name="image_resize">
+            <span class="help-block">Resize images</span>
+            <input type="number" name="image_min_side_dimension">
+            <span class="help-block">Minimum Side Dimension for resize</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Generate Images</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% load dictionary_extras %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+   <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}stdstyle.css" />
+   <title>Last Request Report</title>
+   <script src="{{ STATIC_URL }}list.js"></script>
+
+
+</head>
+
+
+
+<body>
+<h1>Last requests report</h1>
+<!--
+<table border="1" style="width:300px">
+<table class="reference notranslate">
+-->
+
+
+  <div id="requests">
+    <div style="width:60%;float: right;">
+      <iframe src="http://free.timeanddate.com/clock/i4956od3/fs12/tct/pct/ahr/tt0/th1/ta1" frameborder="0" width="276" height="16" allowTransparency="true"></iframe>
+    </div>
+    <table class="reference" style="width:60%">
+      <input type="text" class="search" placeholder="Search" /> 
+      <thead>
+        <tr>
+          <th class="sort" data-sort="id"> ID &#8597;</th>
+          <th class="sort" data-sort="group_name"> Group Name &#8597; </th>
+          <th class="sort" data-sort="site_name"> Site Name &#8597;</th>
+          <th class="sort" data-sort="keywords"> Keywords &#8597;</th>
+          <th class="sort" data-sort="creation_date"> Creation Date &#8597;</th>
+          <th class="sort" data-sort="ip"> IP &#8597;</th>
+          <th class="sort" data-sort="params"> Params &#8597;</th>
+	  <th> ID2 </th>
+          <th class="sort" data-sort="status"> Status &#8597;</th>
+        </tr>
+      </thead>
+    
+      <tbody class="list">
+        {% for req in last_requests %}
+        <tr>
+          <td class="id"> {{ req.requestid }} </td>
+          <td class="group_name"> {{ req.group_name}} </td>
+          <td class="site_name"> {{ req.site}} </td>
+          <td class="keywords"> {{ req.params.searchterms_str }} </td>
+          <td class="creation_date"> {{ req.creation }} </td>
+          <td class="ip"> {{ req.remote_ip }} </td>
+          <td class="params"> 
+              {% for param_key, param_value in req.params.items %}
+                  {{ param_key }}: {{ param_value }}
+                  </br>
+              {% endfor %}
+          </td>
+          <td style=";max-width:250px ;word-wrap:break-word"> {{ req.details.id }} </td>
+          <td class="status"> 
+              {% if req.status == "unavailable" %}
+                {{ req.status }} 
+               {% else %}
+                  {% if default_url %}
+                      <a href="history/{{ req.requestid }}">{{ req.status }}</a>
+                  {% else %}
+                      <a href="../history/{{ req.requestid }}">{{ req.status }}</a>
+                  {% endif %}
+              {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+<script type="text/javascript">
+var options = {
+    valueNames: [ 'id', 'group_name', 'site_name', 'keywords', 'creation_date', 
+              'ip', 'params', 'status' ]
+};
+
+
+var userList = new List('requests', options);
+</script>
+
+
+
+<!--
+{{ last_requests}}
+-->
+
+</body>
+</html>
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>Stats for SQS and Autoscale</h1>
+
+    <p>{% include 'navigation.html' %}</p>
+
+    <table cellpadding="20">
+        <tr>
+            <td align="center" valign="top">
+                <h3>Autoscale groups</h3>
+                <table cellpadding="10" cellspacing="0" border="1">
+                    <tr>
+                        <th>Name</th>
+                        <th>Min</th>
+                        <th>Max</th>
+                        <th>Desired</th>
+                        <th>Current num. of instances</th>
+                    </tr>
+                    {% for t_name, t_data in groups_data.items %}
+                        <tr>
+                            <td>{{ t_name }}</td>
+                            <td>{{ t_data.group.min_size }}</td>
+                            <td>{{ t_data.group.max_size }}</td>
+                            <td>{{ t_data.group.desired_capacity }}</td>
+                            <td>{{ t_data.current_size }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </td>
+            <td align="center" valign="top">
+                <h3>SQS queues</h3>
+                <table cellpadding="10" cellspacing="0" border="1">
+                    <tr><th>Name</th><th>Num. of messages</th></tr>
+                    {% for q_name, q_messages in queues_data.items %}
+                        <tr><td>{{ q_name }}</td><td>{{ q_messages }}</td></tr>
+                    {% endfor %}
+                </table>
+                <a href="https://watcher.contentanalyticsinc.com/" target="_blank">Queues status monitor for new scrapers</a>
+            </td>
+        </tr>
+    </table>
+
+
+</body>
+</html>

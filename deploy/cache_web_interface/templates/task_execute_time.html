@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Task execute time for today</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script>
+        {% raw %}
+        $(document).ready(function(){
+            var selectBox = $('.date-select');
+            var container = $('#myChart');
+
+            selectBox.change(function(){
+                var val = $(this).val();
+                if (!val) return;
+                $.post('', {days: val}, function(resp){
+                    /* data is list of objects, where key is date and value is number of instances */
+                    var labels = [];
+                    var data = [];
+                    var keys = Object.keys(resp);
+                    for (var i=0; i<keys.length; i++) {
+                        var date = new Date(parseInt(keys[i]) * 1000);
+                        labels.push(
+                            date.getUTCHours() + ' Hour'
+                        );
+                        var v = parseFloat(resp[keys[i]]).toFixed(2);
+                        data.push(v);
+                    }
+                    var chartData = {
+                        labels: labels,
+                        datasets: [{
+                            label: "Task execute avg. time by hour in seconds",
+                            fillColor: "rgba(151,187,205,0.2)",
+                            strokeColor: "rgba(151,187,205,1)",
+                            pointColor: "rgba(151,187,205,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(151,187,205,1)",
+                            data: data
+                        }]
+                    };
+                    var canvas = $('<canvas></canvas>');
+                    canvas.id = 'chart';
+                    canvas.attr('width', 800);
+                    canvas.attr('height', 400);
+                    container.empty();
+                    canvas.appendTo(container);
+                    var ctx = canvas[0].getContext("2d");
+                    var options = {
+                        scaleOverride : true,
+                        scaleSteps : 5,
+                        scaleStepWidth : 7,
+                        scaleStartValue : 0,
+                        legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"color:<%=datasets[i].pointColor%>\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>"
+                    };
+                    var myLineChart = new Chart(ctx).Line(chartData, options);
+                    var legend = myLineChart.generateLegend();
+                    $(legend).appendTo(container);
+                });
+            });
+            selectBox.change();  // manually trigger change event to load initial data
+        });
+        {% endraw %}
+    </script>
+</head>
+<body>
+<div>
+    <select class="date-select" style="display: none;">
+        <option>Days:</option>
+        <option value="1">1 day</option>
+        <option value="7" selected="selected">Week</option>
+        <option value="30">Month</option>
+    </select>
+</div>
+<div id="myChart">
+    <canvas id="myChart" width="800" height="400"></canvas>
+</div>
+</body>
+</html>

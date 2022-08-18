@@ -1,0 +1,85 @@
+{% extends "dashboard.html" %}
+{% block search %}
+    {% include "search.html" %}
+{% endblock %}
+{% block body %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>UPC</td>
+                <td>ASIN</td>
+                <td>URLs</td>
+                <td>Delete</td>
+            </tr>
+         </thead>
+        <tbody>
+            {% for product in products.items -%}
+                <tr>
+                    <td>
+                        {{ product.upc }}
+                    </td>
+                    <td>
+                        {{ product.asin }}
+                    </td>
+                    <td>
+                        <ul>
+                            <li><a target="_blank" href="https://www.amazon.com/dp/{{ product.asin }}">https://www.amazon.com/dp/{{ product.asin }}</a></li>
+                            {% if product.walmart_url %}
+                                <li><a target="_blank" href="{{ product.walmart_url }}">{{ product.walmart_url }}</a></li>
+                            {% endif %}
+                            {% if product.jet_url %}
+                                <li><a target="_blank" href="{{ product.jet_url }}">{{ product.jet_url }}</a></li>
+                            {% endif %}
+                        </ul>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-xs btn-primary" onclick="if (confirm('Are you sure you want to delete product {{ product.upc }}?')){location.href='{{ url_for('delete_products', product_id=product.upc) }}'};">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            {%- else %}
+                <tr>
+                    <td colspan="4">No products</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="5">
+                    <ul class="pagination">
+                        <li>
+                            {% if products.has_prev -%}
+                            <a href="{{ url_for('show_products', page=products.prev_num) }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                            {%- else -%}
+                            <span aria-hidden="true">&laquo;</span>
+                            {%- endif %}
+                        </li>
+                        {%- for page in products.iter_pages() %}
+                        <li {%- if page == products.page %} class="active"{% endif %}>
+                            {% if page -%}
+                                {%- if page == products.page -%}
+                                <span>{{ page }}</span>
+                                {%- else -%}
+                                <a href="{{ url_for('show_products', page=page) }}"><span>{{ page }}</span></a>
+                                {%- endif -%}
+                            {%- else -%}
+                            <span>…</span>
+                            {%- endif %}
+                        </li>
+                        {%- endfor %}
+                        <li>
+                            {% if products.has_next -%}
+                            <a href="{{ url_for('show_products', page=products.next_num) }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                            {%- else -%}
+                            <span aria-hidden="true">&raquo;</span>
+                            {%- endif %}
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

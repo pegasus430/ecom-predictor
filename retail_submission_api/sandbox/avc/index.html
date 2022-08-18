@@ -1,0 +1,118 @@
+<html>
+    <body>
+        <table cellpadding="0" cellspacing="0" border="0" class="rightNavWidgetContainer" style="border-color: #538552" width="300">
+            <tbody>
+                <tr>
+                    <td class="rightNavWidgetTitle" valign="middle" nowrap="true" style="background-color: #538552">Sign In</td>
+                </tr>
+                <tr style="display: ">
+                    <td class="rightNavWidgetBody" colspan="1">
+                        <hr class="vss-divider">
+                        <form id="signIn" action="javascript:login();">
+                            <table border="0px" cellpadding="0" cellspacing="0" width="100%"><tbody>
+                                <tr>
+                                    <td nowrap="true" class="tiny label">E-mail:</td>
+                                    <td nowrap="true" class="tiny paddedLeft">
+                                        <input type="text" name="email" id="email" style=" font-size: 10px" value="" size="25" maxlength="64" class="textField ">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td nowrap="true" class="tiny label paddedTop">Password:</td>
+                                    <td nowrap="true" class="tiny paddedTop paddedLeft">
+                                        <input type="password" name="password" id="password" style=" font-size: 10px" value="" size="25" maxlength="30" class="textField">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td class="tiny paddedTop paddedLeft">
+                                        <button type="submit" class="sprite-button-wrap" id="signInSubmit"><span class="sprite-button sprite-small small-yellow-primary sprite-primary ">Sign in<span class="sprite-button-end"></span></span></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td class="tiny paddedTop paddedLeft">
+                                        <a href="#">Forgot your password?</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </td>
+                </tr>
+                <tr style="display: ">
+                    <td class="rightNavWidgetBody" colspan="1">
+                        <hr class="vss-divider">
+                        <form id="loginForm">
+                            <table border="0px" cellpadding="0" cellspacing="0" width="100%"><tbody>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td class="tiny paddedTop paddedLeft">
+                                        <button type="submit" class="sprite-button-wrap" id="login-button-container"><span class="sprite-button sprite-small small-yellow-primary sprite-primary ">Sign in<span class="sprite-button-end"></span></span></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td class="tiny paddedTop paddedLeft">
+                                        <a href="#">Forgot your password?</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Actions</h2>
+        <ul>
+            <li><a href="/gp/vendor/sign-in">[GET] /gp/vendor/sign-in</a></li>
+            <li><a href="/failure">[GET] /failure</a></li>
+            <li><a href="/st/vendor/members/dashboard">[GET] /st/vendor/members/dashboard</a></li>
+            <li><a href="/gp/vendor/members/image-upload">[GET] /gp/vendor/members/image-upload</a></li>
+            <li>[POST] /gp/vendor/members/image-upload</li>
+            <li><a href="/upload">[GET] /upload</a></li>
+            <li><a href="/status">[GET] /status</a></li>
+            <li><a href="/st/vendor/members/contactusapp">[GET] /st/vendor/members/contactusapp</a></li>
+            <li><a href="/st/vendor/members/analytics/basic/dashboard">[GET] /st/vendor/members/analytics/basic/dashboard</a></li>
+            <li><a href="/st/vendor/members/analytics/basic/productDetail">[GET] /st/vendor/members/analytics/basic/productDetail</a></li>
+            <li><a href="/gp/vendor/members/caselog/open-resolved">[GET] /gp/vendor/members/caselog/open-resolved</a></li>
+
+            <li><a href="/hz/vendor/members/contact">[GET] /hz/vendor/members/contact</a></li>
+            <li>[POST] /hz/vendor/members/contact/ajax/email/create</li>
+
+            <li><a href="/hz/vendor/members/products/mycatalog/ajax/query">[GET] /hz/vendor/members/products/mycatalog/ajax/query</a></li>
+            <li><a href="/hz/vendor/members/products/images/manage?products=B079ZZ3XP8-FRJJX">[GET] /hz/vendor/members/products/images/manage?products=B079ZZ3XP8-FRJJX</a></li>
+        </ul>
+        <h2>Amazon Retail Analytics Premium (ARAP)</h2>
+        <ul>
+            <li><a href="/arap">Sign-in</a></li>
+            <li><a href="/arap/dashboard/snapshot">[GET] /dashboard/snapshot</a></li>
+            <li><a href="/arap/dashboard/salesDiagnostic">[GET] /dashboard/salesDiagnostic</a></li>
+            <li><a href="/arap/dashboard/searchTerms">[GET] /dashboard/searchTerms</a></li>
+        </ul>
+        <h2>Files</h2>
+        <ul>
+            <li><a href="/dashboard.csv">[GET] /dashboard.csv</a></li>
+            <li><a href="/image-upload.csv">[GET] /image-upload.csv</a></li>
+            <li><a href="/ProductDetails.csv">[GET] /ProductDetails.csv</a></li>
+        </ul>
+        <h2>Internal API</h2>
+        <ul>
+            <li><a href="/view-history">Today Access</a></li>
+        </ul>
+    </body>
+    <script>
+        function login() {
+            if (((document.getElementById("email").value == "ryan@contentanalyticsinc.com") || (document.getElementById("email").value == "user")) && (document.getElementById("password").value == "pass")) {
+                var arap_marker = "?return_to=arap";
+                if (window.location.href.substr(-arap_marker.length) != arap_marker) {
+                    arap_marker = "";
+                }
+                window.location.assign("/ap/mfa" + arap_marker);
+            }
+            else {
+                window.location.assign("/failure");
+            }
+        }
+    </script>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>Available spiders</h1>
+    <ul>
+        {% for spider in spiders %}
+            <li><a href="{% url 'reports_view' spider=spider.name %}">{{ spider.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

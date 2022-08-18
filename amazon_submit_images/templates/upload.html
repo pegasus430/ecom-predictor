@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>Upload ZIP archive to Amazon</h1>
+    <form method='POST' action="/" enctype=multipart/form-data>
+        <p><input type='text' name='username' id='username' placeholder='Amazon login' /></p>
+        <p><input type='password' name='password' id='pw' placeholder='Amazon password' /></p>
+        <input type="radio" name="task" value="image" checked> Upload images<br>
+        <input type="radio" name="task" value="text"> Upload text<br>
+        <p><input type='text' name='group' id='group' placeholder='Business group' /> For text upload ONLY</p>
+        <p><input type='text' name='emails' id='emails' placeholder='Emails' /> For text upload ONLY</p>
+  	    <p><input type="file" name="file" id="file" placeholder="file"/> Use it for Upload files ONLY!</p>
+        <input type="radio" name="task" value="report"> Download CSV report<br>
+        <input type="radio" name="task" value="genstatus"> Generate Image Status Report<br>
+        <input type="radio" name="task" value="status"> Download Image Status Report
+        <p></p>
+        <p><input type="checkbox" name="do_submit"/>Really submit (uncheck for test run)</p>
+	    <p><input type='submit' name='submit'/></p>
+    </form>
+</body>
+</html>

@@ -1,0 +1,18 @@
+This is a simple scraper that takes the URLs to retrieve from a JSON service and stores the results of scraped pages to said service.
+
+The program depends on:
+- scrapy
+- requests
+- numpy
+- opencv
+
+
+USAGE
+-----
+
+	scrapy crawl url_service
+
+
+Optionally, a limit on the number of URLs can be specified like follows:
+
+	scrapy crawl url_service -a limit=20

@@ -1,0 +1,57 @@
+Cache
+
+Memory used: {{ used_memory }}.
+Items in cache: {{ total_cached_items }}.
+URL responses, returned from cache: unique {{ responses_from_cache_url.0 }}, total {{ responses_from_cache_url.1 }}.
+TERM responses, returned from cache: unique {{ responses_from_cache_term.0 }}, total {{ responses_from_cache_term.1 }}.
+Most used URL items:
+{% for k, v in cache_most_popular_url %}    {{ k }} ({{ v }} times)
+{% endfor %}
+Most used TERM items:
+{% for k, v in cache_most_popular_term %}    {{ k }} ({{ v }} times)
+{% endfor %}
+
+
+Cache usage statistics:
+    total TERM tasks executed: {{ completed_stats.term_total }}
+    TERM tasks, returned from cache: {{ completed_stats.term_cached }} ({{ completed_stats.term_percent }}%)
+    total URL tasks executed: {{ completed_stats.url_total }}
+    URL tasks, returned from cache: {{ completed_stats.url_cached }} ({{ completed_stats.url_percent }}%)
+
+
+Sqs
+
+Executed tasks: {{ executed_tasks }}.
+Used autoscale instances: {{ total_instances }}.
+
+Today request count: {{ today_requests_count }}.
+
+Today jobs: {{ today_jobs.term + today_jobs.url }} jobs ({{ today_jobs.term }} search terms, {{ today_jobs.url }} product URLs){% for server, server_metrics in today_jobs.servers.items() %}
+        {{ server }}: {{ server_metrics.url + server_metrics.term }} jobs ({{ server_metrics.term }} search terms, {{ server_metrics.url }} product URLs)
+{% for scrapper, scrapper_metrics in server_metrics.scrappers.items() %}
+                {{ scrapper }}: {{ scrapper_metrics.term + scrapper_metrics.url }} jobs ({{ scrapper_metrics.term }} search terms, {{ scrapper_metrics.url }} product URLs){% endfor %}{% endfor %}
+
+
+Today jobs by site:
+    Search Terms:
+        {% for site, value in today_jobs_by_site.term.items() %}
+            {{ site }}: {{ value }}{% endfor %}
+    URLs:
+        {% for site, value in today_jobs_by_site.url.items() %}
+            {{ site }}: {{ value }}{% endfor %}
+
+
+Urgent queue statistics:
+
+Minimum time in queue: {{ urgent_stats.0 }}s
+Maximum time in queue: {{ urgent_stats.1 }}s
+Average time in queue: {{ urgent_stats.2 }}s
+Number of items that remained in queue more than 1 hour: {{ urgent_stats.3 }}
+Total records: {{ urgent_stats.4 }}
+
+
+Failed tasks
+
+{% for k, v in failed_tasks.items() %}    {{ k }} ({{ v }} times)
+{% else %}    No failed tasks for today
+{% endfor %}

@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Converter</title>
+	</head>
+	<body>
+		<form method="POST" action="{{ url_for('runfileconvertaction') }}" enctype="multipart/form-data">
+			<p>
+				Uploaded file should contain these columns in this order: | Web-ID | PC9 Tag | Color |
+			</p>
+			<p>
+				Select file:
+				<input type="file" name="fileupload" value="fileupload" id="fileupload">
+			</p>
+			<p>
+				<button type="submit">Convert</button>
+			</p>
+		</form>
+	</body>
+</html>

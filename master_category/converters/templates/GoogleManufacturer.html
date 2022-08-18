@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
+<channel>
+<title>CAI</title>
+<link>http://www.contentanalyticsinc.com</link>
+<description>Sample Feed</description>
+{% for item in items %}
+<item>
+<g:id>{{ item.id|e }}</g:id>
+<g:brand>{{ item.brand|e }}</g:brand>
+{% if item.product_line -%}
+    <g:product_line>{{ item.product_line|e }}</g:product_line>
+{% endif -%}
+<g:title>{{ item.title|e }}</g:title>
+<g:gtin>{{ item.gtin|e }}</g:gtin>
+{% if item.description -%}
+    <g:description>{{ item.description|e }}</g:description>
+{% endif -%}
+{% if item.primary_image -%}
+    <g:image_link>{{ item.primary_image|e }}</g:image_link>
+{% endif -%}
+{% for additional_image in item.additional_images -%}
+    <g:additional_image_link>{{ additional_image|e }}</g:additional_image_link>
+{% endfor -%}
+{% if item.target_client_id -%}
+    <g:target_client_id>{{ item.target_client_id|e }}</g:target_client_id>
+{% endif -%}
+</item>
+{% endfor %}
+</channel>
+</rss>

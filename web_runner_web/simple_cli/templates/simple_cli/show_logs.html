@@ -1,0 +1,9 @@
+{% load dictionary_extras %}
+
+<h1>Web Runner available logs</h1>
+
+<ul>
+    {% for logfile in logfiles %}
+    <li> <a href="{{ forloop.counter0 }}">{{ logfile }}</a> </li>
+    {% endfor %}
+</ul>

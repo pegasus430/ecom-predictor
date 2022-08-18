@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>API</h1>
+    <p>Send POST requests to /api URL (current page) to use the API.</p>
+    <p>Each POST request should contain the following values:</p>
+    <ul>
+        <li><b>username</b> - Amazon Vendor's username to log in</li>
+        <li><b>password</b> - Amazon Vendor's password to log in</li>
+        <li><b>file</b> - the ZIP file you want to submit</li>
+        <li><b>task</b> - for selecting task for spider (image, text, report, status)</li>
+        <li><b>group</b> - for selecting business group for spider (only needed for text upload)</li>
+    </ul>
+    <p><b>Important</b>. Make sure you're submitting the form with <i>enctype=multipart/form-data</i>.</p>
+
+    <p>The server will return a response after you submit a file.
+       The response would be <i>{"status": "success"}</i> if the file was uploaded successfully,
+        or the error description otherwise.
+    </p>
+    <p>If the 'report' or 'status' task is selected server will return a CSV file on success or error messages otherwise.</p>
+    <h2>Example of Uploading Images</h2>
+    <p>This example is written in Python and uses an excellent `requests` library.</p>
+
+    <pre style="background: #eee; padding: 10px;">
+        print requests.post(
+            'http://this_host/api',
+            data={'username': 'AMAZON_USERNAME', 'password': 'AMAZON_PASSWORD', 'task':'image'},
+            files={'file': open('YOUR_ZIP_FILE_TO_UPLOAD.zip', 'rb')}
+        ).text
+    </pre>
+    <h2>Example of Uploading Text</h2>
+    <p>This example is written in Python and uses an excellent `requests` library.</p>
+
+    <pre style="background: #eee; padding: 10px;">
+        print requests.post(
+            'http://this_host/api',
+            data={'username': 'AMAZON_USERNAME', 'password': 'AMAZON_PASSWORD', 'task':'text', 'group':'BUSINESS_GROUP'},
+            files={'file': open('YOUR_ZIP_FILE_TO_UPLOAD.xls', 'rb')}
+        ).text
+    </pre>
+
+    <h2>Example of Downloading Sales Report</h2>
+    <p>This example is written in Python and uses an excellent `requests` library.</p>
+
+    <pre style="background: #eee; padding: 10px;">
+        downloaded_file = requests.post(
+                         'http://this_host/api',
+                          data={'username': 'AMAZON_USERNAME', 'password': 'AMAZON_PASSWORD', 'task':'report'})
+    </pre>
+
+    <h2>Example of Generating Image Status</h2>
+    <p>This example is written in Python and uses an excellent `requests` library.</p>
+
+    <pre style="background: #eee; padding: 10px;">
+        print requests.post(
+            'http://this_host/api',
+            data={'username': 'AMAZON_USERNAME', 'password': 'AMAZON_PASSWORD', 'task':'genstatus'}
+        ).text
+    </pre>
+
+    <h2>Example of Downloading Image Status</h2>
+    <p>This example is written in Python and uses an excellent `requests` library.</p>
+
+    <pre style="background: #eee; padding: 10px;">
+        downloaded_file = requests.post(
+                         'http://this_host/api',
+                          data={'username': 'AMAZON_USERNAME', 'password': 'AMAZON_PASSWORD', 'task':'status'})
+    </pre>
+</body>
+</html>

@@ -1,0 +1,16 @@
+Flask==0.12.2
+Jinja2==2.9.6
+Werkzeug==0.12.2
+requests==2.18.1
+lxml==3.8.0
+xlrd==1.0.0
+pysftp==0.2.9
+python-crontab==2.2.8
+boto==2.47.0
+python-dateutil==2.6.0
+celery==3.1.25
+kombu==3.0.37
+pyasn1==0.2.3
+Twisted==16.0.0
+Flask-SQLAlchemy==2.2
+SQLAlchemy==1.1.10

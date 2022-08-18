@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Names Converter (upc <-> wupc)</title>
+    <style>
+        body {
+            padding: 0 10px;
+        }
+        form > div {
+            padding: 6px 0;
+        }
+        label {
+            display: inline-block;
+            width: 200px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <h2>Image Names Converter (upc <-> wupc)</h2>
+    <form method='POST' enctype="multipart/form-data">
+        <div>
+            <label>Input file: </label>
+            <input type="file" name="input_file">
+        </div>
+        <div>
+            <label></label>
+            <span>Upload a file with UPC or wUPC values in the first column. Do not include a column header.</span>
+        </div>
+        <div>
+            <label for="conversion_type">Type of import: </label>
+            <select id="conversion_type" name="conversion_type">
+                <option value="upc_to_wupc">UPC to wUPC</option>
+                <option value="wupc_to_upc">wUPC to UPC</option>
+            </select>
+        </div>
+        <div>
+            <label></label>
+            <button type="submit">Convert</button>
+        </div>
+    </form>
+</body>
+</html>

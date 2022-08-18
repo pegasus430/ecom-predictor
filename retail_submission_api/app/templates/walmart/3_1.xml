@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SupplierItemFeed xmlns="http://walmart.com/">
+<SupplierItemFeedHeader>
+    <version>3.1</version>
+</SupplierItemFeedHeader>
+{% for product in products %}
+<SupplierItem>
+    <SupplierProduct>
+        <sku>{{ product.sku }}</sku>
+        {% if not fields or fields and 'product_name' in fields %}
+            <productName>{{ product.product_name }}</productName>
+        {% endif %}
+        <productIdentifiers>
+            <productIdentifier>
+                <productIdType>UPC</productIdType>
+                <productId>{{ product.product_id }}</productId>
+            </productIdentifier>
+        </productIdentifiers>
+        {% if product.additional_product_attributes %}
+            <additionalProductAttributes>
+                {% for additional_product_attribute in product.additional_product_attributes %}
+                    <additionalProductAttribute>
+                        <productAttributeName>{{ additional_product_attribute.name }}</productAttributeName>
+                        <productAttributeValue>{{ additional_product_attribute.value }}</productAttributeValue>
+                    </additionalProductAttribute>
+                {% endfor %}
+            </additionalProductAttributes>
+        {% endif %}
+        {% if not fields or fields and ('description' in fields or 'long_description' in fields or 'images' in fields) %}
+            <category>
+                {% if product.parent_category %}
+                    <{{ product.parent_category }}>
+                {% endif %}
+                <{{ product.category }}>
+                    {% if not fields or fields and 'description' in fields %}
+                        <shortDescription>{{ product.short_description }}</shortDescription>
+                    {% endif %}
+                    {% if not fields or fields and 'long_description' in fields %}
+                        <keyFeatures>
+                            <keyFeaturesValue>{{ product.key_features_value }}</keyFeaturesValue>
+                        </keyFeatures>
+                    {% endif %}
+                    {% if not fields or fields and 'images' in fields %}
+                        {% if product.main_image %}
+                            <mainImageUrl>{{ product.main_image }}</mainImageUrl>
+                        {% endif %}
+                        {% if product.secondary_images %}
+                            <productSecondaryImageURL>
+                                {% for secondary_image in product.secondary_images %}
+                                    <productSecondaryImageURLValue>{{ secondary_image }}</productSecondaryImageURLValue>
+                                {% endfor %}
+                            </productSecondaryImageURL>
+                        {% endif %}
+                    {% endif %}
+                </{{ product.category }}>
+                {% if product.parent_category %}
+                    </{{ product.parent_category }}>
+                {% endif %}
+            </category>
+        {% endif %}
+    </SupplierProduct>
+</SupplierItem>
+{% endfor %}
+</SupplierItemFeed>

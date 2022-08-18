@@ -1,0 +1,122 @@
+http://www.samsclub.com/sams/clorox-handi-wipes-36-ct/prod11620377.ip
+http://www.samsclub.com/sams/plastic-table-cover-54-x-108-24-pk/124484.ip
+http://www.samsclub.com/sams/commercial-zone-square-trash-can-black-38-gal/147581.ip
+http://www.samsclub.com/sams/bear-wall-clock-nw-northwoods/prod12180129.ip
+# no product image
+http://www.samsclub.com/sams/mini-burger-72-ct/prod2380256.ip
+http://www.samsclub.com/sams/polar-variety-4-2-lt-bottles/168721.ip
+http://www.samsclub.com/sams/alimento-de-aves/prod2430013.ip
+http://www.samsclub.com/sams/extra-wire-shelf-storage-supplies/prod9140037.ip
+http://www.samsclub.com/sams/topo-chico-peach-24-11-5-oz-bottles/108383.ip
+# review_count=3094; should be 4 (site issue: the scrape matches the graph)
+http://www.samsclub.com/sams/huggies-slip-on-s5-eco-128/prod13700069.ip
+# site online in stock - selection needed
+http://www.samsclub.com/sams/pampers-baby-dry-diapers-choose-your-size/prod11680453.ip
+http://www.samsclub.com/sams/g-floor-diamond-tile/prod11440361.ip
+# no image
+http://www.samsclub.com/sams/alimento-de-aves/prod2430013.ip
+# video count
+http://www.samsclub.com/sams/logitech-wireless-wave-mk550-combo/prod3980224.ip
+# same video
+http://www.samsclub.com/sams/huggies-slip-on-s5-eco-128/prod13700069.ip
+# 2/20/2015 - issues 2/23
+# missed video & pdf - expect 1 video 3 pdf
+http://www.samsclub.com/sams/sculpt-comfort-kybrd/prod8570143.ip
+# wrong video count  2/20 - expect 5 video (scraper returns 4)
+http://www.samsclub.com/sams/dell-inspiron-3000-intel-core-i3-4150/prod14220355.ip
+# correct vid, incor pdf=1 ;  expect pdf=3 vid=2
+http://www.samsclub.com/sams/glad-forceflex-tall-kitchen-13-gal-120-ct/118596.ip
+# missed pdf: expect pdf=2
+http://www.samsclub.com/sams/tcl-40-60hz-led-tv-1080p-3-hdmi/prod10720107.ip
+# missed pdf: expect pdf=1
+http://www.samsclub.com/sams/lexmark-x652de/prod11820085.ip
+# incorr vid & pdf - expect vid=5 pdf=7
+http://www.samsclub.com/sams/projector-powerlite1940w/prod13701583.ip
+# price
+http://www.samsclub.com/sams/inception-fm-twin-xl-adj-set/prod13151029.ip
+http://www.samsclub.com/sams/homepage.jsp
+http://www.samsclub.com/sams/electronics/1086.cp
+http://www.samsclub.com/sams/tools/1392.cp
+http://www.samsclub.com/sams/gifts-for-him/4750115.cp
+http://www.samsclub.com/sams/smartorder/learnMore.jsp
+http://www.samsclub.com/sams/furniture/1286.cp?navTrack=gnav1_furniture&navAction=jump
+# not available
+http://www.samsclub.com/sams/redd-s-apple-ale-12-12-oz-bottles/prod11080541.ip
+# site only; ship this item
+http://www.samsclub.com/sams/x-acto-x2000-rubberized-knife/145135.ip
+# only sold online 
+http://www.samsclub.com/sams/pampers-baby-dry-diapers-choose-your-size/prod11680453.ip
+# instore only; no shiping buy online & pickup instore but need to pick a club
+http://www.samsclub.com/sams/soprano-mahogany-ukulele-bonus-pack/187326.ip
+http://www.samsclub.com/sams/hershey-s-kisses-56-oz/198767.ip
+# site; instore - shipping & pickup available
+http://www.samsclub.com/sams/6-banquet-table-commerical-quality/prod6910044.ip
+http://www.samsclub.com/sams/major-dickason-ss-cups-60-ct/prod14510095.ip
+# see online price in cart
+http://www.samsclub.com/sams/g-floor-diamond-tile/prod11440361.ip
+# price too low to show; see in price checkout
+http://www.samsclub.com/sams/xbox-one-console/prod10770535.ip
+# online; delivery free; pdf
+http://www.samsclub.com/sams/wedding-collection-pink-17-pc/prod1480836.ip
+# out of stock online; instore check for availability
+http://www.samsclub.com/sams/canon-t3i-18-0mp-digital-slr-value-bundle/prod6100160.ip
+# out of stock sold online only
+http://www.samsclub.com/sams/canon-eos-rebel-t5i-18-55-18-mp-3-lcd/prod12290156.ip
+# out of stock online
+http://www.samsclub.com/sams/motorola-mbp16-audio-baby-monitor/prod13250067.ip
+# online in stock
+http://www.samsclub.com/sams/neighborhood-fun-center/prod1150152.ip
+# out of stock online with video & webcollage
+http://www.samsclub.com/sams/swann-16x16-700tvl-960h-dvr/prod10740044.ip
+# in_stores
+http://www.samsclub.com/sams/mm-bath-tile-clnr-1-gallon/prod9260459.ip
+# not avail in your club; check another club
+http://www.samsclub.com/sams/printer-oj-100/prod11841221.ip
+http://www.samsclub.com/sams/3-63-ct-prasiolite-pear-shaped-pendant/130071.ip
+http://www.samsclub.com/sams/formula-409-cleaner-degreaser-1-gallon-4-pack/179818.ip
+http://www.samsclub.com/sams/egg-scrambled-3pk-5-27-ship/prod16320252.ip
+http://www.samsclub.com/sams/mm-bath-tile-clnr-1-gallon/prod9260459.ip
+# image count is fixed in updated scraper
+http://www.samsclub.com/sams/bear-wall-clock-nw-northwoods/prod12180129.ip
+http://www.samsclub.com/sams/columbian-grip-seal-booklet-document-envelope-6-x-9-white-250-ct/prod4590208.ip
+# scraper wrong review count - definitly wrong
+http://www.samsclub.com/sams/quality-park-redi-seal-kraft-envelopes/145712.ip
+# scraper read review count correctly if you click on the ratings & reviews section
+http://www.samsclub.com/sams/gil-deo-coolwave-5-pk-4-oz/prod10150162.ip
+http://www.samsclub.com/sams/premier-protein-high-protein-shake-chocolate/prod3220051.ip
+http://www.samsclub.com/sams/13-night-therapy-deluxe-euro-box-top-spring-mattress-full/prod2980308.ip
+# correct pdf - there are 3 and scraper is correct
+http://www.samsclub.com/sams/augason-farms-food-storage-baking-kit/prod1620358.ip
+# incorrect pdf; should be pdf_count = 1
+http://www.samsclub.com/sams/berkel-14-manual-slicer/prod1530612.ip
+# incorrect pdf count - 2 but there's only 1, under warranty information- should we include this for product info?
+http://www.samsclub.com/sams/vollrath-cayenne-40704-rotisserie-oven/prod5460039.ip
+# good video count = 1
+http://www.samsclub.com/sams/spectrum-vertical-multi-color-led-open/prod13205171.ip
+# good video count = 1
+http://www.samsclub.com/sams/snap-office-2-person-basic-workstation-concrete-chic-color-combo/prod1990021.ip
+# good video_count = 1
+http://www.samsclub.com/sams/1-20-ct-t-w-shared-prong-diamond-wedding-set-in-platinum-h-i-i1/prod2620117.ip
+# good video count = 2
+http://www.samsclub.com/sams/8-x-10-lifetime-outdoor-storage-shed/147388.ip
+# good video count = 3 
+http://www.samsclub.com/sams/vetguard-plus-xl-dogs-over-66-lbs/prod7220044.ip
+# good video count = 1
+http://www.samsclub.com/sams/printer-oj-100/prod11841221.ip
+# good video = 0 pdf_count = 1
+http://www.samsclub.com/sams/rubbermaid-brute-trash-can-gray-32-gal/175119.ip
+# good video = 1 pdf = 3
+http://www.samsclub.com/sams/augason-farms-food-storage-vital-wheat-gluten-6-pk/prod1620401.ip
+# scraper has 2 pdf; pdf = 1
+http://www.samsclub.com/sams/mm-bath-tile-clnr-1-gallon/prod9260459.ip
+# missed pdf; pdf = 1
+http://www.samsclub.com/sams/wedding-collection-pink-17-pc/prod1480836.ip
+# missed video & webcollage
+http://www.samsclub.com/sams/swann-16x16-700tvl-960h-dvr/prod10740044.ip
+# video_count = 8; should be 4
+http://www.samsclub.com/sams/cyberpower-gxi680-intel-core-i5-4590/prod15820215.ip
+http://www.samsclub.com/sams/epson-t0603-20-magenta-ink-cartridge/125022.ip
+# 2/18 - missed video_count = 3
+http://www.samsclub.com/sams/heatermeals-ex-self-heating-entr-es-assorted-12-pk/prod3100193.ip
+# 2/18 - missed video_count = 1
+http://www.samsclub.com/sams/hp-envy-7645-aio-hp-envy-7645-printer/prod15180075.ip

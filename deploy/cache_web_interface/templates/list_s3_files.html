@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>List s3 files</title>
+    <style>
+        .nav {
+            position: fixed;
+            right: 100px;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav">
+    <div>Navigation</div>
+    <form method="get" action="">
+        <label>
+            <input type="text" name="prefix" id="prefix" placeholder="YYYY/MM/DD">
+            Prefix (defaults to current date)
+        </label>
+        <br/>
+        <label>
+            <input type="text" name="marker" id="marker">
+            Marker
+        </label>
+        <br/>
+        <button type="submit">Search</button>
+    </form>
+    <div>
+        <a href="javascript:history.back()">Back</a>
+        <a href="?marker={{ last_file }}">Next</a>
+    </div>
+</div>
+<div>
+    {% for file in list_files %}
+        <div>
+            <a target="_blank" href="/get_s3_file?file={{ file }}" title="download">{{ file }}</a>
+        </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>

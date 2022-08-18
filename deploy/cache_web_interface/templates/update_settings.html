@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change cache settings</title>
+    <script type="text/javascript">
+        function addField() {
+            var tmp = document.getElementsByName('newField')[0];
+            var newElemName = tmp.value;
+            var form = document.forms[0];
+            var newElemLabel = document.createElement('label');
+            newElemLabel.textContent = newElemName;
+            var newElemInput = document.createElement('input');
+            newElemInput.type = 'text';
+            newElemInput.name = newElemName;
+            form.insertBefore(newElemLabel, form.lastElementChild);
+            form.insertBefore(newElemInput, form.lastElementChild);
+            form.insertBefore(document.createElement('br'), form.lastElementChild);
+            tmp.value = '';
+        }
+    </script>
+</head>
+
+<body>
+    {% if result_msg %}
+        <h3>{{result_msg}}</h3>
+        <hr/>
+    {% endif %}
+    <h4>Cache settings</h4>
+    <form action="" method="post">
+        {% for field_key, field_value in form_fields.items() %}
+            <label>
+                {{ field_key }}
+                <input name="{{ field_key }}" value="{{ field_value }}">
+            </label>
+            <br/>
+        {% endfor %}
+        <button type="submit">Save</button>
+    </form>
+    <label>
+        Add new field:
+        <input type="text" placeholder="Name for the new field" name="newField">
+        <button onclick="addField()">Add</button>
+    </label>
+</body>
+</html>

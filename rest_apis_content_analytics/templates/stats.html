@@ -1,0 +1,139 @@
+{% extends 'rest_framework/base.html' %}
+
+{% load staticfiles %}
+{% load rest_framework %}
+{% load i18n %}
+
+{% block body %}
+<body class="{% block bodyclass %}{% endblock %}">
+
+  <div class="wrapper">
+    {% block navbar %}
+      <div class="navbar navbar-static-top {% block bootstrap_navbar_variant %}navbar-inverse{% endblock %}">
+        <div class="container">
+          <span>
+            {% block branding %}
+              <a class='navbar-brand' rel="nofollow" href='http://www.django-rest-framework.org'>
+                  Django REST framework
+              </a>
+            {% endblock %}
+          </span>
+          <ul class="nav navbar-nav pull-right">
+            {% block userlinks %}
+              {% if user.is_authenticated %}
+                {% optional_logout request user %}
+              {% else %}
+                {% optional_login request %}
+              {% endif %}
+            {% endblock %}
+          </ul>
+        </div>
+      </div>
+    {% endblock %}
+
+    <div class="container">
+      <ul class="well" style="margin-top:80px">
+          <a href="{% url 'items_update_with_xml_file_by_walmart_api' %}">Submit XML</a>&nbsp;&nbsp;&#8226;&nbsp;
+          <a href="{% url 'validate_walmart_product_xml_file' %}">Validate XML</a>&nbsp;&nbsp;&#8226;&nbsp;
+          <a href="{% url 'check_feed_status_by_walmart_api' %}">Check Feed Status</a>&nbsp;&nbsp;&#8226;&nbsp;
+          <a href="{% url 'check_item_status_by_product_id' %}">Check GTIN Status</a>&nbsp;&nbsp;&#8226;&nbsp;
+          <a href="{% url 'tool_id' %}">Get Tool ID</a>&nbsp;&nbsp;&#8226;&nbsp;
+          <a href="{% url 'rich_media' %}">Rich media</a>
+      </ul>
+
+      {% url "items_update_with_xml_file_by_walmart_api" as items_update_with_xml_file_by_walmart_api_url %}
+      {% if request.path == items_update_with_xml_file_by_walmart_api_url %}
+      <div>
+        <table class="stats_big_blue_area">
+          <tr>
+            <td onclick="window.location.href='{% url "stats_view" %}'; return false;">Total items submitted (all time) <span>{{ stats_all_walmart_xml_items }}</span></td>
+            <td onclick="window.location.href='{% url "stats_view" %}'; return false;">Total successful (all time) <span>{{ stats_successful_walmart_xml_items }}</span></td>
+            <td onclick="window.location.href='{% url "stats_view" %}'; return false;">Today (success/total) <span>{{ stats_today_successful_xml_items }} / {{ stats_today_all_xml_items }}</span></td>
+          </tr>
+        </table>
+      </div>
+      {% endif %}
+
+      {% block breadcrumbs %}
+        <ul class="breadcrumb" style="margin-top:20px">
+          You are here:
+          {% for breadcrumb_name, breadcrumb_url in breadcrumblist %}
+            {% if forloop.last %}
+              <li class="active"><a href="{{ breadcrumb_url }}">{{ breadcrumb_name }}</a></li>
+            {% else %}
+              <li><a href="{{ breadcrumb_url }}">{{ breadcrumb_name }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endblock %}
+
+      <!-- Content -->
+      <div id="content">
+
+          <div class="content-main">
+            <div class="page-header">
+                <h1>Statistics</h1>
+            </div>
+            <div class="response-info">
+              <div class="well">
+                <h4>Successful items</h4>
+                <table class="table stats_table">
+                  <tr>
+                      <th>Date</th>
+                      <th>UPC</th>
+                      <th>Feed ID</th>
+                      <th>Multi-item</th>
+                  </tr>
+                  {% for item in successful_walmart_xml_items|slice:"0:20" %}
+                    <tr>
+                        <td>{{ item.when }}</td>
+                        <td>{{ item.metadata.upc }}</td>
+                        <td>{{ item.metadata.feed_id }}</td>
+                        <td>{% if item.multi_item %}Yes{% else %}No{% endif %}</td>
+                    </tr>
+                  {% endfor %}
+                </table>
+              </div>
+            </div>
+            <div class="response-info">
+              <div class="well">
+                <h4>Failed items</h4>
+                <table class="table stats_table">
+                  <tr>
+                      <th>Date</th>
+                      <th>UPC</th>
+                      <th>Feed ID</th>
+                      <th>Multi-item</th>
+                      <th>Error</th>
+                  </tr>
+                  {% for item in failed_walmart_xml_items|slice:"0:20" %}
+                    <tr>
+                        <td>{{ item.when }}</td>
+                        <td>{{ item.metadata.upc }}</td>
+                        <td>{{ item.metadata.feed_id }}</td>
+                        <td>{% if item.multi_item %}Yes{% else %}No{% endif %}</td>
+                        <td>{{ item.error_text }}</td>
+                    </tr>
+                  {% endfor %}
+                </table>
+              </div>
+            </div>
+          </div>
+
+      </div><!-- /.content -->
+    </div><!-- /.container -->
+  </div><!-- ./wrapper -->
+
+  {% block script %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="{% static "rest_framework/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "rest_framework/js/prettify-min.js" %}"></script>
+    <script src="{% static "rest_framework/js/default.js" %}"></script>
+  {% endblock %}
+
+  {% if filter_form %}
+  {{ filter_form }}
+  {% endif %}
+
+</body>
+{% endblock %}

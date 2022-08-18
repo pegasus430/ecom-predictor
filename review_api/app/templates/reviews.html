@@ -1,0 +1,129 @@
+{% extends "dashboard.html" %}
+{% block menu %}
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Export <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+        <li><a href="{{ url_for('export_reviews', retailer=retailer, product_id=product_id, format='jl') }}">JSON Lines</a></li>
+        <li><a href="{{ url_for('export_reviews', retailer=retailer, product_id=product_id, format='csv') }}">CSV</a></li>
+  </ul>
+</li>
+{% endblock %}
+{% block body %}
+<div>
+    Total reviews: {{ reviews.count }}
+</div>
+<div id="words"></div>
+<div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Date</td>
+                <td>Product</td>
+                <td>Rating</td>
+                <td>Author</td>
+                <td>Title</td>
+            </tr>
+         </thead>
+        <tbody>
+            {% for review in reviews.items -%}
+                <tr class="bg-info" data-toggle="popover" data-placement="bottom" data-trigger="hover click" title="Source object" data-content="{{ review | dump }}">
+                    <td>
+                        {% if review.url -%}
+                            <a href="{{ review.url }}">{{ review.date.strftime('%Y-%m-%d %H:%M:%S') }}</a>
+                        {%- else -%}
+                            {{ review.date.strftime('%Y-%m-%d %H:%M:%S') }}
+                        {%- endif %}
+                    </td>
+                    <td>
+                        {% if review.product_url -%}
+                            <a href="{{ review.product_url }}">{{ review.product_id }}</a>
+                        {%- else -%}
+                            {{ review.product_id }}
+                        {%- endif %}
+                    </td>
+                    <td>{{ review.rating }}</td>
+                    <td>
+                        {% if review.author_profile -%}
+                            <a href="{{ review.author_profile }}">{{ review.author_name }}</a>
+                        {%- else -%}
+                            {{ review.author_name }}
+                        {%- endif %}
+                    </td>
+                    <td>{{ review.title }}</td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        {{ review.text }}
+                    </td>
+                </tr>
+            {%- else %}
+                <tr>
+                    <td colspan="5">No reviews</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="5">
+                    <ul class="pagination">
+                        <li>
+                            {% if reviews.has_prev -%}
+                            <a href="{{ url_for('show_reviews', retailer=retailer, product_id=product_id, filter=filter, page=reviews.prev_num) }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                            {%- else -%}
+                            <span aria-hidden="true">&laquo;</span>
+                            {%- endif %}
+                        </li>
+                        {%- for page in reviews.iter_pages() %}
+                        <li {%- if page == reviews.page %} class="active"{% endif %}>
+                            {% if page -%}
+                                {%- if page == reviews.page -%}
+                                <span>{{ page }}</span>
+                                {%- else -%}
+                                <a href="{{ url_for('show_reviews', retailer=retailer, product_id=product_id, filter=filter, page=page) }}"><span>{{ page }}</span></a>
+                                {%- endif -%}
+                            {%- else -%}
+                            <span>…</span>
+                            {%- endif %}
+                        </li>
+                        {%- endfor %}
+                        <li>
+                            {% if reviews.has_next -%}
+                            <a href="{{ url_for('show_reviews', retailer=retailer, product_id=product_id, filter=filter, page=reviews.next_num) }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                            {%- else -%}
+                            <span aria-hidden="true">&raquo;</span>
+                            {%- endif %}
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+{% block style %}
+<link href="{{ url_for('static', filename='css/jqcloud.min.css') }}" rel="stylesheet">
+{% endblock %}
+{% block script %}
+<script src="{{ url_for('static', filename='js/jqcloud.min.js') }}"></script>
+<script>
+    $.ajax('{{ url_for('reviews', retailer=retailer, product_id=product_id) }}?words=100', {
+        success: function (data) {
+            var words = [];
+            for (var i = 0; i < data.words.length; i++) {
+                var filter = '{"words.w":"' + data.words[i].word + '","rating":{"$' + (data.words[i].positive_review ? 'gte' : 'lt') + '":3}}';
+                words.push({
+                    text: data.words[i].word,
+                    weight: data.words[i].count,
+                    link: '{{ url_for('show_reviews', retailer=retailer, product_id=product_id) }}?filter=' + filter,
+                    html: {style: 'color:' + (data.words[i].positive_review ? '#08b4c4' : '#f65454')}
+                });
+            }
+            $('#words').jQCloud(words, {
+                height: 300
+            });
+        }
+    });
+</script>
+{% endblock %}

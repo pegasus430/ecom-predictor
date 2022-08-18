@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template generator</title>
+    <style>
+        body {
+            padding: 0 10px;
+        }
+        form > div {
+            padding: 6px 0;
+        }
+        label {
+            display: inline-block;
+            width: 200px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <h2>Generator</h2>
+    It reads the Data Standard JSON, and creates XLSX template file for the leaf category in the JSON.
+    <form method='POST' enctype="multipart/form-data">
+        <div>
+            <label>Input Home Depot category id: </label>
+            <input type="text" name="category_id">
+        </div>
+        <div>
+            <label></label>
+            <button type="submit">Generate</button>
+        </div>
+    </form>
+
+    <h2>API</h2>
+    <p>Method: POST</p>
+    <p>
+        Params:
+        <ul>
+            <li><b>category_id</b> - category id</li>
+        </ul>
+    </p>
+</body>
+</html>

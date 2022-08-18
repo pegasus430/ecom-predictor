@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+          rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h3 class="text-muted">MC export</h3>
+      </div>
+      <hr/>
+
+      <div>
+      <h4>Predefined template</h4>
+      <form action="http://bulk-import.contentanalyticsinc.com/mc_export?retailer=target" method="post" enctype="multipart/form-data">
+        <input type="file" name="file"><br /><br />
+        <input type="submit" value="Upload input csv file">
+      </form>
+      </div>
+      <hr/>
+
+      <div>
+      <h4>Custom template</h4>
+      <form action="http://bulk-import.contentanalyticsinc.com/mc_export?retailer=target" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="file_name" value="custom.xls">
+        <input type="hidden" name="field[]" value="product_name"></input>
+        <input type="hidden" name="field[]" value="price"></input>
+        <input type="hidden" name="field[]" value="currency"></input>
+        <input type="hidden" name="field_name[product_name]" value="Product Name"></input>
+        <input type="hidden" name="field_name[price]" value="Price"></input>
+        <input type="hidden" name="field_name[currency]" value="Currency"></input>
+        <input type="file" name="file"><br /><br />
+        <input type="submit" value="Upload input csv file">
+      </form>
+      </div>
+
+    </div>
+  </body>
+</html>
+ 

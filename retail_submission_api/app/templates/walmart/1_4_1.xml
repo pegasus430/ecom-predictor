@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SupplierProductFeed  xmlns="http://walmart.com/suppliers/">
+    <version>1.4.1</version>
+    {% for product in products %}
+    <SupplierProduct>
+        <productName>{{ product.product_name }}</productName>
+        <longDescription>{{ product.long_description }}</longDescription>
+        <shelfDescription>{{ product.shelf_description }}</shelfDescription>
+        <shortDescription>{{ product.short_description }}</shortDescription>
+        <mainImage>
+            <mainImageUrl>{{ product.main_image }}</mainImageUrl>
+        </mainImage>
+        <additionalAssets>
+        {% for additional_asset in product.additional_assets %}
+            <additionalAsset>
+                <assetUrl>{{ additional_asset }}</assetUrl>
+                <assetType>Additional Image</assetType>
+            </additionalAsset>
+        {% endfor %}
+        </additionalAssets>
+        <productIdentifiers>
+            <productIdentifier>
+                <productIdType>UPC</productIdType>
+                <productId>{{ product.upc }}</productId>
+            </productIdentifier>
+        </productIdentifiers>
+        <unitsPerConsumerUnit>{{ product.units_per_consumer_unit }}</unitsPerConsumerUnit>
+        <countryOfOriginAssembly>{{ product.country_of_origin_assembly }}</countryOfOriginAssembly>
+        <countryOfOriginComponents>{{ product.country_of_origin_components }}</countryOfOriginComponents>
+        <isAerosol>{{ product.is_aerosol }}</isAerosol>
+        <isChemical>{{ product.is_chemical }}</isChemical>
+        <isPesticide>{{ product.is_pesticide }}</isPesticide>
+        <hasBatteries>{{ product.has_batteries }}</hasBatteries>
+        <containsMercury>{{ product.contains_mercury }}</containsMercury>
+        <hasFuelContainer>{{ product.has_fuel_container }}</hasFuelContainer>
+        <pricePerUnitQuantity>
+            <unit>{{ product.price_per_unit_quantity.unit }}</unit>
+            <measure>{{ product.price_per_unit_quantity.measure }}</measure>
+        </pricePerUnitQuantity>
+        <containsPaperWood>{{ product.contains_paper_wood }}</containsPaperWood>
+        <compositeWoodCertificationCode>{{ product.composite_wood_certification_code }}</compositeWoodCertificationCode>
+        <hasExpiration>{{ product.has_expiration }}</hasExpiration>
+        <hasWarnings>{{ product.has_warnings }}</hasWarnings>
+        {% if product.warning_text %}
+        <warningText>{{ product.warning_text }}</warningText>
+        {% endif %}
+        <hasWarranty>{{ product.has_warranty }}</hasWarranty>
+        <isProp65WarningRequired>{{ product.is_prop_65_warning_required }}</isProp65WarningRequired>
+        <isTemperatureSensitive>{{ product.is_temperature_sensitive }}</isTemperatureSensitive>
+        <smallPartsWarnings>
+            <smallPartsWarning>{{ product.small_parts_warning }}</smallPartsWarning>
+        </smallPartsWarnings>
+        <isControlledSubstance>{{ product.is_controlled_substance }}</isControlledSubstance>
+        <hasStateRestrictions>{{ product.has_state_restrictions }}</hasStateRestrictions>
+        {% if product.additional_product_attributes %}
+        <additionalProductAttributes>
+            {% for additional_product_attribute in product.additional_product_attributes %}
+            <additionalProductAttribute>
+                <productAttributeName>{{ additional_product_attribute.name }}</productAttributeName>
+                <productAttributeValue>{{ additional_product_attribute.value }}</productAttributeValue>
+            </additionalProductAttribute>
+            {% endfor %}
+        </additionalProductAttributes>
+        {% endif %}
+        {% if product.category_attributes %}
+        <{{ product.category_name }}>
+        {% for category_attribute in product.category_attributes recursive -%}
+            <{{ category_attribute.name }}>
+            {%- if category_attribute.value|is_list -%}
+                {{ loop(category_attribute.value) }}
+            {%- else -%}
+                {{ category_attribute.value }}
+            {%- endif -%}
+            </{{ category_attribute.name }}>
+        {%- endfor %}
+
+        </{{ product.category_name }}>
+        {% endif %}
+    </SupplierProduct>
+    {% endfor %}
+</SupplierProductFeed>

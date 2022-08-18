@@ -1,0 +1,33 @@
+{% extends "dashboard.html" %}
+{% block body %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Retailer</td>
+                {%- for retailer in retailers %}
+                    <td>{{ retailer | capitalize }}</td>
+                {%- endfor %}
+            </tr>
+         </thead>
+        <tbody>
+            <tr>
+                <td>Products</td>
+                {%- for retailer in retailers %}
+                    <td>{{ stats[retailer].products }}</td>
+                {%- endfor %}
+            </tr>
+            <tr>
+                <td>Reviews</td>
+                {%- for retailer in retailers %}
+                    <td>{{ stats[retailer].reviews }}</td>
+                {%- endfor %}
+            </tr>
+            <tr>
+                <td>Queue</td>
+                {%- for retailer in retailers %}
+                    <td>{{ stats[retailer].queue }}</td>
+                {%- endfor %}
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

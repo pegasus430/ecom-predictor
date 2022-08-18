@@ -1,0 +1,12 @@
+{
+    "parser": "pg",
+    "import": "FTP",
+    "ip": "54.175.228.114",
+    "user": "pg",
+    "passwd": "Lhsj9fVL19IuDtHUj",
+    "path": "upload",
+    "push": "cars-test",
+    "customer": "Master Data",
+    "from_date": "2017_7_23",
+    "to_date": null
+}

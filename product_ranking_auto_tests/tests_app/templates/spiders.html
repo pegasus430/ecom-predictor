@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .error {
+            color:red;
+        }
+        .success {
+            color:green;
+        }
+    </style>
+</head>
+<body>
+<h1>Spiders</h1>
+
+<table cellpadding="10" cellspacing="0" border="1">
+    <tr>
+        <th>Status</th>
+        <th>Spider</th>
+        <th>Last check</th>
+        <th>Last consecutive errors</th>
+        <th>Last 24 hours checks (passed/total)</th>
+        <th>Missing data (last 24 hours)</th>
+        <th>Total checks</th>
+    </tr>
+    {% for spider in spiders %}
+        <tr>
+            <td class="{% if spider.is_error %}error{% else %}success{% endif %}">
+                [{% if spider.is_error %}FAILED{% else %}PASSED{% endif %}]
+            </td>
+            <td>
+                <a href="{% url 'tests_app_spider_review' pk=spider.pk %}"><b>{{ spider.name }}</b></a>
+            </td>
+            <td>{{ spider.get_test_runs.0.when_finished }}</td>
+            <td>{{ spider.last_consecutive_errors|default_if_none:0 }}</td>
+            <td>
+                {{ spider.get_passed_test_runs_for_24_hours|length }} /
+                {{ spider.get_total_test_runs_for_24_hours|length }}
+            </td>
+            <td>
+                {% with spider.get_failed_test_runs_for_24_hours_with_missing_data as f_runs %}
+                    {% if f_runs|length > 0 %}
+                    <a href="{% url 'view_missing_data' pk=spider.pk %}">
+                        {{ f_runs|length }}
+                    </a>
+                    {% else %}
+                        {{ f_runs|length }}
+                    {% endif %}
+                {% endwith %}
+            </td>
+            <td>{{ spider.spider_test_runs.all|length }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

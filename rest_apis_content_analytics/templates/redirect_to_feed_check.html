@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div>Please wait, you are being redirected...</div>
+    <div style="visibility: hidden">
+        <form method="POST" action="{% url 'check_feed_status_by_walmart_api' %}">{% csrf_token %}
+            <input name="request_url" value="https://marketplace.walmartapis.com/v2/feeds/{feedId}?includeDetails=true">
+            <input name="feed_id" value="{{ feed_id }}">
+            <button type="submit" id="button_submit_form"></button>
+        </form>
+        <script>
+            document.getElementById('button_submit_form').click();
+        </script>
+    </div>
+</body>
+</html>

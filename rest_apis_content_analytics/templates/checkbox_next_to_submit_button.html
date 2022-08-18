@@ -1,0 +1,15 @@
+<span class="checkbox_next_to_submit_button" style="margin-right: 20px">
+    <label>
+    <input style="width:20px; margin:0; padding:0; position: relative; top:2px;" type="checkbox" name="{{ field.name }}" value="true" {% if field.value %}checked{% endif %}>
+    {{ field.label }}
+        </label>
+</span>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var _input_checkbox = $(".checkbox_next_to_submit_button");
+        var _this_form = _input_checkbox.parent().parent().parent();
+        var _button = _this_form.find('button.btn-primary');
+        $(_input_checkbox).insertBefore(_button);
+    });
+</script>

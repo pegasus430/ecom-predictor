@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <p><a href="{% url 'spiders_view' %}">All spiders</a></p>
+    <h1>Reports for spider {{ spider.name }}</h1>
+    <table cellpadding=10 cellspacing=0 border=1>
+        <tr>
+            <th>Status</th>
+            <th>Created</th>
+            <th>Branch 1</th>
+            <th>Branch 2</th>
+            <th>Search terms</th>
+            <th>Admin link</th>
+        </tr>
+        {% for report in reports %}
+            <tr>
+                <td>
+                    {% if report.not_enough_matched_urls or report.diffs_found %}
+                        <span style="color:red; font-weight: bold">Failed</span>
+                    {% elif report.testrun.status == 'running' %}
+                        Running
+                    {% elif report.testrun.status == 'stopped' %}
+                        Created
+                    {% else %}
+                        <span style="color:green; font-weight: bold">Passed</span>
+                    {% endif %}
+                </td>
+                <td>{{ report.when_created }}</td>
+                <td>{{ report.testrun.branch1 }}</td>
+                <td>{{ report.testrun.branch2 }}</td>
+                <td>
+                    <ul>
+                        {% for searchterm in report.report_searchterms.all %}
+                        <li>
+                            <span style="font-weight: bold">{{ searchterm.searchterm.searchterm }}</span>
+                            (quantity: {{ searchterm.searchterm.quantity }})
+                            -
+                            <span style="color: blue; font-weight: bold">{{ searchterm.total_urls }}</span> total URLs,
+                            <span style="color: {% if searchterm.not_enough_matched_urls %}red{% else %}blueviolet{% endif %}; font-weight: bold">
+                                {{ searchterm.matched_urls }}</span> matched URLs
+
+                            {% if searchterm.not_enough_matched_urls %}
+                                - <span style='font-size: 11px'>ERROR: Not enough matched urls!</span>
+                            {% endif %}
+                            {% if not searchterm.not_enough_matched_urls and searchterm.diffs %}
+                                - <a href="{% url 'diffs_view' report_searchterm=searchterm.pk %}"><span style='color:red'>
+                                  ERROR: {{ searchterm.diffs|length }} diffs found</span></a>
+                            {% endif %}
+                            {% if not searchterm.not_enough_matched_urls and not searchterm.diffs %}
+                                - <span style="color:green">No issues found</span>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td><a target="_blank" href="/admin/tests_app/testrun/{{ report.testrun.pk }}/">TestRun</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

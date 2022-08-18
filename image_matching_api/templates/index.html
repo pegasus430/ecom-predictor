@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compare Image UI</title>
+    <style>
+        body {
+            padding: 0 10px;
+        }
+        form > div {
+            padding: 6px 0;
+        }
+        label {
+            display: inline-block;
+            text-align: right;
+        }
+    </style>
+</head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+     $(document).ready(function(){
+
+        $("#chkTrimFuzz").click(function(){
+            if ($(this).is(":checked")) {
+                $("#dvTrimFuzz").html('TrimFuzz : <input type="text" id="trimFuzz" name="trim_fuzz">');
+            } else {
+                $("#dvTrimFuzz").html("");
+            }
+        });
+
+       $('#media_type').on('change', function(){
+           if ( this.value =='image'){
+               $("#dvTrim").show();
+               $("#compare_method").show();
+           } else {
+               $("#dvTrim").hide();
+               $("#compare_method").hide();
+           }
+           $("#url1").text="";
+           $("#url2").text="";
+        });
+
+         $("#btn_url_add").click(function() {
+             var url = $('#url2').val();
+             var html = '<input type="text" name="second_url[]" value="' + url + '" style="width: 100%; border: none;"/>';
+             $('#url_list').append(html);
+             $('#url2').val('')
+         });
+    });
+</script>
+<body>
+    <h2>Compare Media Files</h2>
+    <form method='POST' action="/compare">
+        <div >
+            <select id="media_type" name="media_type" style="width: 206px">
+                <option value="image">Image</option>
+                <option value="video">Video</option>
+            </select>
+        </div>
+        <div>
+            <select id="compare_method" name="compare_method" style="width: 206px">
+                <option value="local">Local</option>
+                <option value="base">Base</option>
+            </select>
+        </div>
+        <div>
+            URL1 : <input type="text" name="first_url" id="url1" required>
+        </div>
+        <div id="dvSecondUrl">
+            <div id="dvListUrl">
+                URL2 : <input type="text" id="url2">
+                <input type="button" value="Add" id="btn_url_add"/>
+                <div id="url_list" style="height: 100px;border: solid 1px #000;width: 400px;overflow: auto;margin-top: 10px;">
+                </div>
+            </div>
+        </div>
+        <div id="dvSecList">
+
+        </div>
+
+        <div id="dvTrim">
+            <div for="chkTrimFuzz">
+                <input type="checkbox" id="chkTrimFuzz">
+                <label id="lbTrimFuzz">TrimFuzz?</label>
+            </div>
+
+            <div id="dvTrimFuzz">
+
+            </div>
+        </div>
+
+        <div>
+            <button type="submit">Compare</button>
+        </div>
+    </form>
+</body>
+</html>

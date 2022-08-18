@@ -1,0 +1,37 @@
+<html>
+    <body>
+        <table border="0" cellpadding="3" width="100%">
+            <tbody>
+                <tr valign="top" height="30">
+                    <td align="right">
+                        <b>Image or ZIP file to upload:</b>
+                    </td>
+                    <td width="10">&nbsp;</td>
+                    <td>
+                        <input type="file" name="Content" id="Content" size="40" enctype="multipart/form-data">
+                        <table border="0" cellpadding="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <td width="275">&nbsp;</td>
+                                    <td align="left">
+                                        <input id="btn_submit" type="button" name="submit" value="Submit">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <a href="/status" target="_parent">Review the status</a>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+    <script>
+        document.getElementById("btn_submit").onclick = function() {
+            if (document.getElementById("Content").value != '') {
+                window.location.assign("/upload?status=ok");
+            }
+        };
+    </script>
+</html>

@@ -1,0 +1,87 @@
+<html>
+    <body>
+        <form id="contactUsForm" action="javascript:void(0);">
+            <div id="formSection1">
+                <h2>How can we help you?</h2>
+                <div class="vss-form-element ">
+                    <label for="businessGroupId">Business group</label>
+                    <select id="businessGroupId" name="businessGroupId">
+                        <option>Select a business group</option>
+                        <option value="257">Amazon Fresh</option>
+                        <option value="33">Lawn and Garden</option>
+                        <option value="21">Kitchen</option>
+                        <option value="214">Beauty</option>
+                        <option value="232">Grocery &amp; Gourmet Food</option>
+                        <option value="190">Health &amp; Personal Care</option>
+                        <option value="238">Pets</option>
+                    </select>
+                    <span class="error-text"></span>
+                </div>
+                <div class="vss-form-element ">
+                    <label for="issueId">Support topic</label>
+                    <select id="issueId" name="issueId" disabled="">
+                        <option>Select a business group first</option>
+                    </select>
+                    <span class="error-text"></span>
+                </div>
+                <div class="vss-form-element ">
+                    <label for="subIssueId">Specific issue</label>
+                    <select id="subIssueId" name="subIssueId" disabled="">
+                        <option>Please select a topic first</option>
+                    </select>
+                    <span class="error-text"></span>
+                </div>
+                <br />
+                <button disabled id="contactUsContinue">Continue</button>
+            </div>
+            <div id="formSection2" hidden>
+                <h2 class="clear">Describe your case</h2>
+                <div class="vss-form-element long-input">
+                    <label for="subject">Case title</label>
+                    <br />
+                    <input type="text" id="subject" name="subject" maxlength="120">
+                    <span class="error-text"></span>
+                </div>
+                <div class="vss-form-element ">
+                    <label for="message">Please describe the issue</label>
+                    <br />
+                    <textarea id="message" name="message"></textarea>
+                    <span class="error-text"></span>
+                </div>
+                <div class="vss-form-element ">
+                    <label for="upload">(Optional) Attach a file to help us better understand the issue. <span class="plaintext-link" id="whatTypeOfFiles">(What types of files?)</span></label>
+                    <br />
+                    <input class="file-input" type="file" id="upload" name="upload" size="45">
+                    <span class="error-text"></span>
+                    <small>Files have a 4 mb size limit.</small>
+                </div>
+                <br />
+                <button id="contactUsSubmit">Submit</button>
+            </div>
+        </form>
+    </body>
+    <script>
+        var business = document.getElementById("businessGroupId");
+        var issue = document.getElementById("issueId");
+        var subIssue = document.getElementById("subIssueId");
+        var continueButton = document.getElementById("contactUsContinue");
+        business.onchange = function() {
+            issue.innerHTML = '<option>Select a topic</option><option value="272">Accounting</option><option value="26356">Advance Shipment Notification</option><option value="32350">Amazon Business</option><option value="28469">Amazon Marketing Services</option><option value="41">EDI Integration</option><option value="28202">EDI Live (non WEB-EDI)</option><option value="28467">Images and Video</option><option value="32600">Manage My Catalog</option><option value="26352">Product Compliance</option><option value="198">Promotions and Merchandising (CoOp, Vine, SPA, ASAP, Directed Merchandising, etc.)</option><option value="227">Purchase Order Management</option><option value="81">Shipments</option><option value="54">Vendor Central Settings and Account Management</option><option value="29451">Vendor Operational Performance (Chargebacks)</option><option value="31867">Vendor Premium Services</option>';
+            issue.removeAttribute("disabled");
+        };
+        issue.onchange = function() {
+            subIssue.innerHTML = '<option>Select a specific issue</option><option value="32654">A+ Content</option><option value="32655">ACFF Feeds</option><option value="32656">Amazon Packaging Certification</option><option value="32657">Availability change</option><option value="32750">Cost Decrease</option><option value="33900">Cost correction due to item setup error</option><option value="32652">Customer reviews related queries</option><option value="32700">Detail page removal</option><option value="32651">Duplicates</option><option value="32604">Item Detail Page or Buy Button</option><option value="32751">Item update (title, UPC, model #, etc.)</option><option value="32650">MSDS/Supplemental Hazmat Information</option><option value="32605">New Imprint/publisher/brand</option><option value="32601">New Item Set Up and NIS templates</option><option value="32702">ONIX feeds</option><option value="32658">Variation - Twister</option><option value="32653">Wrong categorization</option>';
+            subIssue.removeAttribute("disabled");
+        };
+        subIssue.onchange = function() {
+            continueButton.removeAttribute("disabled");
+        };
+        continueButton.onclick = function() {
+            document.getElementById("formSection1").setAttribute("hidden", "");
+            document.getElementById("formSection2").removeAttribute("hidden");
+        };
+        document.getElementById("contactUsSubmit").onclick = function() {
+            //figure out what this response should be
+        };
+    </script>
+</html>

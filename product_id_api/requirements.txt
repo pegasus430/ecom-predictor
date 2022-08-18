@@ -1,0 +1,6 @@
+flask
+flask-restful
+flask-sqlalchemy
+xlrd
+openpyxl
+uwsgi

@@ -1,0 +1,30 @@
+<purchaseOrder orderDate="2008-09-29">
+  <shipTo country="US">
+    <name>string</name>
+    <street>string</street>
+    <city>string</city>
+    <state>string</state>
+    <zip>1000.00</zip>
+  </shipTo>
+  <billTo country="US">
+    <name>string</name>
+    <street>string</street>
+    <city>string</city>
+    <state>string</state>
+    <zip>1000.00</zip>
+  </billTo>
+  <!--Optional:-->
+  <comment>string</comment>
+  <items>
+    <!--Zero or more repetitions:-->
+    <item partNum="string">
+      <productName>string</productName>
+      <quantity>99</quantity>
+      <USPrice>1000.00</USPrice>
+      <!--Optional:-->
+      <comment>string</comment>
+      <!--Optional:-->
+      <shipDate>2014-09-19</shipDate>
+    </item>
+  </items>
+</purchaseOrder>

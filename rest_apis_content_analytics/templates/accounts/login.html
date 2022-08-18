@@ -1,0 +1,43 @@
+{% extends base_template %}
+{% load i18n %}
+
+{% block page_title %}{% trans "Login" %}{% endblock %}
+
+{% block body %}
+<div style="margin:10px auto 10px auto; width: 400px">
+<div class="span4 offset4" id="loginModal">
+    <div class="modal-body">
+        <div class="well">
+            <div id="main-content" class="group" role="main">
+                <div id="main-inner" class="scroll-pane">
+                    <div class="node-content group">
+                        <article class="node-inner">
+                            <header>
+                                <h1 class="title" id="page-title">{% trans "Login" %}</h1>
+                            </header>
+
+                            <form action="" method="post" accept-charset="utf-8">
+                                {{ form.as_p }}
+                                {% csrf_token %}
+                                <input type="hidden" name="next" value="{{ next|escape }}" />
+                                <input type="submit" value="{% trans "login" %}" />
+                            </form>
+
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="messages-box messages {{ meassage.tags }}">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <span>{{ message }}</span>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- /#main-content -->
+{% endblock %}

@@ -1,0 +1,42 @@
+{
+  "dollargeneral.com": {
+    "sftp_ip_address": "54.175.228.114",
+    "sftp_username": "magento",
+    "sftp_password": "95HBfhx4EX",
+    "sftp_dir": "TODO",
+    "destination_ip": "dollargeneral"
+  },
+  "123stores.com": {
+    "sftp_ip_address": "54.175.228.114",
+    "sftp_username": "magento",
+    "sftp_password": "95HBfhx4EX",
+    "sftp_dir": "TODO",
+    "destination_ip": "123stores"
+  },
+  "samsclub.com": {
+    "ftp_server": "s7ftp1.scene7.com",
+    "ftp_username": "sccam",
+    "ftp_password": "A5s3t*A2a!",
+    "ftp_dir": {
+      "images": "Images_01_FTP",
+      "videos": "Videos_02_FTP"
+    },
+    "qa": {
+      "sftp_ip_address": "sftp1.contentanalyticsinc.com",
+      "sftp_username": "samsclubtest",
+      "sftp_password": "wtpcoF6RwOhWCjMDR",
+      "sftp_dir": "/ebs-sftp/sams_club_test/sams_club_test"
+    }
+  },
+  "my web grocer": {
+    "sftp_ip_address": "securedtransfer.mywebgrocer.com",
+    "sftp_username": "content_analytics",
+    "sftp_password": "A5s3t*A2a!",
+    "qa": {
+      "sftp_ip_address": "sftp1.contentanalyticsinc.com",
+      "sftp_username": "samsclubtest",
+      "sftp_password": "wtpcoF6RwOhWCjMDR",
+      "sftp_dir": "/ebs-sftp/sams_club_test/sams_club_test"
+    }
+  }
+}

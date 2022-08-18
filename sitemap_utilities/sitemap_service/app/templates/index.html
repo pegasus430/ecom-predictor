@@ -1,0 +1,124 @@
+{% extends "dashboard.html" %}
+{% block body %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Created at</td>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Data</td>
+                <td>State</td>
+                <td>Started at</td>
+                <td>Ended at</td>
+                <td>Message</td>
+                <td>Resources</td>
+            </tr>
+         </thead>
+        <tbody>
+            {% for sitemap_request in sitemap_requests.items -%}
+                <tr class="{% if sitemap_request.state == 'error' -%}
+                               bg-danger
+                           {%- elif sitemap_request.state == 'ready' -%}
+                               bg-success
+                           {%- elif sitemap_request.state == 'processing' -%}
+                               bg-warning
+                           {%- endif %}">
+                    <td>{{ sitemap_request.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    <td>{{ sitemap_request.id }}</td>
+                    <td>
+                        {%- if sitemap_request.name -%}
+                            {{ sitemap_request.name }}
+                        {%- endif -%}
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-xs btn-primary" onclick="location.href='{{ url_for('request_data', request_id=sitemap_request.id) }}';">
+                            Check
+                        </button>
+                    </td>
+                    <td>{{ sitemap_request.state }}</td>
+                    <td>
+                        {%- if sitemap_request.started_at -%}
+                            {{ sitemap_request.started_at.strftime('%Y-%m-%d %H:%M:%S') }}
+                        {%- endif -%}
+                    </td>
+                    <td>
+                        {%- if sitemap_request.ended_at -%}
+                            {{ sitemap_request.ended_at.strftime('%Y-%m-%d %H:%M:%S') }}
+                        {%- endif -%}
+                    </td>
+                    <td>
+                        {%- if sitemap_request.message -%}
+                            {{ sitemap_request.message }}
+                        {%- endif -%}
+                    </td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Browse
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li>
+                                    <a href="{{ url_for('request_resources', request_id=sitemap_request.id, resource='results.zip') }}">
+                                        Results
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url_for('request_resources', request_id=sitemap_request.id, resource='failures.csv') }}">
+                                        Failures
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url_for('request_resources', request_id=sitemap_request.id) }}">
+                                        All
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            {%- else %}
+                <tr>
+                    <td colspan="9">No requests</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="9">
+                    <ul class="pagination">
+                        <li>
+                            {% if sitemap_requests.has_prev -%}
+                            <a href="{{ url_for('index', page=sitemap_requests.prev_num) }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                            {%- else -%}
+                            <span aria-hidden="true">&laquo;</span>
+                            {%- endif %}
+                        </li>
+                        {%- for page in sitemap_requests.iter_pages() %}
+                        <li {%- if page == sitemap_requests.page %} class="active"{% endif %}>
+                            {% if page -%}
+                                {%- if page == sitemap_requests.page -%}
+                                <span>{{ page }}</span>
+                                {%- else -%}
+                                <a href="{{ url_for('index', page=page) }}"><span>{{ page }}</span></a>
+                                {%- endif -%}
+                            {%- else -%}
+                            <span>…</span>
+                            {%- endif %}
+                        </li>
+                        {%- endfor %}
+                        <li>
+                            {% if sitemap_requests.has_next -%}
+                            <a href="{{ url_for('index', page=sitemap_requests.next_num) }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                            {%- else -%}
+                            <span aria-hidden="true">&raquo;</span>
+                            {%- endif %}
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

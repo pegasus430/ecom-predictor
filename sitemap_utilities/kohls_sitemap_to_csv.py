@@ -1,0 +1,54 @@
+__author__ = 'root'
+
+'''
+sitemap link: http://www.jcpenney.com/sitemap.xml
+
+<sitemap>
+    <loc>http://www.jcpenney.com/product.xml</loc>
+    <lastmod>2015-09-10</lastmod>
+</sitemap>
+<sitemap>
+    <loc>http://www.jcpenney.com/product2.xml</loc>
+    <lastmod>2015-09-10</lastmod>
+</sitemap>
+'''
+
+import re
+import os
+import time
+import csv
+import requests
+import xml.etree.ElementTree as ET
+
+kohls_sitemap_link = "http://www.kohls.com/sitemap.xml"
+kohls_product_sitemap_xml_links = requests.get(kohls_sitemap_link).text
+kohls_product_sitemap_xml_links = re.findall('<loc>(.*?)</loc>', kohls_product_sitemap_xml_links, re.DOTALL)
+
+product_list = []
+output_dir_path = "/home/mufasa/Documents/Workspace/Content Analytics/Misc/Kohls/products.csv"
+
+for sitemap_xml_link in kohls_product_sitemap_xml_links:
+    snapdeal_sitemap_xml = requests.get(sitemap_xml_link).text
+    product_list.extend(re.findall('<loc>(.*?)</loc>', snapdeal_sitemap_xml, re.DOTALL))
+
+product_list = list(set(product_list))
+
+print len(product_list)
+
+for url in product_list:
+    try:
+        url = url.strip()
+
+        if os.path.isfile(output_dir_path):
+            csv_file = open(output_dir_path, 'a+')
+        else:
+            csv_file = open(output_dir_path, 'w')
+
+        csv_writer = csv.writer(csv_file)
+
+        row = [url]
+        csv_writer.writerow(row)
+        csv_file.close()
+    except:
+        print url
+        continue

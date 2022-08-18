@@ -1,0 +1,148 @@
+Electronics pg 1
+# webcollage & video on v1 page but not seen
+http://www.walmart.com/ip/Soft-Goods-20320-SEAL-TIGHT-Sport-ACTIVE-SEAL-Adult-Short-Arm/28927044
+# walmart.bb tv wc_video=67, video=66 <- not right
+# webcollage & wc_video=1, video=0 on v1 page -> not webcollage; no video seen
+http://www.walmart.com/ip/SANUS-VuePoint-F180C-Full-Motion-TV-Wall-Mount-for-47-70-for-TVs/37402908
+# v1 page with webcollage & video & pdf
+http://www.walmart.com/ip/Sanyo-DP24E14-24-720p-60Hz-Edge-LED-LCD-HDTV/34973880
+#v2 page; wc_video=1, but video_count=0
+http://www.walmart.com/ip/HP-Black-Licorice-15.6-15-r029wm-Laptop-PC-with-Intel-Pentium-N3520-Processor-4GB-Memory-500GB    -Hard-Drive-and-Windows-8.1/36561198
+# wc_video issue
+http://www.walmart.com/ip/Toshiba-75023576-Remote-Control/33944668
+http://www.walmart.com/ip/Lenovo-ThinkPad-S1-Yoga-Intel-Core-i5-4GB-Memory-5-Refurbished/40859967
+# pdf issue
+http://www.walmart.com/ip/Vizio-E420i-A0-42-1080p-120Hz-Class-3.23-ultra-slim-LED-Smart-HDTV/22061194
+http://www.walmart.com/ip/VIZIO-CoStar-Stream-Player-with-Google-TV/23565812
+# desc issue
+http://www.walmart.com/ip/StarTech-StarTech-45Patch7Wh-7-Ft-White-Cat5E-Utp-Patch-Cable/29809637
+http://www.walmart.com/ip/Ihip-New-England-Patriots-Remote-Control-Universal-NFRC01NEP/24903204
+http://www.walmart.com/ip/Microsoft-Surface-RT-Office-Quad-Core-NVIDIA-Tegra-3-64GB-10.6-W8-Tablet-Laptop/40819026
+# prodtour issue and webcollage
+http://www.walmart.com/ip/Acer-Cool-Silver-11.6-Aspire-E3-111-C4J4-Laptop-PC-with-Intel-Celeron-N2930-Quad-Core-Processo    r-4GB-Memory-500GB-Hard-Drive-and-Windows-8.1/37668279
+http://www.walmart.com/ip/HP-Refurbished-Sparkling-Black-15.6-Pavilion-TouchSmart-15-n013dx-Laptop-PC-with-AMD-Elite-A8-    5545M-Quad-Core-Processor-4GB-Memory-Touchscreen-500/35510563
+# desc issue from bug800
+http://www.walmart.com/ip/26182146
+http://www.walmart.com/ip/Simply-Orange-with-Tangerine-100-Juice-Blend-59-fl-oz/24414340
+http://www.walmart.com/ip/Sprite-Lemon-Lime-Soda-6pk/10291609
+http://www.walmart.com/ip/Odwalla-Protein-Monster-Chocolate-Protein-Soy-and-Dairy-Protein-Drink-12-fl-oz/19757369
+# new short & long desc:
+http://www.walmart.com/ip/35940439
+http://www.walmart.com/ip/38069367
+# ingredients in long_desc; repeated not necessary
+http://www.walmart.com/ip/10450462
+http://www.walmart.com/ip/Dynasty-Panko-Japanese-Style-Bread-Crumbs-8-oz/15266147
+# short desc only:
+http://www.walmart.com/ip/36739466
+# no short, only long desc:
+http://www.walmart.com/ip/14262317
+# short & long; no title
+http://www.walmart.com/ip/40712755
+# old style v1; missed ingred
+http://www.walmart.com/ip/12519610
+# old style v1
+http://www.walmart.com/ip/26182146
+# from ch
+http://www.walmart.com/ip/Transcend-MSA370-128-GB-Internal-Solid-State-Drive/39343933
+# with ingredients
+http://www.walmart.com/ip/Earth-Mama-Angel-Baby-Organic-Milkmade-Tea-16-Tea-Bags/26961053
+# bug517
+http://www.walmart.com/ip/Gillette-Custom-Disposables-Ultragrip-10ct/3400
+# bug800
+http://www.walmart.com/ip/36591190
+http://www.walmart.com/ip/38250707
+http://www.walmart.com/ip/15602979
+http://www.walmart.com/ip/15602830
+http://www.walmart.com/ip/Gold-s-Gym-Cycle-Trainer-400-R-Exercise-Bike/38068791
+# bug 1044 v1 page with only short, no bulleted items
+http://www.walmart.com/ip/StarTech-StarTech-45Patch7Wh-7-Ft-White-Cat5E-Utp-Patch-Cable/29809637
+http://www.walmart.com/ip/Ihip-New-England-Patriots-Remote-Control-Universal-NFRC01NEP/24903204
+http://www.walmart.com/ip/Microsoft-Surface-RT-Office-Quad-Core-NVIDIA-Tegra-3-64GB-10.6-W8-Tablet-Laptop/40819026
+# v1 page with emc
+http://www.walmart.com/ip/Gateway-Refurbished-Black-15.6-NE56R41u-Laptop-PC-with-Intel-Dual-Core-B960-Processor-and-Wind    ows-8-Operating-System/24910916
+# 1040 another one missed after fix
+http://www.walmart.com/ip/Personal-3.5-RCA-Portable-High-Quality-Digital-LCD-TV/40066528
+# vi page with short & long repeating
+http://www.walmart.com/ip/Panasonic-PWMSM5V-Mounting-Bracket/40777501
+# v1 page with short & long repeating; also has free shipping in desc
+http://www.walmart.com/ip/Quartet-Value-Kit-Quartet-Infinity-Magnetic-Glass-Marker-Board-QRTG3624W-.../39147883
+http://www.walmart.com/ip/Toshiba-29L1350U-29-720p-60Hz-LED-3.3-ultra-slim-HDTV/24534829
+http://www.walmart.com/ip/20606796
+# rollback
+http://www.walmart.com/ip/17018118
+http://www.walmart.com/ip/12542630
+http://www.walmart.com/ip/15739163
+# not rollback
+http://www.walmart.com/ip/11080079
+http://www.walmart.com/ip/11045844
+# in stores=1; site_online=0; marketplace=0
+http://www.walmart.com/ip/26182146
+http://www.walmart.com/ip/EverStart-Maxx-Group-Size-65-Automotive-Battery/20703125
+http://www.walmart.com/ip/Timber-Ridge-Farms-Scrambled-Egg-Patties-13.5-Oz/10850128
+# in stores=1; site_online=0; marketplace=1
+http://www.walmart.com/ip/Britax-E9LH44L-Pioneer-70-Harness-2-Booster-Car-Seat-Congo/39525313
+# in_stores=1; site_online=1 marketplace=0
+http://www.walmart.com/ip/Britax-Frontier-G1.1-ClickTight-Harness-2-Booster-Car-Seat/39815743
+# in_stores=1; site_online=1 marketplace=1
+http://www.walmart.com/ip/Klein-Tools-Bolt-Bag-Canvas-White-5-Wide-9-Depth-10-Height/21188864
+# in_stores=0; site_online=1; marketplace=1
+http://www.walmart.com/ip/Chicco-Baby-Activity-Walker/12388884
+# in_stores=0; site_online=1; marketplace=0
+http://www.walmart.com/ip/Britax-Parkway-SG-Belt-Positioning-Booster-Car-Seat/33688248
+# in_stores=0; site_online=0 marketplace=0 (not avail near your)
+http://www.walmart.com/ip/Soft-Spot-Rectangle-Cuddler-Pet-Bed-19-Wx15-D-Dogs/22002530
+# in_stores=0; site_online=0 marketplace=0 (out of stock)
+http://www.walmart.com/ip/26967768
+# in_stores=1; site_onine=0 not sure (in limited stores)
+http://www.walmart.com/ip/12519610
+# both owned & marketplace
+http://www.walmart.com/ip/SanDisk-SDSDQUA-064G-A46-Mobile-Ultra-MicroSDXC-64Gb-Class-10/22237720
+00 http://www.walmart.com/ip/Crafter-s-Companion-Eztear-Mega-Roll/24627250
+http://www.walmart.com/ip/Panasonic-KX-TGE245B-Expandable-Digital-Cordless-Answering-System-with-5-Handsets/35788082
+http://www.walmart.com/ip/Samsung-55-1080p-120Hz-LED-Smart-HDTV-UN55H6203AFXZA/36483176
+http://www.walmart.com/ip/INSTEN-Black-Leather-Case-Stand-Cover-AG-Protector-Stylus-Wrap-For-Kindle-Fire-HDX-8.9-2013/39    838374
+http://www.walmart.com/ip/Ibuypower-Inc-NA003-Personal-Computer-Desktop-Core-I5-4460-3.2-Ghz-Ram-8-Gb-Ddr3-Sdram/4253778    1
+http://www.walmart.com/ip/ZBook-15-Mobile-Workstation-ENERGY-STAR-F2P51U/38210757
+# webcollage video; product tour; 360 rot
+http://www.walmart.com/ip/38067903
+http://www.walmart.com/ip/VIZIO-P502ui-B1E-50-4K-Ultra-HD-120Hz-Full-Array-LED-Smart-TV/38506042
+# webcollage video; interactive product tour
+http://www.walmart.com/ip/GE-16-MP-X450-BK/29472142
+# webcollage product tour only
+http://www.walmart.com/ip/Toshiba-Satin-Gold-11.6-Satellite-Radius-11-2-in-1-Laptop-PC-with-Intel-Celeron-N2840-Processo    r-2GB-Memory-Touchscreen-32GB-Hard-Drive-and-Windows/39150762
+http://www.walmart.com/ip/Panasonic-KX-TG6572R-DECT-6.0-Plus-Expandable-Digital-Cordless-Answering-System-with-2-Handset    s-Wine-Red/15407287
+# webcollage 1 video
+http://www.walmart.com/ip/Sony-BDPS3200-WiFi-Blu-ray-Player/35435356
+# webcollage multi video
+http://www.walmart.com/ip/SanDisk-8GB-Class-4-SD-Card/23350708
+http://www.walmart.com/ip/Epson-Expression-Home-XP-310-All-in-One-Printer-Copier-Scanner/24268585
+# webcollage video
+http://www.walmart.com/ip/Toshiba-Silver-13.3-Chromebook-2-PC-with-Intel-Celeron-N2840-Processor-2GB-Memory-16GB-SSD-and    -Chrome-OS/39150766
+# webcollage video, no EMC
+http://www.walmart.com/ip/Saints-Row-IV-Re-Elected-Gat-Out-of-Hell-Launch-Edition-Xbox-One/42496722
+# video, not webcollage
+http://www.walmart.com/ip/Fujifilm-16-MP-S8630/38458127
+# webcollage 360 but labeled as prodtour
+http://www.walmart.com/ip/36060944
+# bug1010 v1 page issues: no webcollage
+http://www.walmart.com/ip/Soft-Goods-20320-SEAL-TIGHT-Sport-ACTIVE-SEAL-Adult-Short-Arm/28927044
+http://www.walmart.com/ip/SANUS-VuePoint-F180C-Full-Motion-TV-Wall-Mount-for-47-70-for-TVs/37402908
+http://www.walmart.com/ip/Acer-Cool-Silver-11.6-Aspire-E3-111-C4J4-Laptop-PC-with-Intel-Celeron-N2930-Quad-Core-Processo    r-4GB-Memory-500GB-Hard-Drive-and-Windows-8.1/37668279
+http://www.walmart.com/ip/HP-Refurbished-Sparkling-Black-15.6-Pavilion-TouchSmart-15-n013dx-Laptop-PC-with-AMD-Elite-A8-    5545M-Quad-Core-Processor-4GB-Memory-Touchscreen-500/35510563
+# bug1010 v1 page issues: webcollage
+http://www.walmart.com/ip/Sanyo-DP24E14-24-720p-60Hz-Edge-LED-LCD-HDTV/34973880
+# bug1010 v1 page issues: webcollage, but missed pdf, emc
+http://www.walmart.com/ip/Vizio-E420i-A0-42-1080p-120Hz-Class-3.23-ultra-slim-LED-Smart-HDTV/22061194
+http://www.walmart.com/ip/VIZIO-CoStar-Stream-Player-with-Google-TV/23565812
+# bug1010 v1 page issues: webcollage with missed emc
+http://www.walmart.com/ip/Gateway-Refurbished-Black-15.6-NE56R41u-Laptop-PC-with-Intel-Dual-Core-B960-Processor-and-Wind    ows-8-Operating-System/24910916
+# bug1014 v2 page, missing video
+http://www.walmart.com/ip/HP-Black-Licorice-15.6-15-r029wm-Laptop-PC-with-Intel-Pentium-N3520-Processor-4GB-Memory-500GB    -Hard-Drive-and-Windows-8.1/36561198
+# v1 page, webcollage content, no desc
+http://www.walmart.com/ip/VuePoint-F18-by-Sanus-Dual-Purpose-Tilting-and-Low-Profile-Wall-Mount-Fits-most-13-to-32-flat-    panel-TVs/12167829
+# 4/27 v1 missed pdf
+http://www.walmart.com/ip/30253464
+# 4/27 v1 missed wc_360
+http://www.walmart.com/ip/27251368
+#4/27 v2 missed video
+http://www.walmart.com/ip/HP-Refurbished-DC5700-Desktop-PC-with-Intel-Core-2-Duo-Processor-4GB-Memory-750GB-Hard-Drive-a    nd-Windows-7-Home-Premium/19534026

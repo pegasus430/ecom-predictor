@@ -1,0 +1,96 @@
+{% extends "dashboard.html" %}
+{% block search %}
+    {% include "search.html" %}
+{% endblock %}
+{% block body %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Product id</td>
+                <td>Last review date</td>
+                <td>Reviews</td>
+                <td>Delete</td>
+                <td>Export</td>
+            </tr>
+         </thead>
+        <tbody>
+            {% for product in products.items -%}
+                <tr>
+                    <td>{{ product._id }}</td>
+                    <td>{{ product.last_review_date.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    <td>
+                        <button type="button" class="btn btn-xs btn-primary" onclick="location.href='{{ url_for('show_reviews', retailer=retailer, product_id=product._id) }}';">
+                            Reviews
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-xs btn-primary" onclick="if (confirm('Are you sure you want to delete all reviews for this product {{ product._id }}?')){location.href='{{ url_for('delete_reviews', retailer=retailer, product_id=product._id) }}'};">
+                            Delete
+                        </button>
+                    </td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Format
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-left">
+                                <li>
+                                    <a onclick="location.href='{{ url_for('export_reviews', retailer=retailer, product_id=product._id, format='jl') }}';">
+                                        JSON Lines
+                                    </a>
+                                </li>
+                                <li>
+                                    <a onclick="location.href='{{ url_for('export_reviews', retailer=retailer, product_id=product._id, format='csv') }}';">
+                                        CSV
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            {%- else %}
+                <tr>
+                    <td colspan="5">No products</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="5">
+                    <ul class="pagination">
+                        <li>
+                            {% if products.has_prev -%}
+                            <a href="{{ url_for('show_products', retailer=retailer, page=products.prev_num) }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                            {%- else -%}
+                            <span aria-hidden="true">&laquo;</span>
+                            {%- endif %}
+                        </li>
+                        {%- for page in products.iter_pages() %}
+                        <li {%- if page == products.page %} class="active"{% endif %}>
+                            {% if page -%}
+                                {%- if page == products.page -%}
+                                <span>{{ page }}</span>
+                                {%- else -%}
+                                <a href="{{ url_for('show_products', retailer=retailer, page=page) }}"><span>{{ page }}</span></a>
+                                {%- endif -%}
+                            {%- else -%}
+                            <span>…</span>
+                            {%- endif %}
+                        </li>
+                        {%- endfor %}
+                        <li>
+                            {% if products.has_next -%}
+                            <a href="{{ url_for('show_products', retailer=retailer, page=products.next_num) }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                            {%- else -%}
+                            <span aria-hidden="true">&raquo;</span>
+                            {%- endif %}
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

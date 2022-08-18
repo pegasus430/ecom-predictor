@@ -1,0 +1,89 @@
+# 2/23 missed noProdImage - fixed
+http://direct.asda.com/george/baby/swimwear/test/GEM361290,default,pd.html
+# missed out of stock - fixed
+http://direct.asda.com/george/Hotpoint-Trolley-Easy-Parquet-SL-B18-AA0-UK---vacuum-cleaner---canister/001586527,default,pd.html
+http://direct.asda.com/george/george-home/goose-feather-down-pillow/002239564,default,pd.html
+# missed pdf  - fixed
+http://direct.asda.com/george/george-home/hostess-6244tk-heated-trolley-teak/001569048,default,pd.html
+http://direct.asda.com/george/Doc-McStuffins-Get-Better-Talking-Mobile-Clinic/000706465,default,pd.html
+http://direct.asda.com/george/Abode-ASVC4001---steam/vacuum-cleaner---upright/001583097,default,pd.html
+# missed video - fixed
+http://direct.asda.com/george/Fisher-Price-Brilliant-Basics-Stroll-Along-Walker/000767398,default,pd.html
+http://direct.asda.com/george/Play-Doh-Ice-Cream-Palour/000734576,default,pd.html
+http://direct.asda.com/george/Fisher-Price-Kick-n-Play-Piano-Gym/000776247,default,pd.html
+# wine missed out of stock, descripton incorrect, features incorrect - fixed
+http://direct.asda.com/george/Stand-Off/BUNWINEMCM3,default,pd.html
+# wine incorrect short & long description - fixed
+http://direct.asda.com/george/McGuigan-Shortlist-Chardonnay-2011/006751400,default,pd.html
+# 2nd one is not a product image; let's not count it - fixed
+http://direct.asda.com/george/george-home/george-home-natural-nesting-baskets/001464457,default,pd.html
+# 3/12 TBV: 1 image; 2nd image is NoImage
+http://direct.asda.com/Bright-Starts-Cozy-Coos-Sweet-Pink/002606138,default,pd.html
+# 3 good image; 1 noImage
+http://direct.asda.com/LEGO-Friends---Olivia%27s-Ice-Cream-Bike---41030/000702755,default,pd.html
+# 1 good image; 2 noImage
+http://direct.asda.com/Ben-n-Holly-Thistle-Castle-Playset/000700606,default,pd.html
+# 2 noImage
+http://direct.asda.com/Baby-Annabell-Dresses-Rompers/000721452,default,pd.html
+# long desc, webcollage & video - fixed
+http://direct.asda.com/george/Breville-VBL062-Blend-Active---blender---white/green/001579681,default,pd.html
+http://direct.asda.com/george/Russell-Hobbs-RHM2064MB---microwave-oven---freestanding---matt-black/001573640,default,pd.html
+# video from webcollage - fixed
+http://direct.asda.com/george/George-Home-Twist-Go-Personal-Blender/001585547,default,pd.html
+# incorrect img count; should be 1 - fixed
+http://direct.asda.com/george/Nepenthe-Altitude-Pinot-Noir-2012/006751386,default,pd.html
+http://direct.asda.com/george/Tsarine-Cuvee-Premium-Brut-NV-Champagne/006749461,default,pd.html
+# re-direct to non product page - fixed
+http://direct.asda.com/george/Tea-Towel-Set/BUNHSW0613A25,default,pd.html
+http://direct.asda.com/george/Green-Faux-Silk-Curtains---Various-Sizes/GreenFauxSilkCurtainsMASTER,default,pd.html
+# should not be out of stock - fixed
+http://direct.asda.com/george/womens/accessories/tickled-pink-tile-print-head-scarf/GEM311855,default,pd.html
+# 2/17 video but not webcollage - fixed
+http://direct.asda.com/george/Bosch-MUM-4-MUM46A1GB---kitchen-machine---550-W---anthracite/001562398,default,pd.html
+# no title; there is title; product name is null - all of wine - fixed
+http://direct.asda.com/george/Extra-Special-Reds-Case-of-Six/BUNWINE1014CC,default,pd.html
+http://direct.asda.com/george/Rosemount-Diamond-Selection-Chardonnay-2013/006735713,default,pd.html
+# a different noProd image - fixed
+http://direct.asda.com/george/george-home/orlando-wardrobe-box-1/001749533,default,pd.html
+# missed description - wine, furniture, womens, lingerie??
+http://direct.asda.com/george/George-Home-Charcoal-Pleated-Curtain-Living-Range/GHSS15CHARCOALPLAINPENCILPLEATSET,default,pd.html
+# 3/10 desc repeated 3x
+http://direct.asda.com/george/Sloane-Sofa-Range/SloaneSofaRange,default,pd.html
+http://direct.asda.com/george/Canti-Sauvignon-Spumante-NV/006744449,default,pd.html
+http://direct.asda.com/george/womens/swimwear/tropical-print-bikini/SET1267,default,pd.html
+# wrong price
+http://direct.asda.com/george/george-home/Airsprung-Pocket-Contour-System-Divan-Bed-King-Size-with-2-Drawer-Storage/001763596,default,pd.html
+# image count
+http://direct.asda.com/george/baby/swimwear/test/GEM361290,default,pd.html
+http://direct.asda.com/george/baby/swimwear/test/GEM361289,default,pd.html
+http://direct.asda.com/George-Home-Yellow-Side-Plate---4-Pack/BUNDIN250414A28,default,pd.html
+http://direct.asda.com/LEGO-Friends---Olivia%27s-Ice-Cream-Bike---41030/000702755,default,pd.html
+# price & image_count
+http://direct.asda.com/George-Home-Black-and-White-Coffee-Canister/001468461,default,pd.html
+# video count
+http://direct.asda.com/george/george-home/brita-marella-cool-orchid-water-filter-jug/001428288,default,pd.html
+http://direct.asda.com/george/kids/tops/snoopy-t-shirt/GEM325336,default,pd.html
+http://direct.asda.com/george/girls/coats-jackets/varsity-baseball-jacket/GEM310854,default,pd.html
+http://direct.asda.com/george/Ever-After-High-Lizzie-Hearts/000704981,default,pd.html
+http://direct.asda.com/george/Britax-BABY-SAFE-Chili-Pepper/002609974,default,pd.html
+http://direct.asda.com/george/men/jumpers-cardigans/boston-crew-merino-wool-jumper/GEM315215,default,pd.html
+http://direct.asda.com/george/george-home/George-Home-100%25-Egyptian-Cotton-Bath-Towel---Cream/002023857,default,pd.html
+http://direct.asda.com/george/womens-lingerie/embroidered-comfort-bra/GEM286924,default,pd.html
+http://direct.asda.com/george/george-home/greenwich-corner-chaise-in-cream/001731480,default,pd.html
+http://direct.asda.com/george/womens/nightwear-slippers/memory-foam-slippers/GEM322117,default,pd.html
+http://direct.asda.com/george/girls/accessories/hello-kitty-bag/GEM305006,default,pd.html
+http://direct.asda.com/george/george-home/wax-lyrical-orange-wax-fill-orange/001746628,default,pd.html
+http://direct.asda.com/george/Remington-Ultimate-Stylist-CI97B25XL---curling-iron-attachment/001587857,default,pd.html
+http://direct.asda.com/george/Airsprung-Sprung-Contour-System-Divan-Bed-in-Black---Single---Various-Storage/AirsprungSprungContourSingleMASTER,default,pd.html
+http://direct.asda.com/george/2-x-Stainless-Steel-Travel-Mugs/BUNHSW0613A49,default,pd.html
+http://direct.asda.com/george/womens/tops/moda-jersey-shirt/GEM297996,default,pd.html
+http://direct.asda.com/george/womens/shoes-boots/leather-ballet-shoes/GEM308676,default,pd.html
+http://direct.asda.com/george/Homemaker-Moustache-Rug/002032117,default,pd.html
+http://direct.asda.com/george/Ever-After-High-Lizzie-Hearts/000704981,default,pd.html
+http://direct.asda.com/Britax-BABY-SAFE-Chili-Pepper/002609974,default,pd.html
+http://direct.asda.com/george/george-home/George-Home-100%25-Egyptian-Cotton-Bath-Towel---Cream/002023857,default,pd.html
+# this one re-directed to no product page
+http://direct.asda.com/Remington-Ultimate-Stylist-CI97B25XL---curling-iron-attachment/001587857,default,pd.html
+http://direct.asda.com/Airsprung-Sprung-Contour-System-Divan-Bed-in-Black---Single---Various-Storage/AirsprungSprungContourSingleMASTER,default,pd.html
+http://direct.asda.com/2-x-Stainless-Steel-Travel-Mugs/BUNHSW0613A49,default,pd.html
+http://direct.asda.com/Homemaker-Moustache-Rug/002032117,default,pd.html

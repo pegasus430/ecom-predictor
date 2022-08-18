@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>Kill SQS servers</h1>
+
+    <p>{% include 'navigation.html' %}</p>
+
+    <p>All datetimes are in <b>UTC</b>. Only last <b>50</b> records shown in the tables below. </p>
+
+    <table cellpadding="20">
+        <tr>
+            <td align="center" valign="top">
+                <h3>sc_production updates (automatic servers kill)</h3>
+                <table cellpadding="10" cellspacing="0" border="1">
+                    <tr>
+                        <th>Datetime</th>
+                        <th>Server kill started</th>
+                        <th>Server kill finished</th>
+                    </tr>
+                    {% for branch_update in branch_updates %}
+                        <tr>
+                            <td>{{ branch_update.when_updated }}</td>
+                            <td>{{ branch_update.serverkill_set.all.0.started }}</td>
+                            <td>{{ branch_update.serverkill_set.all.0.finished|default_if_none:"in progress" }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </td>
+            <td align="center" valign="top">
+                <h3>Manual server kill</h3>
+                <table cellpadding="10" cellspacing="0" border="1">
+                    <tr>
+                        <th>Server kill started</th>
+                        <th>Server kill finished</th>
+                        <th>Initiated by</th>
+                    </tr>
+                    {% for manual_kill in manual_kills %}
+                        <tr>
+                            <td>{{ manual_kill.started }}</td>
+                            <td>{{ manual_kill.finished|default_if_none:"in progress" }}</td>
+                            <td>{{ manual_kill.manual_restart_by }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <form method="POST" action=".">{% csrf_token %}
+            <p><b>You can manually kill all the servers now</b>. The MAX size of the groups will be set to 0.
+                You MUST set it back to 100 using the button below, after all the servers are killed
+                (you can see the current capacity <a href="{% url 'sqs-stats' %}" target="_blank">here</a>:
+                <input type="submit" name="button_kill" value="button_kill" onclick="if(!confirm('ARE YOU SURE YOU WANT TO KILL ALL SERVERS?')) return false;"/>
+            </p>
+            <p><b>If you have killed all the instances, and you want to restart the capacity</b> of the SC
+                autoscale groups, then you have to click this button:
+                <input type="submit" name="button_restore" value="button_restore" onclick="if(!confirm('ARE YOU SURE YOU WANT TO RESTORE CAPACITY?')) return false;"/>
+            </p>
+        </form>
+    </p>
+
+</body>
+</html>

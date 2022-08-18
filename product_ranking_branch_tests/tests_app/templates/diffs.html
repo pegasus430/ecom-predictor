@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.showmore.min.js' %}"></script>
+    <style>
+        .showmore { line-height:18px; }
+        .showmore_content { position:relative; overflow:hidden; }
+        .showmore_trigger { width:100%; height:45px; line-height:45px; cursor:pointer; }
+        .showmore_trigger span { display:block; }
+        .more-info.hidden { display: none; }
+    </style>
+</head>
+<body>
+    <p><a href="{% url 'reports_view' spider=searchterm.report.testrun.spider.name %}">Go to all reports</a></p>
+    <h1>DIFFS</h1>
+    <h3>{{ searchterm.report }}</h3>
+
+    <table cellpadding=10 cellspacing=0 border=1>
+        <tr>
+            <th>Line</th>
+            <th>Field</th>
+            <th>Value 1</th>
+            <th>Value 2</th>
+        </tr>
+        {% for diff in searchterm.diffs %}
+            <tr>
+                <td>{{ diff.line }}</td>
+                <td>{{ diff.diff.0.field }}</td>
+                {% if diff.diff.0.field %}
+                    <td>
+                        <div style="width:400px" class="showmore">{{ diff.diff.0.f1 }}</div>
+                        {% if 'data1' in diff %}
+							<small><a href="#" class="more-info-click">Show data line</a></small>
+							<div class="more-info hidden">{{ diff.data1 }}</div>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div style="width:400px" class="showmore">{{ diff.diff.0.f2 }}</div>
+                        {% if 'data2' in diff %}
+							<small><a href="#" class="more-info-click">Show data line</a></small>
+							<div class="more-info hidden">{{ diff.data2 }}</div>
+                        {% endif %}
+                    </td>
+                {% else %}
+                    <td colspan='2' style="color: blue">
+                        {{ diff }}
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+    <script>
+        $(document).ready(function() {
+             $('.showmore').showMore({
+                  speedDown: 300,
+                  speedUp: 300,
+                  height: '165px',
+                  showText: 'Show more',
+                  hideText: 'Show less'
+             });
+
+            $('.more-info-click').click(function(e){
+                e.preventDefault();
+                $(this).parent().next().toggleClass('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

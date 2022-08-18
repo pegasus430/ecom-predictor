@@ -1,0 +1,16 @@
+﻿sep=,
+"As of Aug 29, 2016"
+"Time Period: From Aug 29, 2016 to Aug 29, 2016"
+"Currency: USD"
+
+"Units shipped","Shipped COGS","Inventory on hand","Sellable on hand cost","Unsellable on hand units","Unsellable on hand cost","Vendor units received","Open PO Qty","Unfilled customer ordered units","Units returned by customers"
+"73","$7,262.81","1,380","$121,551.05","7","$741.44","160","37,954","124","0"
+
+"ASIN","ASIN name","Manufacturer","IOG","ID type","External ID","Product group","Release date","Units shipped","Shipped COGS","Inventory on hand","Sellable on hand cost","Unsellable on hand units","Unsellable on hand cost","Vendor units received","Open PO Qty","Unfilled customer ordered units","Units returned by customers","Category","Subcategory","MFG model number","Catalog number","Replenishment code / Item availability"
+"B00SKURVKY","Wonder Workshop Dash Robot","Wonder Workshop","Amazon (1)","UPC","857793005008","Toys","2015/01/15","26","$3,043.82","693","$81,129.51","6","$702.42","160","15,698","20","0","4500 Learning & Exploration","4580 Robotics","DA01","DA01","Planned Replenishment (PR)"
+"B00QKFFN3I","Wonder Workshop Dash & Dot Robot Wonder Pack","Wonder Workshop","Amazon (1)","UPC","857793005138","Toys","2014/12/16","17","$3,317.04","119","$23,219.28","0","$0.00","0","8,000","62","0","4500 Learning & Exploration","4580 Robotics","WB11","GM-B0119O6IQ0","Planned Replenishment (PR)"
+"B014XDT7JO","Wonder Workshop Dot Robotics Kit","Wonder Workshop","Amazon (1)","UPC","857793005015","Toys","2015/10/01","13","$507.26","278","$10,847.56","1","$39.02","0","8,058","28","0","4500 Learning & Exploration","4580 Robotics","DO01","UNKNOWN","Planned Replenishment (PR)"
+"B014XDSL3C","Wonder Workshop Launcher for Dash Robot","Wonder Workshop","Amazon (1)","UPC","857793005404","Toys","2015/11/05","11","$230.89","130","$2,728.70","0","$0.00","0","6,120","8","0","4500 Learning & Exploration","4580 Robotics","BF01","UNKNOWN","Planned Replenishment (PR)"
+"B00TOVN56C","Wonder Workshop Xylophone for Dash Robot","Wonder Workshop","Amazon (1)","UPC","857793005022","Toys","2015/02/15","4","$109.20","67","$1,829.10","0","$0.00","0","48","3","0","4500 Learning & Exploration","4580 Robotics","XY01","XY01","Planned Replenishment (PR)"
+"B00TOVN59Y","Wonder Workshop Accessories Pack for Dash and Dot Robots","Wonder Workshop","Amazon (1)","UPC","857793005046","Toys","2015/02/15","2","$54.60","40","$1,092.00","0","$0.00","0","6","1","0","4500 Learning & Exploration","4580 Robotics","AC01","AC01","Planned Replenishment (PR)"
+"B00TOVN56W","Wonder Workshop Build Brick Extensions for Dash and Dot Robots","Wonder Workshop","Amazon (1)","UPC","857793005039","Toys","2015/02/15","0","$0.00","53","$704.90","0","$0.00","0","24","2","0","4500 Learning & Exploration","4580 Robotics","BB01","BB01","Planned Replenishment (PR)"

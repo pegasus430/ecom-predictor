@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<title>Matches</title>
+
+<style type="text/css">
+  tr:nth-child(odd) {background: #CCC}
+  tr:nth-child(even) {background: #FFF}
+</style>
+
+</head>
+
+
+<body>
+
+<div class=page>
+  <h4>Do they match?</h4>
+  
+<table class="frames">
+<!--   <tr>
+  <td>{{matches[0]}}</td><td>{{matches[1]}}</td>
+  </tr>
+ -->  
+ <tr style="background: #FFF">
+  <td><iframe width="750" height="475" src="/page/{{matches[0]}}"></iframe></td>
+  <td><iframe width="750" height="475" src="/page/{{matches[1]}}"></iframe></td>
+  </tr>
+</table>
+
+<br/>
+
+<form action="/workbench" method="Post">
+
+<table>
+
+<tr>
+
+<td>  <b>  Are these the same product? </b> </td>
+<td>    <label> <input type="radio" name="product" value="yes">Yes </label> </td>
+<td>    <label> <input type="radio" name="product" value="no">No </label> </td>
+
+</tr>
+
+<tr> 
+    <td> Does the manufacturer/brand match? </td>
+    <td> <label> <input type="radio" name="manufacturer" value="yes">Yes </label> </td>
+    <td> <label> <input type="radio" name="manufacturer" value="no">No </label> </td>
+</tr>
+<tr> 
+    <td> Does the main product image match (is the same product depicted, with only minor differences)? </td>
+    <td> <label> <input type="radio" name="image" value="yes">Yes </label> </td>
+    <td> <label> <input type="radio" name="image" value="no">No </label> </td>
+</tr>
+<tr> 
+    <td> Does the product name match (is it fairly similar)? </td>
+    <td> <label> <input type="radio" name="name" value="yes">Yes </label> </td>
+    <td> <label> <input type="radio" name="name" value="no">No </label>  </td>
+</tr>
+
+<!-- <tr> 
+    <td> Are the categories of the 2 products analogous/similar? </td>
+    <td> <label> <input type="radio" name="category" value="yes">Yes </label> </td>
+    <td> <label> <input type="radio" name="category" value="no">No </label> </td>
+</tr>
+ -->
+<tr>
+<input type="hidden" name="url1" value="{{matches[0]}}">
+<input type="hidden" name="url2" value="{{matches[1]}}">
+</tr>
+<tr>
+<td></td>
+<td colspan="2"> <input style="height:50px;width:200px" type="submit" value="Next >>" href="/workbench"> </td>
+</tr>
+</form>
+
+<table>
+
+</div>
+</body>
+</html>

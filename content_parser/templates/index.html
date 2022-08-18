@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Import</title>
+</head>
+<body>
+    <h3>Import configuration</h3>
+    <ul>
+        {% for company in companies %}
+            <li><a href="?company={{ company }}">{{ company }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <form method="POST" action="/"  enctype="multipart/form-data">
+        <div style="border-style: solid; border-width: 1px;">
+            <div>
+                SFTP config:
+                <p>
+                    <input type="text"
+                           name="sftp_server"
+                           style="width: 300px;"
+                           value="{% if company_config %}{{ company_config['sftp']['server'] }}{% endif %}">
+                    Server
+                </p>
+                <p>
+                    <input type="text"
+                           name="sftp_user"
+                           style="width: 300px;"
+                           value="{% if company_config %}{{ company_config['sftp']['user'] }}{% endif %}">
+                    User
+                </p>
+                <p>
+                    <input type="text"
+                           name="sftp_password"
+                           style="width: 300px;"
+                           value="{% if company_config %}{{ company_config['sftp']['password'] }}{% endif %}">
+                    Password
+                </p>
+                <p>
+                    <input type="text"
+                           name="sftp_dir"
+                           style="width: 300px;"
+                           value="{% if company_config %}{{ company_config['sftp']['dir'] }}{% endif %}">
+                    Dir
+                </p>
+            </div>
+            <div>
+                Or select file:
+                <p><input type="file" name="sftp_file"></p>
+            </div>
+        </div>
+        <div style="border-style: solid; border-width: 0px 1px 1px 1px;">
+            Import config:
+            <p>
+                <select style="width: 315px;" name="parser">
+                    {% for parser in parsers %}
+                        <option value="{{ parser }}">{{ parser }}</option>
+                    {% endfor %}
+                </select>
+                Parser
+            </p>
+            <p>
+                <select style="width: 315px;" name="import_type">
+                    {% for it in import_types %}
+                        <option value="{{ it.0 }}">{{ it.1 }}</option>
+                    {% endfor %}
+                </select>
+                Import type
+            </p>
+        </div>
+        <div style="border-style: solid; border-width: 0px 1px 1px 1px;">
+            Endpoint config:
+            <p>
+                <input type="text"
+                       name="endpoint_url"
+                       style="width: 300px;"
+                       value="{% if company_config %}{{ company_config['endpoint']['url'] }}{% endif %}">
+                Url
+            </p>
+            <p>
+                <input type="text"
+                       name="endpoint_username"
+                       style="width: 300px;"
+                       value="{% if company_config %}{{ company_config['endpoint']['username'] }}{% endif %}">
+                Username
+            </p>
+            <p>
+                <input type="text"
+                       name="endpoint_password"
+                       style="width: 300px;"
+                       value="{% if company_config %}{{ company_config['endpoint']['password'] }}{% endif %}">
+                Password
+            </p>
+            <p>
+                <input type="text"
+                       name="endpoint_customer"
+                       style="width: 300px;"
+                       value="{% if company_config %}{{ company_config['endpoint']['customer'] }}{% endif %}">
+                Customer
+            </p>
+        </div>
+        <div>
+            <input type="submit" name="submit">
+        </div>
+    </form>
+</body>
+</html>

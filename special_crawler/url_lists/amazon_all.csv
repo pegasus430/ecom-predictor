@@ -1,0 +1,79 @@
+# reviews issue1041
+http://www.amazon.com/Centon-Electronics-Florida-University-IPADMC-FSU/dp/B00ILILPD4
+http://www.amazon.com/Fujitsu-FPCPN18AP-Replacement-Stylus-5-Pack/dp/B004Y97SOY
+http://www.amazon.com/VEXTRA-V621BW-Solid-Copper-Coaxial/dp/B0015ZHOC6
+http://www.amazon.com/67V-3-Function-Control-Polished-Controls/dp/B00155ZC0M
+# with aplus
+http://www.amazon.com/Epson-XP-310-Wireless-Printer-Scanner/dp/B00FTG73SC
+http://www.amazon.com/Fujifilm-X100T-Digital-Camera-Silver/dp/B00NF6ZGY6
+http://www.amazon.com/Toshiba-CB35-B3330-13-3-Inch-Chromebook-2/dp/B00N99FV76
+# no aplus
+http://www.amazon.com/gp/product/B00OOQSM5G
+http://www.amazon.com/dp/B00DM2XN1G
+http://www.amazon.com/355-15-6%2522-LED-Notebook-DVD-Writer/dp/B00TVB0L6C
+http://www.amazon.com/StarTech-com-MXT101HQ_150-150-Feet-Resolution-Extension/dp/B00005101Q
+http://www.amazon.com/Filter-Pitcher-Replacement-Filters-Packaging/dp/B00SG5RDOW
+http://www.amazon.com/Margaritaville-Audio-MIX2-MACAW-Fidelity-Earbuds/dp/B00JR6HZEC
+http://www.amazon.com/iFrogz-IFLTRC-BL0-Little-Rockers-Headphones/dp/B00KIVJACK
+http://www.amazon.com/Link-Depot-Ethernet-Networking-C6M-3-RDB/dp/B001F1BCLY
+http://www.amazon.com/Tripp-Lite-P142-000-UP-Adapter-Coupler/dp/B005GZRVJM
+http://www.amazon.com/Genuine-Joe-Anti-Fatigue-Nitrile-10-Feet/dp/B001ASH1TE
+# issue 5328
+# ebook
+http://www.amazon.com/gp/product/B00P5557EE
+# instant video
+http://www.amazon.com/My-Little-Pony-Equestria-Girls/dp/B00ECU56SK
+http://www.amazon.com/Trident-Case-Electra-Wireless-Charging/dp/B00HYPC6M4
+http://www.amazon.com/Joanie-Loves-Chachi-Scott-Baio/dp/B00005JOED
+http://www.amazon.com/Facts-Life-Season-9/dp/B001JAHS7I
+http://www.amazon.com/Beautyrest-Control-Classic-Memory-Pillow/dp/B00N0IS5RO
+http://www.amazon.com/10-Strawberry-Street-Square-Dinner/dp/B00N0FRMN0
+http://www.amazon.com/Delta-Enterprise-Nursery-Storage-Barely/dp/B00CYKBKDU
+http://www.amazon.com/Delta-Count-Nursery-Organizer-Beige/dp/B007ZZCR6I
+http://www.amazon.com/Duracell-100-AAA-Batteries/dp/B009R65GJI/ref=cm_cr_pr_product_top
+# site_online_out_of_stock=0
+http://www.amazon.com/Sterling-Rose-Gold-Flashed-Pendant-Necklace/dp/B00HQAHLE0
+# 3/18 wrong price
+http://www.amazon.com/Kindle-Glare-Free-Touchscreen-Display-Wi-Fi/dp/B00I15SB16
+# currently unavailable: site_online_out_of_stock=1
+http://www.amazon.com/Whatman-6789-0402-Puradisc-Syringe-Maximum/dp/B000FMUHGU
+http://www.amazon.com/Smooth-Fitness-9-65-Treadmill-Model/dp/B00G8UIYHC
+http://www.amazon.com/Facts-Life-Season-9/dp/B001JAHS7I
+http://www.amazon.com/MMS-Blank-Face-Bicycle-Cards/dp/B00ME5SRDQ
+# marketplace=1 market_place_seller = ["cyber monday store"]; marketplace_price=[12.99] 
+# 3/18 missed marketplace sellers & prices & info
+http://www.amazon.com/Customize-Frozen-Snowman-iphone-JN5S-1996/dp/B00IFXOHTE
+# marketplace=1 market_place_seller=["zappyales", "binkieMelane", "candelaNetwork"]; marketplace_price=[33.00, 57.99, 91.89]
+http://www.amazon.com/Oakland-Raiders-62-Inch-Double-Umbrella/dp/B003NGP4NG
+# marketplace (60 sellers, pls list)
+http://www.amazon.com/Disney-Frozen-Olaf-Cuddle-Pillow/dp/B00FW0VYAS
+# marketplace (35 sellers, pls list)
+http://www.amazon.com/gp/product/B0095PZHPE
+# marketplace (7 sellers, pls list)
+http://www.amazon.com/Minn-Kota-1810285-Talon-Silver-White/dp/B00A8OL444
+# variation of marketplace: available from these sellers; marketplace (1 seller)
+# 3/18 got marketplace sellers, but no price and other marketplace info
+http://www.amazon.com/Impact-Gel-Worlds-Greatest-Sticky/dp/B00JF144Y8
+http://www.amazon.com/Princess-Girls-Toddler-Frozen-Pajama/dp/B00LAF0R2U
+http://www.amazon.com/For-All-Mankind-Relaxed-Straight/dp/B00AAJDTNQ
+http://www.amazon.com/Kindle-Glare-Free-Touchscreen-Display-Wi-Fi/dp/B00I15SB16
+# review
+http://www.amazon.co.uk/ROTARY-TOOL-AND-ACCESSORIES-SET/dp/B007VY7V6E/ref=sr_1_5?ie=UTF8&qid=1416873342&sr=8-5&keywords=maplin
+http://www.amazon.co.uk/MICROSCOPE-1-3MP-DIGITAL-VIDEO-CAMERA/dp/B008CQWMTG/ref=sr_1_10?ie=UTF8&qid=1416873342&sr=8-10&keywords=maplin
+# descr
+http://www.amazon.co.uk/PIECE-SOLDERING-SOLDER-REPAIR-TOOL/dp/B008KZSFZY/ref=sr_1_11?ie=UTF8&qid=1416873342&sr=8-11&keywords=maplin
+http://www.amazon.co.uk/TEMPERATURE-CONTROLLED-SOLDER-STATION-IRON/dp/B003HLP9JQ/ref=sr_1_9?ie=UTF8&qid=1416873342&sr=8-9&keywords=maplin
+http://www.amazon.co.uk/BATTERY-PACK-MAPLIN-EXTRA-LONG/dp/B009150F46/ref=sr_1_7?ie=UTF8&qid=1416873342&sr=8-7&keywords=maplin
+http://www.amazon.com/Happy-From-Despicable-Me-2/dp/B00IOVH8AW/ref=zg_1
+# marketplace with sellers
+http://www.amazon.co.uk/Sony-DSCHX50-Compact-Digital-Camera-Black/dp/B00CH08M0G
+http://www.amazon.co.uk/Garmin-Forerunner-Multisport-Dynamics-Connected/dp/B00O43VCVA
+http://www.amazon.co.uk/AA-Automobile-Association-Pouch-First/dp/B005EXOQGC
+http://www.amazon.co.uk/Garmin-Vivosmart-Activity-Tracker-Notification-Black/dp/B00N7MGPES
+# sold by amazonuk & available from marketplace
+http://www.amazon.co.uk/GoldieBlox-and-the-Dunk-Tank/dp/B00HX9GD5W
+http://www.amazon.co.uk/Vuzix-1200DX-Digital-Pocket-Cinema-Black/dp/B00HJXINMS
+# sold by amazonuk & no marketplace
+http://www.amazon.co.uk/Runtastic-RUNRFA1-Safety-Armband/dp/B00IGSAFJY
+# item out of stock
+http://www.amazon.co.uk/dp/B00N4OOPDW

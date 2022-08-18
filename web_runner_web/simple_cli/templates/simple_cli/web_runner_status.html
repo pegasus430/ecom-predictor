@@ -1,0 +1,107 @@
+{% load dictionary_extras %}
+
+<html>
+    <head>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        {% for project in scrapyd_projects %}
+        <script type="text/javascript">
+          google.load("visualization", "1", {packages:["corechart"]});
+          google.setOnLoadCallback(drawChart);
+          function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+              ['Queue', 'tasks'],
+              {% for proj_queue in queues|access:project %}
+              ['{{proj_queue}}',     {{queues|access:project|access:proj_queue}}],
+              {% endfor %}
+            ]);
+
+            var options = {
+              title: '{{project}} queue',
+              pieSliceText: 'value',
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_{{project}}'));
+
+            chart.draw(data, options);
+            }
+        </script>
+        {% endfor %}
+
+        <script type="text/javascript">
+          google.load("visualization", "1", {packages:["corechart"]});
+          google.setOnLoadCallback(drawChart);
+          function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+              ['Queue', 'tasks'],
+              {% for total_queue in summarized_queue %}
+              ['{{total_queue}}', {{summarized_queue|access:total_queue}}],
+              {% endfor %}
+            ]);
+
+            var options = {
+              title: 'Summary queue',
+              pieSliceText: 'value',
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_summary'));
+
+            chart.draw(data, options);
+            }
+        </script>
+
+    </head>
+    <body>
+        <h1>Web Runner status page</h1>
+        
+        <table>
+            <tr>
+                <td>
+                    Web Runner Status: {{webRunner}}
+                    <br>
+                    Scrapyd alive: {{scrapyd_alive}}
+                    <br>
+                    Scrapyd operational: {{scrapyd_operational}}
+                    <br>
+                    Queue status: {{queue_status}}
+                </td>
+                <td>
+                    <div id="piechart_summary" style="width: 600px; height: 250px;"></div>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <br>
+        Scrapyd projects and spiders:
+        <table>
+            <tr>
+                <td>
+                    <ul>
+                        {% for project in scrapyd_projects %}
+                        <li>{{ project }}:
+                            <ul>
+<!--
+                                {% for aa in queues|access:project %}
+                                   {{aa}}: {{queues|access:project|access:aa}}
+                                {% endfor %}
+-->
+                                {% for spider in spiders|access:project %} 
+                                <li> {{ spider }} </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    <div id="piechart_{{project}}" style="width: 600px; height: 250px;"></div>
+                </td>
+                {% endfor %}
+            </tr>
+        <table>
+        <br>
+        <br>
+        <br>
+    </body>
+</html>

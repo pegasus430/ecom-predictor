@@ -1,0 +1,74 @@
+{
+  "pepsico": {
+    "sftp": {
+      "server": "sftp1.contentanalyticsinc.com",
+      "user": "pepsico",
+      "password": "fGXuU2pW0kTpdrXU",
+      "dir": "pepsico/masterdata/import"
+    },
+    "cron": {
+      "schedule": "0 7 * * *",
+      "enabled": true
+    },
+    "endpoint": {
+      "url": "https://pepsico-test.contentanalyticsinc.com/api/import",
+      "username": "api@cai-api.com",
+      "password": "jEua6jLQFRjq8Eja",
+      "customer": "Master Data"
+    }
+  },
+  "pepsico_sams": {
+    "sftp": {
+      "server": "sftp1.contentanalyticsinc.com",
+      "user": "pepsico",
+      "password": "fGXuU2pW0kTpdrXU",
+      "dir": "pepsico/masterdata/import"
+    },
+    "cron": {
+      "schedule": "0 7 * * *",
+      "enabled": false
+    },
+    "endpoint": {
+      "url": "https://pepsico-test.contentanalyticsinc.com/api/import",
+      "username": "api@cai-api.com",
+      "password": "jEua6jLQFRjq8Eja",
+      "customer": "Master Data"
+    }
+  },
+  "levis": {
+    "sftp": {
+      "server": "sftp1.contentanalyticsinc.com",
+      "user": "levis",
+      "password": "sEQSgHIcErR3",
+      "dir": "levis/masterdata/import"
+    },
+    "cron": {
+      "schedule": "0 7 * * *",
+      "enabled": false
+    },
+    "endpoint": {
+      "url": "",
+      "username": "",
+      "password": "",
+      "customer": ""
+    }
+  },
+  "abbott": {
+    "sftp": {
+      "server": "54.175.228.114",
+      "user": "abbott-1",
+      "password": "d63pxGNWbtErVMXC",
+      "dir": "/ebs-sftp/abbott-1"
+    },
+    "cron": {
+      "schedule": "0 23 * * 1",
+      "enabled": true
+    },
+    "endpoint": {
+      "url": "https://pepsico-test.contentanalyticsinc.com/api/import",
+      "customer": "Master Data",
+      "username": "api@cai-api.com",
+      "password": "jEua6jLQFRjq8Eja"
+    }
+  }
+}

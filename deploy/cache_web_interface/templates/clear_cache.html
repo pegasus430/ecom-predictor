@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Clear cache DB</title>
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <h2>{{ message }}</h2><br/>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<form action="" method="post">
+    <div>
+        <div><strong>Select data to be removed from the cache DB:</strong></div>
+        {% for k, v in fields.items() %}
+            <div>
+                <label>
+                    <input type="checkbox" name="{{ k }}">
+                    {{ v.0 }}
+                </label>
+            </div>
+        {% endfor %}
+    <button type="submit">Clear</button>
+    </div>
+</form>
+
+</body>
+</html>

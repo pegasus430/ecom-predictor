@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Sqs and cache stats</title>
+    <style type="text/css">
+        ul.inline > li{
+            display: inline;
+            list-style-type: none;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <header>
+        <ul class="inline">
+            <li><a href="/list_s3">View Bucket</a></li>
+            <li><a href="/get_s3_file">Download s3 file</a></li>
+            <li><a href="/autoscale_history">Autoscale history</a></li>
+            <li><a href="/jobs_history">Jobs History</a></li>
+            <li><a href="/requests_history">Request History</a></li>
+            <li><a href="/task_execute_time">Task Execute Time</a></li>
+            <li><a href="/killer">Killer logs</a></li>
+            <li><a href="/settings">Cache settings</a></li>
+            <li><a href="/clear_cache">Clear cache</a></li>
+            <li><a href="/common-settings">Common Settings</a></li>
+        </ul>
+    </header>
+</div>
+
+<div>
+    <h3>Sqs stats</h3>
+    <ul>
+        <li>
+            Working instances:  {{ running_instances }}
+            <ul>
+                {% for k, v in running_instances_info.items() %}
+                    <li>{{ k }} - {{ v }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li>Today started instances: {{ today_instances }}</li>
+        <li>
+            Today jobs: {{ today_jobs.term + today_jobs.url }} jobs ({{ today_jobs.term }} search terms, {{ today_jobs.url }} product URLs)
+            <a href="#" onclick="javascript: toggle_jobs_metrics(event, this);">Show</a>
+            <ul hidden="hidden">
+                {% for server, server_metrics in today_jobs.servers.items() %}
+                    <li>
+                        {{ server }}: {{ server_metrics.url + server_metrics.term }} jobs ({{ server_metrics.term }} search terms, {{ server_metrics.url }} product URLs)
+                        <ul>
+                            {% for scrapper, scrapper_metrics in server_metrics.scrappers.items() %}
+                                <li>{{ scrapper }}: {{ scrapper_metrics.term + scrapper_metrics.url }} jobs ({{ scrapper_metrics.term }} search terms, {{ scrapper_metrics.url }} product URLs)</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% else %}
+                    <li style="list-style: none;">Data was not found.</li>
+                {% endfor %}
+            </ul>
+        </li>
+	        <li>
+            Today jobs by site:
+	    <a href="#" onclick="javascript: toggle_jobs_metrics(event, this);">Show</a>
+            <ul hidden="hidden">
+                {% if today_jobs_by_site.term and today_jobs_by_site.url %}
+                <li>
+                    Search Terms:
+                    <ul>
+                        {% for site, value in today_jobs_by_site.term.items() %}
+                            <li>{{ site }}: {{ value }}</li>
+                        {% else %}
+                            <li style="list-style: none;">Data was not found.</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li>
+                    URLs:
+                    <ul>
+                        {% for site, value in today_jobs_by_site.url.items() %}
+                            <li>{{ site }}: {{ value }}</li>
+                        {% else %}
+                            <li style="list-style: none;">Data was not found.</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% else %}
+                    <li style="list-style: none;">Data was not found.</li>
+                {% endif %}
+            </ul>
+        </li>
+        <li>
+            Today executed tasks: {{ today_executed_tasks }}
+            <ul>
+                <li>Search terms - {{ completed_stats.term_total }}</li>
+                <li>Product urls - {{ completed_stats.url_total }}</li>
+            </ul>
+        </li>
+        <li>Today requests count: {{ today_requests_count }}</li>
+        <li>Task executed avg time for last hour: {{ last_hour_executed_tasks_time_avg|round(2) }} sec</li>
+        <li>Last hour executed tasks: {{ last_hour_executed_tasks }}</li>
+        <li>Task left in queues: {{ left_tasks_total }}
+            <ul>
+                {% for k, v in left_tasks %}
+                    <li>{{ k }} - {{ v }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li>Avg executed tasks per hour: {{ avg_hour_task }}</li>
+        <li>
+            Tasks statistics:
+            <ul>
+                {% for k, v in hourly_tasks_stats.items() %}
+                    <li>{{ k }} hours - {{ v }} tasks</li>
+                {% endfor %}
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div>
+    <h3>Cache stats</h3>
+    <ul>
+        <li>Memory used: {{ used_memory }}</li>
+        <li>Items in cache: {{ items_in_cache }}</li>
+        <li>URL responses, returned from cache: unique {{ responses_from_cache_url.0 }}, total {{ responses_from_cache_url.1 }}</li>
+        <li>TERM responses, returned from cache: unique {{ responses_from_cache_term.0 }}, total {{ responses_from_cache_term.1 }}</li>
+        <li>
+            Most popular URL items for today:
+            <ul>
+                {% for k, v in cache_most_popular_url %}
+                    <li>{{ k }} - {{ v }} times</li>
+                {% else %}
+                    <li>No items</li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li>
+            Most popular TERM items for today:
+            <ul>
+                {% for k, v in cache_most_popular_term %}
+                    <li>{{ k }} - {{ v }} times</li>
+                {% else %}
+                    <li>No items</li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li>
+            Cache usage statistics:
+            <ul>
+                <li>total TERM tasks executed: {{ completed_stats.term_total }}</li>
+                <li>TERM tasks, returned from cache: {{ completed_stats.term_cached }} ({{ completed_stats.term_percent }}%)</li>
+                <li>total URL tasks executed: {{ completed_stats.url_total }}</li>
+                <li>URL tasks, returned from cache: {{ completed_stats.url_cached }} ({{ completed_stats.url_percent }}%)</li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div>
+    <h3>
+        Urgent queue stats
+    </h3>
+    <ul>
+        <li>Minimum time in queue: {{ urgent_stats.0 }}s</li>
+        <li>Maximum time in queue: {{ urgent_stats.1 }}s</li>
+        <li>Average time in queue: {{ urgent_stats.2 }}s</li>
+        <li>Number of items that remained in queue more than 1 hour: {{ urgent_stats.3 }}</li>
+        <li>Total records: {{ urgent_stats.4 }}</li>
+    </ul>
+</div>
+
+<div>
+    <h3>
+        Failed tasks
+    </h3>
+    <ul>
+        {% for k, v in failed_tasks.items() %}
+            <li>{{ k }} ({{ v }} times)</li>
+        {% else %}
+            <li>No failed tasks for today</li>
+        {% endfor %}
+    </ul>
+</div>
+
+</body>
+<script type="text/javascript">
+    var toggle_jobs_metrics = function(event, el){
+        event.preventDefault();
+        var ul = el.nextSibling.nextSibling;
+        switch (el.text){
+            case 'Show':
+                el.text = 'Hide';
+                ul.hidden = false;
+                break;
+            case 'Hide':
+                el.text = 'Show';
+                ul.hidden = true;
+                break;
+            default:
+                alert('Error!');
+                break;
+        }
+    };
+</script>
+</html>

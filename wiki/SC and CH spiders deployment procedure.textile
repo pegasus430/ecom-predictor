@@ -1,0 +1,33 @@
+h1. 0. **Developers should not merge anything to master or production by themselves**
+
+1. When developer starts working on SC or CH ticket, he/she should create local dev branch from master branch with name which includes Jira ticket number.
+
+2. When all fixes being implemented and tested locally (if possible), developer should push dev branch to the repo and update Jira ticket with a comment indicating dev branch name, and change status to resolved/review.
+
+3. Ticket will be tested by assigned QA.
+
+4. If everything is ok, a ticket will be returned to "in progress" status with a comment indicating everything is ok and fixes are ready for deploy.
+
+5. Then developer should create pull request for dev branch to master, and add the comment to ticket indicating pull request url. 
+
+6. Then developer should write message to appropriate Slack chat (ch-merge-deploy or sc-merge-deploy) in the following format:
+
+pull request url
+Jira ticket url
+Ticket priority, for example, "High"
+
+7. Once per day around 20:00-23:00 UTC on working days, lead dev will do code review for each pull request.
+
+8. If everything is ok, lead QA will merge pull requests to master branch.
+
+8a. For CH tickets, once pull request has been merged to master, dev should add comment to ticket indicating this and change status to 'resolved-review'.
+
+9. In a case of merge conflicts during merging to master, assigned dev will be asked to fix conflicts locally (generally done by merging master INTO dev branch locally and fixing conflicts manually if needed) and update the branch and pull request. Depending on ETA for solving conflicts, ticket deployment may be moved to next day.
+
+9a. **Only for SC tickets.**
+Lead QA will merge master to sc_production branch.
+
+9a. **Only for CH tickets.**
+**Once QA has approved ticket on master, dev must add another comment in chat indicating ticket is ready for deploy.** Lead dev will check merge commit sha for each pull request and then perform cherry-pick of said commits to production.
+
+10. Automatic SC deploy: see https://bitbucket.org/dfeinleib/tmtext/wiki/Automatic%20servers%20kill

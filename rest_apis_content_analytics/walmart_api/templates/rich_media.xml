@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RichMediaFeed xmlns="http://walmart.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://walmart.com/ RichMediaFeed.xsd ">
+  <RichMediaFeedHeader>
+    <version>2.1.1</version>
+    <requestId>0</requestId>
+    <requestBatchId>0</requestBatchId>
+    <feedDate>2018-01-01T00:00:00</feedDate>
+    <mart>WALMART_US</mart>
+  </RichMediaFeedHeader>
+  <RichMedia>
+    <productIdentifiers>
+      <productIdentifier>
+        <productIdType>ITEMID</productIdType>
+        <productId>{{ item_id }}</productId>
+      </productIdentifier>
+    </productIdentifiers>
+    <Modules processMode="{{ mode }}">
+      <marketing-content provider="Content Analytics">
+        <html-content><![CDATA[{{ marketing_content|safe }}]]></html-content>
+      </marketing-content>
+    </Modules>
+  </RichMedia>
+</RichMediaFeed>

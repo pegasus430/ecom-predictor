@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Convertor UI</title>
+    <style>
+        body {
+            padding: 0 10px;
+        }
+        form > div {
+            padding: 6px 0;
+        }
+        label {
+            display: inline-block;
+            width: 200px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <h2>All to data converter UI (MC)</h2>
+    <form method='POST' enctype="multipart/form-data">
+        <div>
+            <label for="input_type">Input type : </label>
+            <select id="input_type" name="input_type">
+                <option value="amazon">Amazon</option>
+                <option value="template">Template</option>
+            </select>
+        </div>
+        <div>
+            <label for="output_type">Output type : </label>
+            <select id="output_type" name="output_type">
+                <option value="walmart">Walmart</option>
+                <option value="googlemanufacturer">Google Manufacturer</option>
+            </select>
+        </div>
+        <div>
+            <label>Input File : </label>
+            <input type="file" name="input_file">
+        </div>
+        <div>
+            <label>Product ID mapping file : </label>
+            <input type="file" name="mapping_file">
+        </div>
+        <div>
+            <label>CAIDs file : </label>
+            <input type="file" name="caids_file">
+        </div>
+        <div>
+            <label>Server name : </label>
+            <input type="text" name='server'>
+        </div>
+        <div>
+            <label></label>
+            <button type="submit">Convert</button>
+        </div>
+    </form>
+</body>
+</html>

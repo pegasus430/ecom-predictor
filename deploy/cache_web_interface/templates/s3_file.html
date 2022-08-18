@@ -1,0 +1,12 @@
+<html>
+<head>Download S3 file</head>
+<body>
+    <form action="" method="get">
+        <input type="text" placeholder="S3 file name" name="file">
+        <input type="submit" value="Download">
+    </form>
+    {% if msg %}
+        <b>{{ msg }}</b>
+    {% endif %}
+</body>
+</html>

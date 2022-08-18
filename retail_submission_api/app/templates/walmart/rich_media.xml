@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RichMediaFeed xmlns="http://walmart.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://walmart.com/ RichMedia.xsd ">
+    <RichMediaFeedHeader>
+        <version>2.1</version>
+        <requestId>12345678</requestId>
+        <requestBatchId>9876543</requestBatchId>
+        <feedDate>{{ feed_date }}</feedDate>
+    </RichMediaFeedHeader>
+    {% for product in products %}
+    <RichMedia>
+        <productIdentifiers>
+            <productIdentifier>
+                <productIdType>UPC</productIdType>
+                <productId>{{ product.product_id }}</productId>
+            </productIdentifier>
+        </productIdentifiers>
+        <ProductInfo>
+            <shortDescription>{{ product.short_description|e }}</shortDescription>
+        </ProductInfo>
+        <Modules>
+            <videos>
+                {% for video in product.videos %}
+                <video provider="{{ video.provider|e }}">
+                    <title>{{ video.title|e }}</title>
+                    <description></description>
+                    <language>en-US</language>
+                    <sources>
+                        <source>
+                            <url>{{ video.url }}</url>
+                            <width>{{ video.width }}</width>
+                            <height>{{ video.height }}</height>
+                            <format>{{ video.format }}</format>
+                            <screen>computer</screen>
+                            <thumbnail>
+                                {% if video.thumbnail_url %}
+                                <url>{{ video.thumbnail_url }}</url>
+                                <width>{{ video.thumbnail_width }}</width>
+                                <height>{{ video.thumbnail_height }}</height>
+                                {% endif %}
+                            </thumbnail>
+                        </source>
+                    </sources>
+                    <duration>{{ video.duration }}</duration>
+                    <likes>0</likes>
+                    <views>0</views>
+                    <tags></tags>
+                </video>
+                {% endfor %}
+            </videos>
+        </Modules>
+    </RichMedia>
+    {% endfor %}
+</RichMediaFeed>

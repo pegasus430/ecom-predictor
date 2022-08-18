@@ -1,0 +1,1 @@
+The list of tokens for each user can be checked under ```admin/authtoken/token/```, for example: [http://victor-test.contentanalyticsinc.com/admin/authtoken/token/](http://victor-test.contentanalyticsinc.com/admin/authtoken/token/)

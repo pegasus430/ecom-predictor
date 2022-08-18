@@ -1,0 +1,9 @@
+{% extends "dashboard.html" %}
+{% block body %}
+    <h3>ID: {{ request_id }}</h3>
+    <ul>
+        {%- for resource in resources %}
+        <li><a href="{{ resource }}">{{ resource }}</a></li>
+        {%- endfor %}
+    </ul>
+{% endblock %}

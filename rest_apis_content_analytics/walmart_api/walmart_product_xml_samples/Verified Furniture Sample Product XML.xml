@@ -1,0 +1,61 @@
+<SupplierProductFeed xmlns="http://walmart.com/suppliers/">
+	<version>1.4.1</version>
+	<SupplierProduct>
+		<productName>Mainstays Multi-Purpose Wood Cart, Natural Finish with Chrome Handles</productName>
+		<longDescription><![CDATA[<li> Multi-Purpose Wood Cart </li> <li> Chrome handles </li> <li> Natural wood finish </li> <li> 2 shelves </li> <li> Wood cart top acts as additional counter space </li> <li> Locking caster wheels </li> <li> UPC# 0005027699337 </li> <li> 90 day warranty </li> ]]></longDescription>
+		<shelfDescription><![CDATA[<li> Multi-Purpose Wood Cart </li> <li> Natural wood finish and chrome </li> <li> Locking caster wheels </li> ]]></shelfDescription>
+		<shortDescription>The Mainstays Multi-Purpose Wood Cart, Natural Finish with Chrome Handles (UPC# 0005027699337) is the perfect addition to anywhere in your home or office space that is wanting additional counter and storage space. The natural wood finish and chrome metal hardware makes this item an easy compliment to a wide-range of decor. Two spacious shelves provide an excellent storage option while the top of this cart acts as added counter space. Locking caster wheels keep the Mainstays Multi-Purpose Wood Cart in place when movement is not desired. Sturdy, chrome handles promote ease of mobility while adding a chic, industrial flair to clean design of this cart. Add the Mainstays Multi-Purpose Wood Cart for a sylish and convenient solution to updating your new or existing decor.</shortDescription>
+		<mainImage>
+			<mainImageUrl>http://imgh.us/0005027699337.jpg</mainImageUrl>
+		</mainImage>
+		<additionalAssets>
+			<additionalAsset>
+				<assetUrl>http://imgh.us/0005027699337_AV.jpg</assetUrl>
+				<assetType>Additional Image</assetType>
+			</additionalAsset>
+		</additionalAssets>
+		<productIdentifiers>
+			<productIdentifier>
+				<productIdType>UPC</productIdType>
+				<productId>050276993377</productId>
+			</productIdentifier>
+		</productIdentifiers>
+		<unitsPerConsumerUnit>1</unitsPerConsumerUnit>
+		<countryOfOriginAssembly>CN</countryOfOriginAssembly>
+		<countryOfOriginComponents>Imported</countryOfOriginComponents>
+		<isAerosol>false</isAerosol>
+		<isChemical>false</isChemical>
+		<isPesticide>false</isPesticide>
+		<hasBatteries>false</hasBatteries>
+		<containsMercury>false</containsMercury>
+		<hasFuelContainer>false</hasFuelContainer>
+		<pricePerUnitQuantity>
+			<unit>Kilogram</unit>
+			<measure>1</measure>
+		</pricePerUnitQuantity>
+		<containsPaperWood>true</containsPaperWood>
+		<compositeWoodCertificationCode>3</compositeWoodCertificationCode>
+		<hasExpiration>false</hasExpiration>
+		<hasWarnings>false</hasWarnings>
+		<hasWarranty>true</hasWarranty>
+		<warrantyText>Your merchandise is warranted for ninety (90) days against manufacturing defects. To Contact Customer Service Call 1-800-737-5267 Monday Through Friday 8:00 A.M. to 6:00 P.M. Central Time</warrantyText>
+		<isProp65WarningRequired>false</isProp65WarningRequired>
+		<isTemperatureSensitive>false</isTemperatureSensitive>
+		<smallPartsWarnings>
+			<smallPartsWarning>0</smallPartsWarning>
+		</smallPartsWarnings>
+		<isControlledSubstance>false</isControlledSubstance>
+		<hasStateRestrictions>false</hasStateRestrictions>
+		<Furniture>
+			<brand>string</brand>
+			<color>
+				<colorValue>Brown</colorValue>
+			</color>
+			<material>
+				<materialValue>70% wood</materialValue>
+				<materialValue>25% iron steel</materialValue>
+				<materialValue>5% plastic</materialValue>
+			</material>
+		</Furniture>
+	</SupplierProduct>
+</SupplierProductFeed>

@@ -1,0 +1,187 @@
+{% extends "dashboard.html" %}
+{% block body %}
+<form class="form-horizontal" enctype="multipart/form-data" method="post">
+    <div class="form-group">
+        <label for="inputName" class="col-sm-2 control-label">Request name:</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="inputName" name="name" maxlength="32">
+            <span class="help-block">Optional</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="selectRetailer" class="col-sm-2 control-label">Select retailer:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="selectRetailer" name="retailer">
+                <option value="ah.nl">Albert Heijn (Ah)</option>
+                <option value="albertsons.com">Albertsons</option>
+                <option value="amazon.com">Amazon</option>
+                <option value="dollargeneral.com">DollarGeneral</option>
+                <option value="hayneedle.com">Hayneedle</option>
+                <option value="homedepot.com">Homedepot</option>
+                <option value="instacart.com">Instacart</option>
+                <option value="jet.com">Jet</option>
+                <option value="jumbo.com">Jumbo</option>
+                <option value="www.jumbo.cl">Jumbo CL</option>
+                <option value="nuevo.jumbo.cl">Jumbo CL Nuevo</option>
+                <option value="kroger.com">Kroger</option>
+                <option value="modcloth.com">Modcloth</option>
+                <option value="ocado.com">Ocado</option>
+                <option value="safeway.com">Safeway</option>
+                <option value="sainsburys.co.uk">Sainsburys UK</option>
+                <option value="samsclub.com">SamsClub</option>
+                <option value="shoes.com">Shoes</option>
+                <option value="target.com">Target</option>
+                <option value="walmart.com" selected>Walmart</option>
+                <option value="grocery.walmart.com">Walmart Grocery</option>
+                <option value="wayfair.com">Wayfair</option>
+            </select>
+            <span class="help-block"><i>Walmart</i> for example</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="selectTask" class="col-sm-2 control-label">Select request type:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="selectTask" name="task">
+                <option value="shelf_to_item_urls" selected>Shelf => Item URLs</option>
+                <option value="shelf_to_all_item_urls">Shelf => All Item URLs</option>
+                <option value="sitemap_to_shelf_to_item_urls">Sitemap => Shelf => Item URLs</option>
+                <option value="sitemap_to_item_urls">Sitemap => Item URLs</option>
+                <option value="sitemap_to_shelf_urls">Sitemap => Shelf URLs</option>
+                <option value="upc_to_asin">Walmart URLs/UPCs => Amazon URLs</option>
+                <option value="item_info">Walmart URLs => URLs with info</option>
+                <option value="asin_to_upc">Amazon URLs/ASINs => Walmart URLs</option>
+                <option value="upc_to_asin">Jet URLs => Amazon URLs</option>
+                <option value="geo_report">Geo Report</option>
+                <option value="geo_competitor_assortment">Geo Competitor Assortment</option>
+                <option value="geo_out_of_stock_assortment">Geo Report - Out of Stock Assortment</option>
+                <option value="geo_pricing_report">Geo Pricing Report - Owned and Competitor</option>
+                <option value="rich_media">Walmart URLs => Rich Media</option>
+                <option value="item_to_variant_urls">Item URLs => Variant URLs</option>
+                <option value="tcin_to_vendor">TCINs => Vendor info</option>
+                <option value="semrush">Item URLs => SEMrush reports</option>
+                <option value="best_seller_rank">Item URLs => Best seller ranks</option>
+                <option value="stores">Stores</option>
+                <option value="stores_grocery">Walmart Stores - Grocery Pickup</option>
+            </select>
+            <span class="help-block"><i>Shelf to products</i> for example</span>
+        </div>
+    </div>
+    <div class="form-group {%- if url_error %} has-error{% endif %}">
+        <label for="inputUrl" class="col-sm-2 control-label">Input urls:</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" id="inputUrl" rows="2" name="urls" placeholder="https://"></textarea>
+            <span class="help-block">Shelf page <i>url</i> for example. Each url on new line</span>
+            <input type="file" id="inputUrlFile" name="urls_file" />
+            <span class="help-block">Select file with urls</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputUpc" class="col-sm-2 control-label">Input upcs:</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" id="inputUpc" rows="2" name="upcs" placeholder="UPC"></textarea>
+            <span class="help-block">Walmart <i>upc</i> for example. Each upc on new line</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputAsin" class="col-sm-2 control-label">Input asins:</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" id="inputAsin" rows="2" name="asins" placeholder="ASIN"></textarea>
+            <span class="help-block">Amazon <i>asin</i> for example. Each asin on new line</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="inputTcin" class="col-sm-2 control-label">Input TCINs:</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" id="inputTcin" rows="2" name="tcins" placeholder="TCIN"></textarea>
+            <span class="help-block">Target <i>tcin</i> for example. Each TCIN on new line</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="login" class="col-sm-2 control-label">Login:</label>
+        <div class="col-sm-10">
+            <input type="text" id="login" name="login" />
+            <span class="help-block">Optional. For Safeway, Instacart, Albertsons</span>
+        </div>
+        <label for="password" class="col-sm-2 control-label">Password:</label>
+        <div class="col-sm-10">
+            <input type="password" id="password" name="password" />
+            <span class="help-block">Optional. For Safeway, Instacart, Albertsons</span>
+        </div>
+        <label for="zipCode" class="col-sm-2 control-label">ZIP code:</label>
+        <div class="col-sm-10">
+            <input type="text" id="zipCode" name="zip_code" />
+            <span class="help-block">Optional. For Safeway, Albertsons</span>
+        </div>
+        <label for="store" class="col-sm-2 control-label">Store:</label>
+        <div class="col-sm-10">
+            <input type="text" id="store" name="store" />
+            <span class="help-block">Optional. For Instacart</span>
+        </div>
+        <label for="server" class="col-sm-2 control-label">Server:</label>
+        <div class="col-sm-10">
+            <input type="text" id="server" name="server" placeholder="dev-test1" />
+            <span class="help-block">Mandatory. For Rich Media</span>
+        </div>
+        <label for="exclude" class="col-sm-2 control-label">Exclude Movies, Music, Books:</label>
+        <div class="col-sm-10">
+            <input type="checkbox" id="exclude" name="exclude" value="5xsxe" checked />
+            <span class="help-block">Optional. For Target</span>
+        </div>
+        <label for="check_upc" class="col-sm-2 control-label">Check multiple UPCs:</label>
+        <div class="col-sm-10">
+            <input type="checkbox" id="check_upc" name="check_upc" value="1" />
+            <span class="help-block">Optional. For Amazon URLs/ASINs => Walmart URLs</span>
+        </div>
+        <label for="check_name" class="col-sm-2 control-label">Check product name:</label>
+        <div class="col-sm-10">
+            <input type="checkbox" id="check_name" name="check_name" value="1" />
+            <span class="help-block">Optional. For Amazon URLs/ASINs => Walmart URLs</span>
+        </div>
+        <label for="ignore_cache" class="col-sm-2 control-label">Ignore cache:</label>
+        <div class="col-sm-10">
+            <input type="checkbox" id="ignore_cache" name="ignore_cache" value="1" />
+            <span class="help-block">Optional. For SamsClub Item URLs => SEMrush reports</span>
+        </div>
+        <label for="search_terms" class="col-sm-2 control-label">Search terms for Geo Report:</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" id="search_terms" rows="1" name="search_terms" placeholder="Search terms"></textarea>
+            <span class="help-block">Optional for Geo Report. List of terms to search</span>
+        </div>
+        <label for="department" class="col-sm-2 control-label">Department for Geo Report search:</label>
+        <div class="col-sm-10">
+            <input type="text" id="department" name="department" />
+            <span class="help-block">Optional for Geo Report. Department to filter search results</span>
+        </div>
+        <label for="stores" class="col-sm-2 control-label">Stores for Geo Report:</label>
+        <div class="col-sm-10">
+            <input type="file" id="stores" name="stores_file" />
+            <span class="help-block">Mandatory. For Geo Report. Select CSV file with headers: Zip Code, Store ID</span>
+        </div>
+        <label for="brands" class="col-sm-2 control-label">Brands for Geo Report:</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" id="brands" rows="1" name="brands" placeholder="Brands"></textarea>
+            <span class="help-block">Optional for Geo Report. Mandatory for Geo Pricing Report. List of brands to filter products at Shelf page</span>
+        </div>
+        <label for="size" class="col-sm-2 control-label">Size for Geo Pricing Report:</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" id="size" rows="1" name="sizes" placeholder="Sizes"></textarea>
+            <span class="help-block">Optional. For Geo Pricing Report. List of sizes to filter products at Shelf page</span>
+        </div>
+        <label for="sizes_variants" class="col-sm-2 control-label">Sizes variants:</label>
+        <div class="col-sm-10">
+            <input type="checkbox" id="sizes_variants" name="sizes_variants" value="1" />
+            <span class="help-block">Optional. Enter variants of size on each line with comma delimiter. They are using for title matching instead of filter</span>
+        </div>
+        <label for="brands_comparison" class="col-sm-2 control-label">Primary and comparison brand per row:</label>
+        <div class="col-sm-10">
+            <input type="checkbox" id="brands_comparison" name="brands_comparison" value="1" />
+            <span class="help-block">Optional. For Geo Competitor Assortment</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Create</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

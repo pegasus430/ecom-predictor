@@ -1,0 +1,13 @@
+boto==2.47.0
+Flask>=0.10.1
+lxml>=3.3.3
+requests>=2.2.1
+Pillow>=2.3.0
+mmh3>=2.3
+pycurl==7.19.5
+pytesseract>=0.1.6
+numpy>=1.9.2
+w3lib==1.17.0
+selenium==3.4.3
+mechanize==0.3.3
+opencv-python==3.2.0.7
